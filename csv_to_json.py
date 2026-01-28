@@ -33,8 +33,8 @@ def check_length_of_longest():
     longest = max(sentences, key=len)
     print(len(longest))
 
-INFILE = '3604.csv'
-OUTFILE = '3604.json'
+INFILE = '1812.csv'
+OUTFILE = '1812.json'
 
 df = pd.read_csv(INFILE, index_col=0, encoding='utf-8')
 print(df['word'].tolist())
