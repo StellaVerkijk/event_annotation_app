@@ -1,6 +1,7 @@
 import streamlit as st
 import json
 import ast
+from annotated_text import annotated_text
 
 def convert_to_annotated_text(data):
     """
@@ -77,6 +78,6 @@ for line in data:
     regions.append(convert_to_annotated_text(ast.literal_eval(line)))
     
 st.header("Gold data for Events")
-from annotated_text import annotated_text
+
 for r in regions:
     annotated_text(r)
