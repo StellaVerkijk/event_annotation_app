@@ -107,6 +107,43 @@ def extract_annotations(data):
     
     return annotations
 
+st.header("Gold data for events")
+
+st.subheader("Inventory number 3604: Missive sent from Batavia, 1782")
+
+with open('3604.json') as f:
+    data = f.readlines()
+
+regions = []
+annotations_per_region = []
+
+for line in data:   
+    regions.append(convert_to_annotated_text(ast.literal_eval(line)))
+    annotations_per_region.append(extract_annotations(ast.literal_eval(line)))
+
+
+
+for region_idx, r in enumerate(regions):
+    annotated_text(r)  # shows complete text with labels
+    
+    # Use a unique key combining region index and annotation index
+    for ann_idx, (text, label) in enumerate(annotations_per_region[region_idx]):
+        col1, col2, col3 = st.columns([3, 1, 1])
+        
+        with col1:
+            annotated_text((text, label))
+        
+        with col2:
+            if st.button("✓", key=f"correct_{region_idx}_{ann_idx}"):
+                st.session_state[f"status_{region_idx}_{ann_idx}"] = "correct"
+        
+        with col3:
+            if st.button("✗", key=f"wrong_{region_idx}_{ann_idx}"):
+                st.session_state[f"status_{region_idx}_{ann_idx}"] = "wrong"
+
+
+st.subheader("Inventory number 1812:  Missive from 1711")
+
 with open('1812.json') as f:
     data = f.readlines()
 
@@ -117,7 +154,7 @@ for line in data:
     regions.append(convert_to_annotated_text(ast.literal_eval(line)))
     annotations_per_region.append(extract_annotations(ast.literal_eval(line)))
 
-st.header("Gold data for Events")
+
 
 for region_idx, r in enumerate(regions):
     annotated_text(r)  # shows complete text with labels

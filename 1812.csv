@@ -1600,7 +1600,7 @@
 1598,Even,"('O', 'O')",O,O,,,
 1599,komende,"('O', 'O')",O,O,,,
 1600,aen,"('B-Getting', 'B-Arriving')","('B-Getting', 'B-Arriving')",B-Getting,M,,Classic example of something that is both a getting and an arriving event. Opting for getting since it seems to hold more semantic value. I do feel like Transportation is more close to the word used though.
-1601,telanden,"('I-Getting', 'I-Arriving')","('I-Getting', 'I-Arriving')",B-Getting,M,,
+1601,telanden,"('I-Getting', 'I-Arriving')","('I-Getting', 'I-Arriving')",I-Getting,M,,
 1602,",","('O', 'O')",O,O,,,
 1603,hebben,"('O', 'O')",O,O,,,
 1604,niet,"('O', 'O')",O,O,,,
