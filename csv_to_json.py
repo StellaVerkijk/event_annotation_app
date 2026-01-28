@@ -37,7 +37,7 @@ INFILE = '1812.csv'
 OUTFILE = '1812.json'
 
 df = pd.read_csv(INFILE, index_col=0, encoding='utf-8')
-print(df['word'].tolist())
+
 sentences = split_at_newlines(df['word'].tolist())
 sentence_annotations = split_at_newlines(df['manual_resolve'].tolist())
 
