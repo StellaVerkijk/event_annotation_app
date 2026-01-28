@@ -121,8 +121,6 @@ for line in data:
     regions.append(convert_to_annotated_text(ast.literal_eval(line)))
     annotations_per_region.append(extract_annotations(ast.literal_eval(line)))
 
-
-
 for region_idx, r in enumerate(regions):
     annotated_text(r)  # shows complete text with labels
     
@@ -134,12 +132,12 @@ for region_idx, r in enumerate(regions):
             annotated_text((text, label))
         
         with col2:
-            if st.button("✓", key=f"correct_{region_idx}_{ann_idx}"):
-                st.session_state[f"status_{region_idx}_{ann_idx}"] = "correct"
+            if st.button("✓", key=f"file1_correct_{region_idx}_{ann_idx}"):
+                st.session_state[f"file1_status_{region_idx}_{ann_idx}"] = "correct"
         
         with col3:
-            if st.button("✗", key=f"wrong_{region_idx}_{ann_idx}"):
-                st.session_state[f"status_{region_idx}_{ann_idx}"] = "wrong"
+            if st.button("✗", key=f"file1_rong_{region_idx}_{ann_idx}"):
+                st.session_state[f"file1_status_{region_idx}_{ann_idx}"] = "wrong"
 
 
 st.subheader("Inventory number 1812:  Missive from 1711")
@@ -167,9 +165,9 @@ for region_idx, r in enumerate(regions):
             annotated_text((text, label))
         
         with col2:
-            if st.button("✓", key=f"correct_{region_idx}_{ann_idx}"):
-                st.session_state[f"status_{region_idx}_{ann_idx}"] = "correct"
+            if st.button("✓", key=f"file2_correct_{region_idx}_{ann_idx}"):
+                st.session_state[f"file2_status_{region_idx}_{ann_idx}"] = "correct"
         
         with col3:
-            if st.button("✗", key=f"wrong_{region_idx}_{ann_idx}"):
-                st.session_state[f"status_{region_idx}_{ann_idx}"] = "wrong"
+            if st.button("✗", key=f"file2_wrong_{region_idx}_{ann_idx}"):
+                st.session_state[f"file2_status_{region_idx}_{ann_idx}"] = "wrong"
