@@ -2,8 +2,6 @@ import streamlit as st
 import json
 import ast
 from annotated_text import annotated_text
-import pandas as pd
-import io
 
 
 def convert_to_annotated_text(data):
@@ -113,7 +111,6 @@ st.header("Gold data for events")
 
 st.subheader("Inventory number 3604: Missive sent from Batavia, 1782")
 
-# First file (3604.json)
 with open('3604.json') as f:
     data = f.readlines()
 
@@ -127,44 +124,24 @@ for line in data:
 for region_idx, r in enumerate(regions):
     annotated_text(r)  # shows complete text with labels
     
+    # Use a unique key combining region index and annotation index
     for ann_idx, (text, label) in enumerate(annotations_per_region[region_idx]):
         col1, col2, col3 = st.columns([3, 1, 1])
-        
-        key = f"file1_{region_idx}_{ann_idx}"
         
         with col1:
             annotated_text((text, label))
         
         with col2:
-            if st.button("✓", key=f"correct_{key}"):
-                st.session_state.annotation_choices[key] = {
-                    'file': '3604.json',
-                    'region': region_idx,
-                    'text': text,
-                    'label': label,
-                    'choice': 'correct'
-                }
-                st.success("Marked as correct!")
+            if st.button("✓", key=f"file1_correct_{region_idx}_{ann_idx}"):
+                st.session_state[f"file1_status_{region_idx}_{ann_idx}"] = "correct"
         
         with col3:
-            if st.button("✗", key=f"wrong_{key}"):
-                st.session_state.annotation_choices[key] = {
-                    'file': '3604.json',
-                    'region': region_idx,
-                    'text': text,
-                    'label': label,
-                    'choice': 'wrong'
-                }
-                st.error("Marked as wrong!")
-        
-        # Show current choice if exists
-        if key in st.session_state.annotation_choices:
-            choice = st.session_state.annotation_choices[key]['choice']
-            st.caption(f"Current: {choice}")
+            if st.button("✗", key=f"file1_rong_{region_idx}_{ann_idx}"):
+                st.session_state[f"file1_status_{region_idx}_{ann_idx}"] = "wrong"
 
-st.subheader("Inventory number 1812: Missive from 1711")
 
-# Second file (1812.json)
+st.subheader("Inventory number 1812:  Missive from 1711")
+
 with open('1812.json') as f:
     data = f.readlines()
 
@@ -175,70 +152,22 @@ for line in data:
     regions.append(convert_to_annotated_text(ast.literal_eval(line)))
     annotations_per_region.append(extract_annotations(ast.literal_eval(line)))
 
+
+
 for region_idx, r in enumerate(regions):
-    annotated_text(r)
+    annotated_text(r)  # shows complete text with labels
     
+    # Use a unique key combining region index and annotation index
     for ann_idx, (text, label) in enumerate(annotations_per_region[region_idx]):
         col1, col2, col3 = st.columns([3, 1, 1])
-        
-        key = f"file2_{region_idx}_{ann_idx}"
         
         with col1:
             annotated_text((text, label))
         
         with col2:
-            if st.button("✓", key=f"correct_{key}"):
-                st.session_state.annotation_choices[key] = {
-                    'file': '1812.json',
-                    'region': region_idx,
-                    'text': text,
-                    'label': label,
-                    'choice': 'correct'
-                }
-                st.success("Marked as correct!")
+            if st.button("✓", key=f"file2_correct_{region_idx}_{ann_idx}"):
+                st.session_state[f"file2_status_{region_idx}_{ann_idx}"] = "correct"
         
         with col3:
-            if st.button("✗", key=f"wrong_{key}"):
-                st.session_state.annotation_choices[key] = {
-                    'file': '1812.json',
-                    'region': region_idx,
-                    'text': text,
-                    'label': label,
-                    'choice': 'wrong'
-                }
-                st.error("Marked as wrong!")
-        
-        # Show current choice if exists
-        if key in st.session_state.annotation_choices:
-            choice = st.session_state.annotation_choices[key]['choice']
-            st.caption(f"Current: {choice}")
-
-# Download section at the bottom
-st.divider()
-st.subheader("Download Your Choices")
-
-if st.session_state.annotation_choices:
-    # Convert choices to DataFrame
-    df = pd.DataFrame.from_dict(st.session_state.annotation_choices, orient='index')
-    
-    # Show preview
-    st.write(f"Total annotations reviewed: {len(df)}")
-    st.dataframe(df)
-    
-    # Convert to CSV
-    csv = df.to_csv(index=False)
-    
-    # Download button
-    st.download_button(
-        label="Download CSV",
-        data=csv,
-        file_name="annotation_choices.csv",
-        mime="text/csv"
-    )
-    
-    # Optional: Reset button
-    if st.button("Reset All Choices"):
-        st.session_state.annotation_choices = {}
-        st.rerun()
-else:
-    st.info("No annotations have been marked yet. Click ✓ or ✗ on annotations above.")
+            if st.button("✗", key=f"file2_wrong_{region_idx}_{ann_idx}"):
+                st.session_state[f"file2_status_{region_idx}_{ann_idx}"] = "wrong"
