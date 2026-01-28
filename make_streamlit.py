@@ -130,16 +130,16 @@ for r in regions:
     annotations = extract_annotations(t)
 
     for i, (text, label) in enumerate(annotations):
-    col1, col2, col3 = st.columns([3, 1, 1])
-    
-    with col1:
-        annotated_text((text, label))
-    
-    with col2:
-        if st.button("✓", key=f"correct_{i}"):
-            st.session_state[f"status_{i}"] = "correct"
-    
-    with col3:
-        if st.button("✗", key=f"wrong_{i}"):
-            st.session_state[f"status_{i}"] = "wrong"
+        col1, col2, col3 = st.columns([3, 1, 1])
+        
+        with col1:
+            annotated_text((text, label))
+        
+        with col2:
+            if st.button("✓", key=f"correct_{i}"):
+                st.session_state[f"status_{i}"] = "correct"
+        
+        with col3:
+            if st.button("✗", key=f"wrong_{i}"):
+                st.session_state[f"status_{i}"] = "wrong"
 
