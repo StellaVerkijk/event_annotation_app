@@ -110,13 +110,6 @@ def extract_annotations(data):
 with open('3604.json') as f:
     data = f.readlines()
 
-#for line in data:
-    #annotated = convert_to_annotated_text(line)
-
-print("EXAMPLE OF DATA")
-print(data[3])
-print(type(ast.literal_eval(data[3])))
-
 regions = []
 
 for line in data:   
@@ -127,19 +120,19 @@ st.header("Gold data for Events")
 for r in regions:
     annotated_text(r) #shows complete text with labels
 
-    #annotations = extract_annotations(ast.literal_eval(r))
+    annotations = extract_annotations(ast.literal_eval(r))
 
-    #for i, (text, label) in enumerate(annotations):
-     #   col1, col2, col3 = st.columns([3, 1, 1])
+    for i, (text, label) in enumerate(annotations):
+        col1, col2, col3 = st.columns([3, 1, 1])
         
-     #   with col1:
-      #      annotated_text((text, label))
+        with col1:
+            annotated_text((text, label))
         
-      #  with col2:
-        #    if st.button("✓", key=f"correct_{i}"):
-       #         st.session_state[f"status_{i}"] = "correct"
+        with col2:
+            if st.button("✓", key=f"correct_{i}"):
+                st.session_state[f"status_{i}"] = "correct"
         
-       # with col3:
-        #    if st.button("✗", key=f"wrong_{i}"):
-           #     st.session_state[f"status_{i}"] = "wrong"
+        with col3:
+            if st.button("✗", key=f"wrong_{i}"):
+                st.session_state[f"status_{i}"] = "wrong"
 
