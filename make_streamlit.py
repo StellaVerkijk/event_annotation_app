@@ -107,7 +107,7 @@ def extract_annotations(data):
     
     return annotations
 
-with open('3604.json') as f:
+with open('1812.json') as f:
     data = f.readlines()
 
 regions = []
