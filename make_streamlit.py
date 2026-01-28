@@ -119,22 +119,20 @@ for line in data:
 
 st.header("Gold data for Events")
 
-i=-1
-for r in regions:
-    i+=1
-    annotated_text(r) #shows complete text with labels
-
-    for i, (text, label) in enumerate(annotations_per_region[i]):
+for region_idx, r in enumerate(regions):
+    annotated_text(r)  # shows complete text with labels
+    
+    # Use a unique key combining region index and annotation index
+    for ann_idx, (text, label) in enumerate(annotations_per_region[region_idx]):
         col1, col2, col3 = st.columns([3, 1, 1])
         
         with col1:
             annotated_text((text, label))
         
         with col2:
-            if st.button("✓", key=f"correct_{i}"):
-                st.session_state[f"status_{i}"] = "correct"
+            if st.button("✓", key=f"correct_{region_idx}_{ann_idx}"):
+                st.session_state[f"status_{region_idx}_{ann_idx}"] = "correct"
         
         with col3:
-            if st.button("✗", key=f"wrong_{i}"):
-                st.session_state[f"status_{i}"] = "wrong"
-
+            if st.button("✗", key=f"wrong_{region_idx}_{ann_idx}"):
+                st.session_state[f"status_{region_idx}_{ann_idx}"] = "wrong"
