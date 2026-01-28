@@ -127,7 +127,7 @@ st.header("Gold data for Events")
 for r in regions:
     annotated_text(r) #shows complete text with labels
 
-    annotations = extract_annotations(r)
+    annotations = extract_annotations(ast.literal_eval(r))
 
     for i, (text, label) in enumerate(annotations):
         col1, col2, col3 = st.columns([3, 1, 1])
