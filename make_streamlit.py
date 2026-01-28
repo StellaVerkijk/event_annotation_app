@@ -111,18 +111,20 @@ with open('3604.json') as f:
     data = f.readlines()
 
 regions = []
+annotations_per_region = []
 
 for line in data:   
     regions.append(convert_to_annotated_text(ast.literal_eval(line)))
-    
+    annotations_per_region.append(extract_annotations(ast.literal_eval(line)))
+
 st.header("Gold data for Events")
 
+i=-1
 for r in regions:
+    i+=1
     annotated_text(r) #shows complete text with labels
 
-    annotations = extract_annotations(r)
-
-    for i, (text, label) in enumerate(annotations):
+    for i, (text, label) in enumerate(annotations_per_region[i]):
         col1, col2, col3 = st.columns([3, 1, 1])
         
         with col1:
