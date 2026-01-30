@@ -103,3 +103,45 @@ st.header("Gold data for Events")
 
 # First file
 with open('3604.json') as f:
+    data = f.readlines()
+
+for region_idx, line in enumerate(data):
+    parsed_data = ast.literal_eval(line)
+    display_text_with_inline_buttons(parsed_data, '3604', region_idx)
+    st.write("")  # Extra newline between regions
+    st.write("")  # Extra newline between regions
+
+st.subheader("Inventory number 1812: Missive from 1711")
+
+# Second file
+with open('1812.json') as f:
+    data = f.readlines()
+
+for region_idx, line in enumerate(data):
+    parsed_data = ast.literal_eval(line)
+    display_text_with_inline_buttons(parsed_data, '1812', region_idx)
+    st.write("")  # Extra newline between regions
+    st.write("")  # Extra newline between regions
+
+# Download section
+st.divider()
+st.subheader("Download Your Choices")
+
+if st.session_state.annotation_choices:
+    df = pd.DataFrame.from_dict(st.session_state.annotation_choices, orient='index')
+    st.write(f"Total annotations reviewed: {len(df)}")
+    st.dataframe(df)
+    
+    csv = df.to_csv(index=False)
+    st.download_button(
+        label="Download CSV",
+        data=csv,
+        file_name="annotation_choices.csv",
+        mime="text/csv"
+    )
+    
+    if st.button("Reset All Choices"):
+        st.session_state.annotation_choices = {}
+        st.rerun()
+else:
+    st.info("No annotations have been marked yet.")
