@@ -1,173 +1,146 @@
 import streamlit as st
-import json
-import ast
 from annotated_text import annotated_text
+import ast
+import pandas as pd
 
+# Initialize session state
+if 'annotation_choices' not in st.session_state:
+    st.session_state.annotation_choices = {}
 
-def convert_to_annotated_text(data):
+def display_text_with_inline_buttons(data, file_id, region_idx):
     """
-    Written by Claude
-
-    Convert words and events data to annotated_text format.
-    
-    Args:
-        data: dict with 'words' and 'events' keys
-    
-    Returns:
-        list of tuples and strings for annotated_text
+    Display text with annotations and inline buttons after each annotation.
     """
     words = data['words']
     events = data['events']
     
-    result = []
     current_text = []
     current_event = None
     current_event_words = []
+    ann_counter = 0
     
-    for word, event in zip(words, events):
-        # Check if this is a B- (Begin) tag or different event
+    for word_idx, (word, event) in enumerate(zip(words, events)):
         if event.startswith('B-'):
-            # Save any accumulated non-event text
+            # Display accumulated non-event text
             if current_text:
-                result.append(' '.join(current_text))
+                st.markdown(' '.join(current_text), unsafe_allow_html=True)
                 current_text = []
             
-            # Save any previous event
+            # Display previous event with buttons
             if current_event_words and current_event:
-                result.append((' '.join(current_event_words) + ' ', current_event))
+                text = ' '.join(current_event_words)
+                display_annotation_with_buttons(text, current_event, file_id, region_idx, ann_counter)
+                ann_counter += 1
                 current_event_words = []
             
             # Start new event
-            current_event = event[2:]  # Remove 'B-' prefix
+            current_event = event[2:]
             current_event_words = [word]
             
         elif event.startswith('I-'):
-            # Continue current event
             current_event_words.append(word)
             
-        else:  # event == 'O' (no event)
-            # Save any previous event first
+        else:  # O
+            # Display previous event with buttons
             if current_event_words and current_event:
-                result.append((' '.join(current_event_words) + ' ', current_event))
+                text = ' '.join(current_event_words)
+                display_annotation_with_buttons(text, current_event, file_id, region_idx, ann_counter)
+                ann_counter += 1
                 current_event_words = []
                 current_event = None
             
-            # Add to regular text
             current_text.append(word)
     
-    # Don't forget remaining text/events
+    # Display remaining text/events
     if current_text:
-        result.append(' '.join(current_text))
+        st.markdown(' '.join(current_text), unsafe_allow_html=True)
     if current_event_words and current_event:
-        result.append((' '.join(current_event_words) + ' ', current_event))
-    
-    return result
+        text = ' '.join(current_event_words)
+        display_annotation_with_buttons(text, current_event, file_id, region_idx, ann_counter)
 
-def extract_annotations(data):
+def display_annotation_with_buttons(text, label, file_id, region_idx, ann_idx):
     """
-    Extract all annotated spans from the data.
-    
-    Args:
-        data: dict with 'words' and 'events' keys
-    
-    Returns:
-        list of tuples: [(text, label), ...]
+    Display an annotation inline with V and X buttons.
     """
-    words = data['words']
-    events = data['events']
+    key = f"{file_id}_{region_idx}_{ann_idx}"
     
-    annotations = []
-    current_event = None
-    current_words = []
+    # Create inline columns for annotation and buttons
+    cols = st.columns([0.3, 0.05, 0.05, 0.6])
     
-    for word, event in zip(words, events):
-        if event.startswith('B-'):
-            # Save previous annotation if exists
-            if current_words and current_event:
-                annotations.append((' '.join(current_words), current_event))
-            
-            # Start new annotation
-            current_event = event[2:]  # Remove 'B-' prefix
-            current_words = [word]
-            
-        elif event.startswith('I-'):
-            # Continue current annotation
-            current_words.append(word)
-            
-        else:  # event == 'O'
-            # Save previous annotation if exists
-            if current_words and current_event:
-                annotations.append((' '.join(current_words), current_event))
-                current_words = []
-                current_event = None
+    with cols[0]:
+        annotated_text((text + " ", label))
     
-    # Don't forget the last annotation
-    if current_words and current_event:
-        annotations.append((' '.join(current_words), current_event))
+    with cols[1]:
+        if st.button("✓", key=f"correct_{key}"):
+            st.session_state.annotation_choices[key] = {
+                'file': file_id,
+                'region': region_idx,
+                'text': text,
+                'label': label,
+                'choice': 'correct'
+            }
     
-    return annotations
+    with cols[2]:
+        if st.button("✗", key=f"wrong_{key}"):
+            st.session_state.annotation_choices[key] = {
+                'file': file_id,
+                'region': region_idx,
+                'text': text,
+                'label': label,
+                'choice': 'wrong'
+            }
+    
+    # Show current choice in the remaining space
+    with cols[3]:
+        if key in st.session_state.annotation_choices:
+            choice = st.session_state.annotation_choices[key]['choice']
+            if choice == 'correct':
+                st.markdown("✅", unsafe_allow_html=True)
+            else:
+                st.markdown("❌", unsafe_allow_html=True)
 
-st.header("Gold data for events")
+# Main app
+st.header("Gold data for Events")
 
-st.subheader("Inventory number 3604: Missive sent from Batavia, 1782")
-
+# First file
 with open('3604.json') as f:
     data = f.readlines()
 
-regions = []
-annotations_per_region = []
+for region_idx, line in enumerate(data):
+    parsed_data = ast.literal_eval(line)
+    display_text_with_inline_buttons(parsed_data, '3604', region_idx)
+    st.divider()
 
-for line in data:   
-    regions.append(convert_to_annotated_text(ast.literal_eval(line)))
-    annotations_per_region.append(extract_annotations(ast.literal_eval(line)))
+st.subheader("Inventory number 1812: Missive from 1711")
 
-for region_idx, r in enumerate(regions):
-    annotated_text(r)  # shows complete text with labels
-    
-    # Use a unique key combining region index and annotation index
-    for ann_idx, (text, label) in enumerate(annotations_per_region[region_idx]):
-        col1, col2, col3 = st.columns([3, 1, 1])
-        
-        with col1:
-            annotated_text((text, label))
-        
-        with col2:
-            if st.button("✓", key=f"file1_correct_{region_idx}_{ann_idx}"):
-                st.session_state[f"file1_status_{region_idx}_{ann_idx}"] = "correct"
-        
-        with col3:
-            if st.button("✗", key=f"file1_rong_{region_idx}_{ann_idx}"):
-                st.session_state[f"file1_status_{region_idx}_{ann_idx}"] = "wrong"
-
-
-st.subheader("Inventory number 1812:  Missive from 1711")
-
+# Second file
 with open('1812.json') as f:
     data = f.readlines()
 
-regions = []
-annotations_per_region = []
+for region_idx, line in enumerate(data):
+    parsed_data = ast.literal_eval(line)
+    display_text_with_inline_buttons(parsed_data, '1812', region_idx)
+    st.divider()
 
-for line in data:   
-    regions.append(convert_to_annotated_text(ast.literal_eval(line)))
-    annotations_per_region.append(extract_annotations(ast.literal_eval(line)))
+# Download section
+st.divider()
+st.subheader("Download Your Choices")
 
-
-
-for region_idx, r in enumerate(regions):
-    annotated_text(r)  # shows complete text with labels
+if st.session_state.annotation_choices:
+    df = pd.DataFrame.from_dict(st.session_state.annotation_choices, orient='index')
+    st.write(f"Total annotations reviewed: {len(df)}")
+    st.dataframe(df)
     
-    # Use a unique key combining region index and annotation index
-    for ann_idx, (text, label) in enumerate(annotations_per_region[region_idx]):
-        col1, col2, col3 = st.columns([3, 1, 1])
-        
-        with col1:
-            annotated_text((text, label))
-        
-        with col2:
-            if st.button("✓", key=f"file2_correct_{region_idx}_{ann_idx}"):
-                st.session_state[f"file2_status_{region_idx}_{ann_idx}"] = "correct"
-        
-        with col3:
-            if st.button("✗", key=f"file2_wrong_{region_idx}_{ann_idx}"):
-                st.session_state[f"file2_status_{region_idx}_{ann_idx}"] = "wrong"
+    csv = df.to_csv(index=False)
+    st.download_button(
+        label="Download CSV",
+        data=csv,
+        file_name="annotation_choices.csv",
+        mime="text/csv"
+    )
+    
+    if st.button("Reset All Choices"):
+        st.session_state.annotation_choices = {}
+        st.rerun()
+else:
+    st.info("No annotations have been marked yet.")
