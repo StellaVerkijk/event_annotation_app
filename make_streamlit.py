@@ -120,8 +120,8 @@ def display_region_with_buttons(data, file_id, region_idx):
        # st.info(f"📄 This region has {len(data['words'])} words and is split into {len(chunks)} parts for easier viewing.")
     
     for chunk_idx, chunk in enumerate(chunks):
-        if len(chunks) > 1:
-            st.markdown(f"**Part {chunk_idx + 1} of {len(chunks)}**")
+        #if len(chunks) > 1:
+           # st.markdown(f"**Part {chunk_idx + 1} of {len(chunks)}**")
         
         # Display the full annotated text
         annotated_version = convert_to_annotated_text(chunk)
