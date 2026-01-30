@@ -167,7 +167,7 @@ def display_region_with_buttons(data, file_id, region_idx):
                 with cols[3]:
                     if key in st.session_state.annotation_choices:
                         choice = st.session_state.annotation_choices[key]['choice']
-                        st.markdown("✅ Useful" if choice == 'correct' else "❌ Misleading")
+                        st.markdown("✅ Useful" if choice == 'useful' else "❌ Misleading")
         
         if len(chunks) > 1 and chunk_idx < len(chunks) - 1:
             st.markdown("---")
