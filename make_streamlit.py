@@ -79,53 +79,94 @@ def extract_annotations(data):
     
     return annotations
 
+def split_data_into_chunks(data, max_words=150):
+    """Split data into chunks of max_words."""
+    words = data['words']
+    events = data['events']
+    
+    if len(words) <= max_words:
+        return [data]
+    
+    chunks = []
+    start_idx = 0
+    
+    while start_idx < len(words):
+        end_idx = min(start_idx + max_words, len(words))
+        
+        chunk = {
+            'words': words[start_idx:end_idx],
+            'events': events[start_idx:end_idx]
+        }
+        chunks.append(chunk)
+        start_idx = end_idx
+    
+    return chunks
+
 def display_region_with_buttons(data, file_id, region_idx):
     """Display annotated text and buttons for each annotation."""
-    # Display the full annotated text
-    annotated_version = convert_to_annotated_text(data)
-    annotated_text(*annotated_version)
+    # Check if we need to split the region
+    chunks = split_data_into_chunks(data, max_words=150)
     
-    # Get all annotations
-    annotations = extract_annotations(data)
+    if len(chunks) > 1:
+        st.info(f"📄 This region has {len(data['words'])} words and is split into {len(chunks)} parts for easier viewing.")
     
-    # Display compact buttons for each annotation
-    if annotations:
-        st.markdown("---")
-        for ann_idx, (text, label) in enumerate(annotations):
-            key = f"{file_id}_{region_idx}_{ann_idx}"
-            
-            cols = st.columns([0.6, 0.1, 0.1, 0.2])
-            
-            with cols[0]:
-                st.markdown(f"**{text}** `({label})`")
-            
-            with cols[1]:
-                if st.button("✓", key=f"correct_{key}"):
-                    st.session_state.annotation_choices[key] = {
-                        'file': file_id,
-                        'region': region_idx,
-                        'text': text,
-                        'label': label,
-                        'choice': 'correct'
-                    }
-            
-            with cols[2]:
-                if st.button("✗", key=f"wrong_{key}"):
-                    st.session_state.annotation_choices[key] = {
-                        'file': file_id,
-                        'region': region_idx,
-                        'text': text,
-                        'label': label,
-                        'choice': 'wrong'
-                    }
-            
-            with cols[3]:
-                if key in st.session_state.annotation_choices:
-                    choice = st.session_state.annotation_choices[key]['choice']
-                    st.markdown("✅ Correct" if choice == 'correct' else "❌ Wrong")
+    for chunk_idx, chunk in enumerate(chunks):
+        if len(chunks) > 1:
+            st.markdown(f"**Part {chunk_idx + 1} of {len(chunks)}**")
+        
+        # Display the full annotated text
+        annotated_version = convert_to_annotated_text(chunk)
+        annotated_text(*annotated_version)
+        
+        # Get all annotations
+        annotations = extract_annotations(chunk)
+        
+        # Display compact buttons for each annotation
+        if annotations:
+            st.markdown("---")
+            for ann_idx, (text, label) in enumerate(annotations):
+                # Use chunk_idx in the key to make it unique across chunks
+                key = f"{file_id}_{region_idx}_{chunk_idx}_{ann_idx}"
+                
+                cols = st.columns([0.6, 0.1, 0.1, 0.2])
+                
+                with cols[0]:
+                    st.markdown(f"**{text}** `({label})`")
+                
+                with cols[1]:
+                    if st.button("✓", key=f"correct_{key}"):
+                        st.session_state.annotation_choices[key] = {
+                            'file': file_id,
+                            'region': region_idx,
+                            'chunk': chunk_idx,
+                            'text': text,
+                            'label': label,
+                            'choice': 'correct'
+                        }
+                
+                with cols[2]:
+                    if st.button("✗", key=f"wrong_{key}"):
+                        st.session_state.annotation_choices[key] = {
+                            'file': file_id,
+                            'region': region_idx,
+                            'chunk': chunk_idx,
+                            'text': text,
+                            'label': label,
+                            'choice': 'wrong'
+                        }
+                
+                with cols[3]:
+                    if key in st.session_state.annotation_choices:
+                        choice = st.session_state.annotation_choices[key]['choice']
+                        st.markdown("✅ Correct" if choice == 'correct' else "❌ Wrong")
+        
+        if len(chunks) > 1 and chunk_idx < len(chunks) - 1:
+            st.markdown("---")
 
 # Main app
 st.header("Gold data for Events")
+
+st.subheader("Missive sent from Batavia in 1782 (inv. nr. 3604)")
 
 # First file
 with open('3604.json') as f:
@@ -137,17 +178,17 @@ for region_idx, line in enumerate(data):
     st.write("")
     st.write("")
 
-st.subheader("Inventory number 1812: Missive from 1711")
+#st.subheader("Inventory number 1812: Missive from 1711")
 
 # Second file
-with open('1812.json') as f:
-    data = f.readlines()
+#with open('1812.json') as f:
+#    data = f.readlines()
 
-for region_idx, line in enumerate(data):
-    parsed_data = ast.literal_eval(line)
-    display_region_with_buttons(parsed_data, '1812', region_idx)
-    st.write("")
-    st.write("")
+#for region_idx, line in enumerate(data):
+#    parsed_data = ast.literal_eval(line)
+#    display_region_with_buttons(parsed_data, '1812', region_idx)
+#    st.write("")
+#    st.write("")
 
 # Download section
 st.divider()
