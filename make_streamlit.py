@@ -117,7 +117,7 @@ def display_region_with_buttons(data, file_id, region_idx):
     chunks = split_data_into_chunks(data, max_words=150)
     
     if len(chunks) > 1:
-        st.info(f"📄 This region has {len(data['words'])} words and is split into {len(chunks)} parts for easier viewing.")
+       # st.info(f"📄 This region has {len(data['words'])} words and is split into {len(chunks)} parts for easier viewing.")
     
     for chunk_idx, chunk in enumerate(chunks):
         if len(chunks) > 1:
