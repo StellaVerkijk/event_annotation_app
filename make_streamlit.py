@@ -80,18 +80,27 @@ def extract_annotations(data):
     return annotations
 
 def split_data_into_chunks(data, max_words=150):
-    """Split data into chunks of max_words."""
+    """Split data into roughly equal chunks, each up to max_words."""
     words = data['words']
     events = data['events']
     
-    if len(words) <= max_words:
+    total_words = len(words)
+    
+    if total_words <= max_words:
         return [data]
+    
+    # Calculate optimal number of chunks
+    num_chunks = (total_words + max_words - 1) // max_words  # Ceiling division
+    chunk_size = total_words // num_chunks
+    remainder = total_words % num_chunks
     
     chunks = []
     start_idx = 0
     
-    while start_idx < len(words):
-        end_idx = min(start_idx + max_words, len(words))
+    for i in range(num_chunks):
+        # Distribute remainder words across first chunks
+        extra = 1 if i < remainder else 0
+        end_idx = start_idx + chunk_size + extra
         
         chunk = {
             'words': words[start_idx:end_idx],
