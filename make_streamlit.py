@@ -150,7 +150,7 @@ def display_region_with_buttons(data, file_id, region_idx):
                             'chunk': chunk_idx,
                             'text': text,
                             'label': label,
-                            'choice': 'correct'
+                            'choice': 'useful'
                         }
                 
                 with cols[2]:
@@ -161,7 +161,7 @@ def display_region_with_buttons(data, file_id, region_idx):
                             'chunk': chunk_idx,
                             'text': text,
                             'label': label,
-                            'choice': 'wrong'
+                            'choice': 'misleading'
                         }
                 
                 with cols[3]:
