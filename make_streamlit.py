@@ -9,27 +9,29 @@ if 'annotation_choices' not in st.session_state:
 
 def display_text_with_inline_buttons(data, file_id, region_idx):
     """
-    Display text with annotations and inline buttons after each annotation.
+    Display text with annotations and inline buttons, all in one flowing line.
     """
     words = data['words']
     events = data['events']
     
+    # Build a list of elements to display
+    elements = []
     current_text = []
     current_event = None
     current_event_words = []
     ann_counter = 0
     
-    for word_idx, (word, event) in enumerate(zip(words, events)):
+    for word, event in zip(words, events):
         if event.startswith('B-'):
-            # Display accumulated non-event text
+            # Add accumulated non-event text
             if current_text:
-                st.markdown(' '.join(current_text), unsafe_allow_html=True)
+                elements.append(' '.join(current_text) + ' ')
                 current_text = []
             
-            # Display previous event with buttons
+            # Add previous event with buttons
             if current_event_words and current_event:
                 text = ' '.join(current_event_words)
-                display_annotation_with_buttons(text, current_event, file_id, region_idx, ann_counter)
+                elements.append((text, current_event, file_id, region_idx, ann_counter))
                 ann_counter += 1
                 current_event_words = []
             
@@ -41,63 +43,65 @@ def display_text_with_inline_buttons(data, file_id, region_idx):
             current_event_words.append(word)
             
         else:  # O
-            # Display previous event with buttons
+            # Add previous event with buttons
             if current_event_words and current_event:
                 text = ' '.join(current_event_words)
-                display_annotation_with_buttons(text, current_event, file_id, region_idx, ann_counter)
+                elements.append((text, current_event, file_id, region_idx, ann_counter))
                 ann_counter += 1
                 current_event_words = []
                 current_event = None
             
             current_text.append(word)
     
-    # Display remaining text/events
+    # Add remaining elements
     if current_text:
-        st.markdown(' '.join(current_text), unsafe_allow_html=True)
+        elements.append(' '.join(current_text))
     if current_event_words and current_event:
         text = ' '.join(current_event_words)
-        display_annotation_with_buttons(text, current_event, file_id, region_idx, ann_counter)
-
-def display_annotation_with_buttons(text, label, file_id, region_idx, ann_idx):
-    """
-    Display an annotation inline with V and X buttons.
-    """
-    key = f"{file_id}_{region_idx}_{ann_idx}"
+        elements.append((text, current_event, file_id, region_idx, ann_counter))
     
-    # Create inline columns for annotation and buttons
-    cols = st.columns([0.3, 0.05, 0.05, 0.6])
+    # Display all elements in columns to keep them inline
+    cols = st.columns(len(elements))
     
-    with cols[0]:
-        annotated_text((text + " ", label))
-    
-    with cols[1]:
-        if st.button("✓", key=f"correct_{key}"):
-            st.session_state.annotation_choices[key] = {
-                'file': file_id,
-                'region': region_idx,
-                'text': text,
-                'label': label,
-                'choice': 'correct'
-            }
-    
-    with cols[2]:
-        if st.button("✗", key=f"wrong_{key}"):
-            st.session_state.annotation_choices[key] = {
-                'file': file_id,
-                'region': region_idx,
-                'text': text,
-                'label': label,
-                'choice': 'wrong'
-            }
-    
-    # Show current choice in the remaining space
-    with cols[3]:
-        if key in st.session_state.annotation_choices:
-            choice = st.session_state.annotation_choices[key]['choice']
-            if choice == 'correct':
-                st.markdown("✅", unsafe_allow_html=True)
+    for idx, element in enumerate(elements):
+        with cols[idx]:
+            if isinstance(element, tuple):
+                # This is an annotation with buttons
+                text, label, fid, rid, aid = element
+                key = f"{fid}_{rid}_{aid}"
+                
+                # Display annotation
+                annotated_text((text + " ", label))
+                
+                # Display buttons inline
+                btn_cols = st.columns(2)
+                with btn_cols[0]:
+                    if st.button("✓", key=f"correct_{key}"):
+                        st.session_state.annotation_choices[key] = {
+                            'file': fid,
+                            'region': rid,
+                            'text': text,
+                            'label': label,
+                            'choice': 'correct'
+                        }
+                
+                with btn_cols[1]:
+                    if st.button("✗", key=f"wrong_{key}"):
+                        st.session_state.annotation_choices[key] = {
+                            'file': fid,
+                            'region': rid,
+                            'text': text,
+                            'label': label,
+                            'choice': 'wrong'
+                        }
+                
+                # Show current choice
+                if key in st.session_state.annotation_choices:
+                    choice = st.session_state.annotation_choices[key]['choice']
+                    st.markdown("✅" if choice == 'correct' else "❌")
             else:
-                st.markdown("❌", unsafe_allow_html=True)
+                # This is regular text
+                st.markdown(element)
 
 # Main app
 st.header("Gold data for Events")
@@ -109,7 +113,8 @@ with open('3604.json') as f:
 for region_idx, line in enumerate(data):
     parsed_data = ast.literal_eval(line)
     display_text_with_inline_buttons(parsed_data, '3604', region_idx)
-    st.divider()
+    st.write("")  # Extra newline between regions
+    st.write("")  # Extra newline between regions
 
 st.subheader("Inventory number 1812: Missive from 1711")
 
@@ -120,7 +125,8 @@ with open('1812.json') as f:
 for region_idx, line in enumerate(data):
     parsed_data = ast.literal_eval(line)
     display_text_with_inline_buttons(parsed_data, '1812', region_idx)
-    st.divider()
+    st.write("")  # Extra newline between regions
+    st.write("")  # Extra newline between regions
 
 # Download section
 st.divider()
