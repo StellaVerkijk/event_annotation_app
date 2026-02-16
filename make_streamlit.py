@@ -178,7 +178,7 @@ st.header("Gold data for Events")
 st.subheader("Missive sent from Batavia in 1782 (inv. nr. 3604)")
 
 # First file
-with open('predictions/3604.json') as f:
+with open('3604.json') as f:
     data = f.readlines()
 
 for region_idx, line in enumerate(data):
