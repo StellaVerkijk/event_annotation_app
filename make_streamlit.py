@@ -173,7 +173,7 @@ def display_region_with_buttons(data, file_id, region_idx):
             st.markdown("---")
 
 # Main app
-st.header("Gold data for Events")
+st.header("Predictions of baseline one-stop-shop model")
 
 st.subheader("Missive sent from Batavia in 1782 (inv. nr. 3604)")
 
