@@ -184,7 +184,7 @@ with open('predictions/3604_40ep.json') as f:
 
 for region_idx, line in enumerate(data):
     parsed_data = ast.literal_eval(line)
-    display_region_with_buttons(parsed_data, '3604', region_idx)
+    display_region_with_buttons(parsed_data, '3604_40ep', region_idx)
     st.write("")
     st.write("")
 
@@ -195,7 +195,7 @@ with open('predictions/3604_20ep.json') as f:
 
 for region_idx, line in enumerate(data):
     parsed_data = ast.literal_eval(line)
-    display_region_with_buttons(parsed_data, '3604', region_idx)
+    display_region_with_buttons(parsed_data, '3604_20ep', region_idx)
     st.write("")
     st.write("")
 
