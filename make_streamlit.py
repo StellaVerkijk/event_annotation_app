@@ -176,9 +176,10 @@ def display_region_with_buttons(data, file_id, region_idx):
 st.header("Predictions of baseline one-stop-shop model")
 
 st.subheader("Missive sent from Batavia in 1782 (inv. nr. 3604)")
+st.subheader("OUTPUT OF MODEL TRAINED WITH 40 EPOCHS")
 
 # First file
-with open('predictions/3604.json') as f:
+with open('predictions/3604_40ep.json') as f:
     data = f.readlines()
 
 for region_idx, line in enumerate(data):
@@ -186,6 +187,18 @@ for region_idx, line in enumerate(data):
     display_region_with_buttons(parsed_data, '3604', region_idx)
     st.write("")
     st.write("")
+
+st.subheader("OUTPUT OF MODEL TRAINED WITH 20 EPOCHS")
+
+with open('predictions/3604_20ep.json') as f:
+    data = f.readlines()
+
+for region_idx, line in enumerate(data):
+    parsed_data = ast.literal_eval(line)
+    display_region_with_buttons(parsed_data, '3604', region_idx)
+    st.write("")
+    st.write("")
+
 
 #st.subheader("Inventory number 1812: Missive from 1711")
 
