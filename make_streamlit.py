@@ -199,18 +199,29 @@ for region_idx, line in enumerate(data):
     st.write("")
     st.write("")
 
+st.subheader("OUTPUT OF MODEL TRAINED WITH 10 EPOCHS")
 
-#st.subheader("Inventory number 1812: Missive from 1711")
+with open('predictions/3604_10ep.json') as f:
+    data = f.readlines()
 
-# Second file
-#with open('1812.json') as f:
-#    data = f.readlines()
+for region_idx, line in enumerate(data):
+    parsed_data = ast.literal_eval(line)
+    display_region_with_buttons(parsed_data, '3604_10ep', region_idx)
+    st.write("")
+    st.write("")
 
-#for region_idx, line in enumerate(data):
-#    parsed_data = ast.literal_eval(line)
-#    display_region_with_buttons(parsed_data, '1812', region_idx)
-#    st.write("")
-#    st.write("")
+
+st.subheader("OUTPUT OF MODEL TRAINED WITH 5 EPOCHS")
+
+with open('predictions/3604_5ep.json') as f:
+    data = f.readlines()
+
+for region_idx, line in enumerate(data):
+    parsed_data = ast.literal_eval(line)
+    display_region_with_buttons(parsed_data, '3604_5ep', region_idx)
+    st.write("")
+    st.write("")
+
 
 # Download section
 st.divider()
