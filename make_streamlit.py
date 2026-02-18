@@ -230,7 +230,7 @@ with open('gold/3604.json') as f:
 
 for region_idx, line in enumerate(data):
     parsed_data = ast.literal_eval(line)
-    display_region_with_buttons(parsed_data, '3604_5ep', region_idx)
+    display_region_with_buttons(parsed_data, '3604', region_idx)
     st.write("")
     st.write("")
 
