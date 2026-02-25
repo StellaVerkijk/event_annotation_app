@@ -199,7 +199,7 @@ for region_idx, line in enumerate(data):
     st.write("")
     st.write("")
 
-#st.subheader("Mixed Experts model)
+st.subheader("Mixed Experts model")
 
 with open('predictions/3604_mixed_experts.json') as f:
     data = f.readlines()
