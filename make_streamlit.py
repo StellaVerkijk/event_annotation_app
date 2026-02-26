@@ -210,30 +210,6 @@ for region_idx, line in enumerate(data):
     st.write("")
     st.write("")
 
-#st.subheader("OUTPUT OF MODEL TRAINED WITH 10 EPOCHS")
-
-#with open('predictions/3604_10ep.json') as f:
-#    data = f.readlines()
-
-#for region_idx, line in enumerate(data):
-  #  parsed_data = ast.literal_eval(line)
-  #  display_region_with_buttons(parsed_data, '3604_10ep', region_idx)
-  #  st.write("")
-  #  st.write("")
-
-
-#st.subheader("OUTPUT OF MODEL TRAINED WITH 5 EPOCHS")
-
-#with open('predictions/3604_5ep.json') as f:
-#    data = f.readlines()
-
-#for region_idx, line in enumerate(data):
-#    parsed_data = ast.literal_eval(line)
-#    display_region_with_buttons(parsed_data, '3604_5ep', region_idx)
- #   st.write("")
- #   st.write("")
-
-
 st.subheader("Gold annotations")
 
 with open('gold/3604.json') as f:
