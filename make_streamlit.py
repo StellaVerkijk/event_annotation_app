@@ -9,16 +9,16 @@ if 'annotation_choices' not in st.session_state:
 
 # Define color schemes
 ENTITY_COLORS = {
-    'LOC_NAME': '#4A90E2',  # Medium blue
-    'LOC_ADJ': '#7FB3D5',  # Light blue
-    'PER_NAME': '#2E5C8A',  # Dark blue
-    'PER_ATTR': '#5B9BD5',  # Sky blue
-    'PRF': '#89CFF0',  # Baby blue
-    'CMTY_QUANT': '#6BB6FF',  # Bright blue
-    'CMTY_NAME': '#4169E1',  # Royal blue
-    'DOC': '#1E90FF',  # Dodger blue
-    'DATE': '#87CEEB',  # Sky blue light
-    'SHIP_TYPE': '#4682B4',  # Steel blue
+    'LOC_NAME': '#B3D9FF',  # Light blue
+    'LOC_ADJ': '#CCE5FF',  # Very light blue
+    'PER_NAME': '#99CCFF',  # Sky blue
+    'PER_ATTR': '#B8D4FF',  # Pale blue
+    'PRF': '#D0E8FF',  # Ice blue
+    'CMTY_QUANT': '#A8D5FF',  # Soft blue
+    'CMTY_NAME': '#9FCDFF',  # Powder blue
+    'DOC': '#C2DFFF',  # Alice blue
+    'DATE': '#BFE3FF',  # Light sky blue
+    'SHIP_TYPE': '#B0D7FF',  # Baby blue
 }
 
 EVENT_COLORS = {
