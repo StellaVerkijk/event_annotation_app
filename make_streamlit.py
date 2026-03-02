@@ -7,15 +7,58 @@ import pandas as pd
 if 'annotation_choices' not in st.session_state:
     st.session_state.annotation_choices = {}
 
+# Define color schemes
+ENTITY_COLORS = {
+    'LOC_NAME': '#4A90E2',  # Medium blue
+    'LOC_ADJ': '#7FB3D5',  # Light blue
+    'PER_NAME': '#2E5C8A',  # Dark blue
+    'PER_ATTR': '#5B9BD5',  # Sky blue
+    'PRF': '#89CFF0',  # Baby blue
+    'CMTY_QUANT': '#6BB6FF',  # Bright blue
+    'CMTY_NAME': '#4169E1',  # Royal blue
+    'DOC': '#1E90FF',  # Dodger blue
+    'DATE': '#87CEEB',  # Sky blue light
+    'SHIP_TYPE': '#4682B4',  # Steel blue
+}
+
+EVENT_COLORS = {
+    # Add your event types here with orange shades
+    'event1': '#FF8C00',  # Dark orange
+    'event2': '#FFA500',  # Orange
+    'event3': '#FFB347',  # Light orange
+    'event4': '#FF7F50',  # Coral
+    'event5': '#FF6347',  # Tomato
+    # Add more event types as needed
+}
+
+
+def get_color_for_label(label):
+    """Get the appropriate color for a label."""
+    if label in ENTITY_COLORS:
+        return ENTITY_COLORS[label]
+    elif label in EVENT_COLORS:
+        return EVENT_COLORS[label]
+    else:
+        # Default colors if not found
+        if is_entity_label(label):
+            return '#6BB6FF'  # Default blue
+        else:
+            return '#FFA500'  # Default orange
+
+
+def is_entity_label(label):
+    """Check if a label is an entity type."""
+    entity_labels = ['LOC_NAME', 'PER_NAME', 'PER_ATTR', 'PRF', 'CMTY_QUANT',
+                     'CMTY_NAME', 'DOC', 'DATE', 'SHIP_TYPE', 'LOC_ADJ']
+    return any(entity in label for entity in entity_labels)
+
 
 def merge_annotations(event_data, entity_data):
     """Merge event and entity annotations into a single data structure."""
-    # Assuming both have the same words in the same order
     words = event_data['words']
     events = event_data['events']
-    entities = entity_data['events']  # Entity labels are in the 'events' field
+    entities = entity_data['events']
 
-    # Combine events and entities - prioritize events, add entities where events are 'O'
     combined = []
     for event, entity in zip(events, entities):
         if event != 'O':
@@ -30,7 +73,7 @@ def merge_annotations(event_data, entity_data):
 
 
 def convert_to_annotated_text(data):
-    """Convert data to annotated_text format."""
+    """Convert data to annotated_text format with color coding."""
     words = data['words']
     events = data['events']
 
@@ -46,7 +89,9 @@ def convert_to_annotated_text(data):
                 current_text = []
 
             if current_event_words and current_event:
-                result.append((' '.join(current_event_words) + ' ', current_event))
+                label = current_event
+                color = get_color_for_label(label)
+                result.append((' '.join(current_event_words) + ' ', label, color))
                 current_event_words = []
 
             current_event = event[2:]
@@ -57,7 +102,9 @@ def convert_to_annotated_text(data):
 
         else:
             if current_event_words and current_event:
-                result.append((' '.join(current_event_words) + ' ', current_event))
+                label = current_event
+                color = get_color_for_label(label)
+                result.append((' '.join(current_event_words) + ' ', label, color))
                 current_event_words = []
                 current_event = None
 
@@ -66,7 +113,9 @@ def convert_to_annotated_text(data):
     if current_text:
         result.append(' '.join(current_text))
     if current_event_words and current_event:
-        result.append((' '.join(current_event_words) + ' ', current_event))
+        label = current_event
+        color = get_color_for_label(label)
+        result.append((' '.join(current_event_words) + ' ', label, color))
 
     return result
 
@@ -76,11 +125,6 @@ def extract_annotations(data, annotation_type='event'):
     words = data['words']
     events = data['events']
 
-    # Define which labels are events vs entities
-    event_labels = ['event1', 'event2']  # Add your event label types here
-    entity_labels = ['LOC_NAME', 'PER_NAME', 'PER_ATTR', 'PRF', 'CMTY_QUANT',
-                     'CMTY_NAME', 'DOC', 'DATE', 'SHIP_TYPE', 'LOC_ADJ']  # Your entity types
-
     annotations = []
     current_event = None
     current_words = []
@@ -89,9 +133,8 @@ def extract_annotations(data, annotation_type='event'):
         if event.startswith('B-'):
             if current_words and current_event:
                 label_type = current_event
-                # Determine if this is an event or entity
-                is_entity = any(entity in label_type for entity in entity_labels)
-                is_event = any(evt in label_type for evt in event_labels) or not is_entity
+                is_entity = is_entity_label(label_type)
+                is_event = not is_entity
 
                 if (annotation_type == 'entity' and is_entity) or \
                         (annotation_type == 'event' and is_event) or \
@@ -107,8 +150,8 @@ def extract_annotations(data, annotation_type='event'):
         else:
             if current_words and current_event:
                 label_type = current_event
-                is_entity = any(entity in label_type for entity in entity_labels)
-                is_event = any(evt in label_type for evt in event_labels) or not is_entity
+                is_entity = is_entity_label(label_type)
+                is_event = not is_entity
 
                 if (annotation_type == 'entity' and is_entity) or \
                         (annotation_type == 'event' and is_event) or \
@@ -119,8 +162,8 @@ def extract_annotations(data, annotation_type='event'):
 
     if current_words and current_event:
         label_type = current_event
-        is_entity = any(entity in label_type for entity in entity_labels)
-        is_event = any(evt in label_type for evt in event_labels) or not is_entity
+        is_entity = is_entity_label(label_type)
+        is_event = not is_entity
 
         if (annotation_type == 'entity' and is_entity) or \
                 (annotation_type == 'event' and is_event) or \
@@ -140,8 +183,7 @@ def split_data_into_chunks(data, max_words=150):
     if total_words <= max_words:
         return [data]
 
-    # Calculate optimal number of chunks
-    num_chunks = (total_words + max_words - 1) // max_words  # Ceiling division
+    num_chunks = (total_words + max_words - 1) // max_words
     chunk_size = total_words // num_chunks
     remainder = total_words % num_chunks
 
@@ -149,7 +191,6 @@ def split_data_into_chunks(data, max_words=150):
     start_idx = 0
 
     for i in range(num_chunks):
-        # Distribute remainder words across first chunks
         extra = 1 if i < remainder else 0
         end_idx = start_idx + chunk_size + extra
 
@@ -165,22 +206,17 @@ def split_data_into_chunks(data, max_words=150):
 
 def display_region_with_buttons(data, file_id, region_idx):
     """Display annotated text and buttons for each annotation."""
-    # Check if we need to split the region
     chunks = split_data_into_chunks(data, max_words=150)
 
     for chunk_idx, chunk in enumerate(chunks):
-        # Display the full annotated text
         annotated_version = convert_to_annotated_text(chunk)
         annotated_text(*annotated_version)
 
-        # Get all annotations - only events get buttons
         annotations = extract_annotations(chunk, annotation_type='event')
 
-        # Display compact buttons for each event annotation
         if annotations:
             st.markdown("---")
             for ann_idx, (text, label, ann_type) in enumerate(annotations):
-                # Use chunk_idx in the key to make it unique across chunks
                 key = f"{file_id}_{region_idx}_{chunk_idx}_{ann_idx}"
 
                 cols = st.columns([0.6, 0.1, 0.1, 0.2])
@@ -225,19 +261,16 @@ st.header("Missive sent from Batavia in 1782 (inv. nr. 3604)")
 
 st.subheader("Predictions of Mixed Experts model")
 
-# Load both event and entity predictions
 with open('predictions/3604_mixed_experts.json') as f:
     event_data = f.readlines()
 
 with open('gold/curated_entities_3604/p_80-ner-event-preanno_NL-HaNA_1.04.02_3604_0270-0276 - 1782 -.json') as f:
     entity_data = f.readlines()
 
-# Merge and display
 for region_idx in range(len(event_data)):
     event_parsed = ast.literal_eval(event_data[region_idx])
     entity_parsed = ast.literal_eval(entity_data[region_idx])
 
-    # Merge the annotations
     merged_data = merge_annotations(event_parsed, entity_parsed)
 
     display_region_with_buttons(merged_data, '3604_mixed_experts', region_idx)
@@ -246,26 +279,19 @@ for region_idx in range(len(event_data)):
 
 st.subheader("Gold annotations")
 
-# Load both gold event and entity annotations
 with open('gold/3604.json') as f:
     gold_event_data = f.readlines()
 
-with open('gold/curated_entities_3604/p_80-ner-event-preanno_NL-HaNA_1.04.02_3604_0270-0276 - 1782 -.json') as f:
-    gold_entity_data = f.readlines()
-
-# Merge and display
 for region_idx in range(len(gold_event_data)):
     event_parsed = ast.literal_eval(gold_event_data[region_idx])
-    entity_parsed = ast.literal_eval(gold_entity_data[region_idx])
+    entity_parsed = ast.literal_eval(entity_data[region_idx])
 
-    # Merge the annotations
     merged_data = merge_annotations(event_parsed, entity_parsed)
 
     display_region_with_buttons(merged_data, '3604', region_idx)
     st.write("")
     st.write("")
 
-# Download section
 st.divider()
 st.subheader("Download Your Choices")
 
