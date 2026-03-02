@@ -331,7 +331,7 @@ if 'gold_chunk_ids' not in st.session_state:
 
     # Calculate total annotations
     total_annotations = sum(count for _, count in chunk_annotation_counts)
-    target_gold_annotations = int(total_annotations * 0.25)
+    target_gold_annotations = int(total_annotations * 0.10)
 
     # Shuffle and select chunks to get approximately 25% gold annotations
     random.seed(29)  # For reproducibility
