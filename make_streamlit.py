@@ -333,24 +333,21 @@ if 'gold_chunk_ids' not in st.session_state:
     total_annotations = sum(count for _, count in chunk_annotation_counts)
     target_gold_annotations = int(total_annotations * 0.25)
 
-    # Shuffle and select chunks to get approximately 25% gold annotations
-    random.seed(29)  # For reproducibility
-    shuffled_chunks = chunk_annotation_counts.copy()
-    random.shuffle(shuffled_chunks)
+    # Sort chunks by annotation count (smallest first for better control)
+    sorted_chunks = sorted(chunk_annotation_counts, key=lambda x: x[1])
+
+    # Shuffle to avoid bias but keep small chunks at beginning for better precision
+    random.seed(29)
+    random.shuffle(sorted_chunks)
 
     gold_chunk_ids = set()
     current_gold_count = 0
 
-    for chunk_id, count in shuffled_chunks:
+    # Only add chunks that don't exceed the target
+    for chunk_id, count in sorted_chunks:
         if current_gold_count + count <= target_gold_annotations:
             gold_chunk_ids.add(chunk_id)
             current_gold_count += count
-        elif current_gold_count < target_gold_annotations:
-            # Add this chunk if it gets us closer to target
-            if abs((current_gold_count + count) - target_gold_annotations) < abs(
-                    current_gold_count - target_gold_annotations):
-                gold_chunk_ids.add(chunk_id)
-                current_gold_count += count
 
     st.session_state.gold_chunk_ids = gold_chunk_ids
     st.session_state.total_annotations = total_annotations
