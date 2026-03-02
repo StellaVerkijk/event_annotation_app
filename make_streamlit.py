@@ -23,7 +23,8 @@ ENTITY_COLORS = {
     'DOC': '#1E90FF',  # Dodger blue
     'DATE': '#87CEEB',  # Sky blue light
     'SHIP_TYPE': '#C2DFFF',  # Alice blue
-    'ORG': '#B0D7FF'  # Baby blue
+    'ORG': '#B0D7FF',  # Baby blue
+    'STATUS': '#AFEEEE' # Pale Turquoise
 }
 
 EVENT_COLORS = {
@@ -52,7 +53,7 @@ def get_color_for_label(label):
 def is_entity_label(label):
     """Check if a label is an entity type."""
     entity_labels = ['LOC_NAME', 'PER_NAME', 'PER_ATTR', 'PRF', 'CMTY_QUANT',
-                     'CMTY_NAME', 'DOC', 'DATE', 'SHIP_TYPE', 'LOC_ADJ', 'ORG']
+                     'CMTY_NAME', 'DOC', 'DATE', 'SHIP_TYPE', 'LOC_ADJ', 'ORG', 'STATUS']
     return any(entity in label for entity in entity_labels)
 
 
@@ -304,7 +305,7 @@ if 'gold_region_indices' not in st.session_state:
 
     # Calculate total annotations
     total_annotations = sum(count for _, count in region_annotation_counts)
-    target_gold_annotations = int(total_annotations * 0.4)
+    target_gold_annotations = int(total_annotations * 0.3)
 
     # Greedy algorithm: shuffle regions and select until we hit ~40%
     random.seed(29)  # For reproducibility
