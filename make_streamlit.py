@@ -23,7 +23,7 @@ ENTITY_COLORS = {
     'DOC': '#1E90FF',  # Dodger blue
     'DATE': '#87CEEB',  # Sky blue light
     'SHIP_TYPE': '#C2DFFF',  # Alice blue
-    'ORG': '#B0D7FF',  # Baby blue
+    'ORG': '#B0D7FF'  # Baby blue
      }
 
 # #'LOC_NAME': '#B3D9FF',  # Light blue #'LOC_ADJ': '#CCE5FF',  # Very light blue #'PER_NAME': '#99CCFF',  # Sky blue #'PER_ATTR': '#B8D4FF',  # Pale blue #'PRF': '#D0E8FF',  # Ice blue #'CMTY_QUANT': '#A8D5FF',  # Soft blue #'CMTY_NAME': '#9FCDFF',  # Powder blue #'DOC': '#C2DFFF',  # Alice blue #'DATE': '#BFE3FF',  # Light sky blue #'SHIP_TYPE': '#B0D7FF',  # Baby blue  EVENT_COLORS = {
