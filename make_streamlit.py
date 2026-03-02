@@ -289,7 +289,7 @@ num_gold_regions = int(total_regions * 0.4)
 
 # Use a fixed seed for consistency across reruns in the same session
 if 'gold_region_indices' not in st.session_state:
-    random.seed(42)  # You can change this seed or make it random
+    random.seed(29)  # You can change this seed or make it random
     st.session_state.gold_region_indices = set(random.sample(range(total_regions), num_gold_regions))
 
 gold_region_indices = st.session_state.gold_region_indices
