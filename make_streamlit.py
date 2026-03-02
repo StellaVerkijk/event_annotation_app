@@ -8,8 +8,8 @@ import random
 if 'annotation_choices' not in st.session_state:
     st.session_state.annotation_choices = {}
 
-if 'region_sources' not in st.session_state:
-    st.session_state.region_sources = {}
+if 'chunk_sources' not in st.session_state:
+    st.session_state.chunk_sources = {}
 
 # Define color schemes with lighter blues
 ENTITY_COLORS = {
@@ -24,7 +24,7 @@ ENTITY_COLORS = {
     'DATE': '#87CEEB',  # Sky blue light
     'SHIP_TYPE': '#C2DFFF',  # Alice blue
     'ORG': '#B0D7FF',  # Baby blue
-    'STATUS': '#AFEEEE' # Pale Turquoise
+    'STATUS': '#AFEEEE'  # Pale Turquoise
 }
 
 EVENT_COLORS = {
@@ -218,14 +218,33 @@ def split_data_into_chunks(data, max_words=150):
     return chunks
 
 
-def display_region_with_buttons(data, file_id, region_idx, data_source):
-    """Display annotated text and buttons for each annotation."""
-    chunks = split_data_into_chunks(data, max_words=150)
+def display_region_with_buttons(pred_data, gold_data, file_id, region_idx, gold_chunk_ids):
+    """Display annotated text and buttons for each annotation.
 
-    # Store the data source for this region
-    st.session_state.region_sources[f"{file_id}_{region_idx}"] = data_source
+    Args:
+        pred_data: Prediction annotation data
+        gold_data: Gold annotation data
+        file_id: Identifier for the file
+        region_idx: Index of the current region
+        gold_chunk_ids: Set of chunk IDs that should display gold data
+    """
+    pred_chunks = split_data_into_chunks(pred_data, max_words=150)
+    gold_chunks = split_data_into_chunks(gold_data, max_words=150)
 
-    for chunk_idx, chunk in enumerate(chunks):
+    for chunk_idx in range(len(pred_chunks)):
+        chunk_id = f"{region_idx}_{chunk_idx}"
+
+        # Determine if this chunk should use gold or prediction data
+        if chunk_id in gold_chunk_ids:
+            chunk = gold_chunks[chunk_idx]
+            data_source = 'gold'
+        else:
+            chunk = pred_chunks[chunk_idx]
+            data_source = 'prediction'
+
+        # Store the data source for this chunk
+        st.session_state.chunk_sources[chunk_id] = data_source
+
         annotated_version = convert_to_annotated_text(chunk)
         annotated_text(*annotated_version)
 
@@ -270,7 +289,7 @@ def display_region_with_buttons(data, file_id, region_idx, data_source):
                         choice = st.session_state.annotation_choices[key]['choice']
                         st.markdown("✅ Useful" if choice == 'useful' else "❌ Misleading")
 
-        if len(chunks) > 1 and chunk_idx < len(chunks) - 1:
+        if chunk_idx < len(pred_chunks) - 1:
             st.markdown("---")
 
 
@@ -290,64 +309,65 @@ with open('gold/3604.json') as f:
 with open('gold/curated_entities_3604/p_80-ner-event-preanno_NL-HaNA_1.04.02_3604_0270-0276 - 1782 -.json') as f:
     entity_data = f.readlines()
 
-# Calculate annotation counts per region and select regions to get ~40% gold annotations
-if 'gold_region_indices' not in st.session_state:
+# Calculate annotation counts per chunk and select chunks to get ~25% gold annotations
+if 'gold_chunk_ids' not in st.session_state:
     total_regions = len(pred_event_data)
 
-    # Count event annotations in each region
-    region_annotation_counts = []
+    # Build a list of all chunks with their annotation counts
+    chunk_annotation_counts = []
+
     for region_idx in range(total_regions):
         pred_event_parsed = ast.literal_eval(pred_event_data[region_idx])
         entity_parsed = ast.literal_eval(entity_data[region_idx])
-        merged = merge_annotations(pred_event_parsed, entity_parsed)
-        count = count_event_annotations(merged)
-        region_annotation_counts.append((region_idx, count))
+        merged_pred = merge_annotations(pred_event_parsed, entity_parsed)
+
+        # Split into chunks
+        chunks = split_data_into_chunks(merged_pred, max_words=150)
+
+        for chunk_idx, chunk in enumerate(chunks):
+            chunk_id = f"{region_idx}_{chunk_idx}"
+            annotation_count = count_event_annotations(chunk)
+            chunk_annotation_counts.append((chunk_id, annotation_count))
 
     # Calculate total annotations
-    total_annotations = sum(count for _, count in region_annotation_counts)
+    total_annotations = sum(count for _, count in chunk_annotation_counts)
     target_gold_annotations = int(total_annotations * 0.25)
 
-    # Greedy algorithm: shuffle regions and select until we hit ~30%
+    # Shuffle and select chunks to get approximately 25% gold annotations
     random.seed(29)  # For reproducibility
-    shuffled_regions = region_annotation_counts.copy()
-    random.shuffle(shuffled_regions)
+    shuffled_chunks = chunk_annotation_counts.copy()
+    random.shuffle(shuffled_chunks)
 
-    gold_indices = set()
+    gold_chunk_ids = set()
     current_gold_count = 0
 
-    for region_idx, count in shuffled_regions:
+    for chunk_id, count in shuffled_chunks:
         if current_gold_count + count <= target_gold_annotations:
-            gold_indices.add(region_idx)
+            gold_chunk_ids.add(chunk_id)
             current_gold_count += count
         elif current_gold_count < target_gold_annotations:
-            # Add this region if it gets us closer to target
+            # Add this chunk if it gets us closer to target
             if abs((current_gold_count + count) - target_gold_annotations) < abs(
                     current_gold_count - target_gold_annotations):
-                gold_indices.add(region_idx)
+                gold_chunk_ids.add(chunk_id)
                 current_gold_count += count
 
-    st.session_state.gold_region_indices = gold_indices
+    st.session_state.gold_chunk_ids = gold_chunk_ids
     st.session_state.total_annotations = total_annotations
     st.session_state.gold_annotations_count = current_gold_count
 
-gold_region_indices = st.session_state.gold_region_indices
+gold_chunk_ids = st.session_state.gold_chunk_ids
 
-# Display regions (mix of predictions and gold)
+# Display regions with mixed gold/prediction chunks
 for region_idx in range(len(pred_event_data)):
-    if region_idx in gold_region_indices:
-        # Show gold data
-        event_parsed = ast.literal_eval(gold_event_data[region_idx])
-        entity_parsed = ast.literal_eval(entity_data[region_idx])
-        data_source = 'gold'
-    else:
-        # Show prediction data
-        event_parsed = ast.literal_eval(pred_event_data[region_idx])
-        entity_parsed = ast.literal_eval(entity_data[region_idx])
-        data_source = 'prediction'
+    pred_event_parsed = ast.literal_eval(pred_event_data[region_idx])
+    gold_event_parsed = ast.literal_eval(gold_event_data[region_idx])
+    entity_parsed = ast.literal_eval(entity_data[region_idx])
 
-    merged_data = merge_annotations(event_parsed, entity_parsed)
+    merged_pred = merge_annotations(pred_event_parsed, entity_parsed)
+    merged_gold = merge_annotations(gold_event_parsed, entity_parsed)
 
-    display_region_with_buttons(merged_data, '3604_mixed_experts', region_idx, data_source)
+    display_region_with_buttons(merged_pred, merged_gold, '3604_mixed_experts', region_idx, gold_chunk_ids)
     st.write("")
     st.write("")
 
@@ -380,8 +400,8 @@ if st.session_state.annotation_choices:
 
     if st.button("Reset All Choices"):
         st.session_state.annotation_choices = {}
-        st.session_state.region_sources = {}
-        st.session_state.gold_region_indices = None
+        st.session_state.chunk_sources = {}
+        st.session_state.gold_chunk_ids = None
         st.rerun()
 else:
     st.info("No annotations have been marked yet.")
