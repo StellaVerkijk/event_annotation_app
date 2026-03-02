@@ -229,7 +229,7 @@ st.subheader("Predictions of Mixed Experts model")
 with open('predictions/3604_mixed_experts.json') as f:
     event_data = f.readlines()
 
-with open('entities/3604_entities.json') as f:
+with open('curated_entities_3604/p_80-ner-event-preanno_NL-HaNA_1.04.02_3604_0270-0276 - 1782 -.json') as f:
     entity_data = f.readlines()
 
 # Merge and display
@@ -250,7 +250,7 @@ st.subheader("Gold annotations")
 with open('gold/3604.json') as f:
     gold_event_data = f.readlines()
 
-with open('gold/3604_entities.json') as f:
+with open('curated_entities_3604/p_80-ner-event-preanno_NL-HaNA_1.04.02_3604_0270-0276 - 1782 -.json') as f:
     gold_entity_data = f.readlines()
 
 # Merge and display
