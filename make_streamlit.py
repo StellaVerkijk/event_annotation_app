@@ -18,7 +18,7 @@ ENTITY_COLORS = {
     'CMTY_NAME': '#A8D5FF',  # Soft blue
     'DOC': '#1E90FF',  # Dodger blue
     'DATE': '#87CEEB',  # Sky blue light
-    'SHIP_TYPE': '#4682B4',  # Steel blue
+    'SHIP_TYPE': '#C2DFFF',  # Alice blue
     'ORG': '#B0D7FF',  # Baby blue
 }
 
