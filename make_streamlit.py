@@ -11,11 +11,11 @@ if 'annotation_choices' not in st.session_state:
 ENTITY_COLORS = {
     'LOC_NAME': '#4A90E2',  # Medium blue
     'LOC_ADJ': '#7FB3D5',  # Light blue
-    'PER_NAME': '#2E5C8A',  # Dark blue
+    'PER_NAME': '#9FCDFF',  # Powder blue
     'PER_ATTR': '#5B9BD5',  # Sky blue
     'PRF': '#89CFF0',  # Baby blue
     'CMTY_QUANT': '#6BB6FF',  # Bright blue
-    'CMTY_NAME': '#4169E1',  # Royal blue
+    'CMTY_NAME': '#A8D5FF',  # Soft blue
     'DOC': '#1E90FF',  # Dodger blue
     'DATE': '#87CEEB',  # Sky blue light
     'SHIP_TYPE': '#4682B4',  # Steel blue
