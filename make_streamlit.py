@@ -71,7 +71,7 @@ def merge_annotations(event_data, entity_data):
     """Merge event and entity annotations into a single data structure."""
     words = event_data['words']
     events = event_data['events']
-    entities = entity_data['events']
+    entities = entity_data['entities']
 
     combined = []
     for event, entity in zip(events, entities):
@@ -331,7 +331,7 @@ if 'gold_chunk_ids' not in st.session_state:
 
     # Calculate total annotations
     total_annotations = sum(count for _, count in chunk_annotation_counts)
-    target_gold_annotations = int(total_annotations * 0.10)
+    target_gold_annotations = int(total_annotations * 0.25)
 
     # Shuffle and select chunks to get approximately 25% gold annotations
     random.seed(29)  # For reproducibility
