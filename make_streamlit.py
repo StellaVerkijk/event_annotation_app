@@ -53,7 +53,7 @@ def get_color_for_label(label):
 def is_entity_label(label):
     """Check if a label is an entity type."""
     entity_labels = ['LOC_NAME', 'PER_NAME', 'PER_ATTR', 'PRF', 'CMTY_QUANT',
-                     'CMTY_NAME', 'DOC', 'DATE', 'SHIP_TYPE', 'LOC_ADJ', 'ORG', 'STATUS']
+                     'CMTY_NAME', 'DOC', 'DATE', 'SHIP_TYPE', 'LOC_ADJ', 'ORG', 'STATUS', 'SHIP']
     return any(entity in label for entity in entity_labels)
 
 
