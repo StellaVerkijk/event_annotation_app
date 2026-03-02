@@ -24,11 +24,8 @@ ENTITY_COLORS = {
     'DATE': '#87CEEB',  # Sky blue light
     'SHIP_TYPE': '#C2DFFF',  # Alice blue
     'ORG': '#B0D7FF'  # Baby blue
-     }
+}
 
-# #'LOC_NAME': '#B3D9FF',  # Light blue #'LOC_ADJ': '#CCE5FF',  # Very light blue #'PER_NAME': '#99CCFF',  # Sky blue #'PER_ATTR': '#B8D4FF',  # Pale blue #'PRF': '#D0E8FF',  # Ice blue #'CMTY_QUANT': '#A8D5FF',  # Soft blue #'CMTY_NAME': '#9FCDFF',  # Powder blue #'DOC': '#C2DFFF',  # Alice blue #'DATE': '#BFE3FF',  # Light sky blue #'SHIP_TYPE': '#B0D7FF',  # Baby blue  EVENT_COLORS = {
-
-# Add your event types here with orange shades
 EVENT_COLORS = {
     'event1': '#FF8C00',  # Dark orange
     'event2': '#FFA500',  # Orange
@@ -36,7 +33,6 @@ EVENT_COLORS = {
     'event4': '#FF7F50',  # Coral
     'event5': '#FF6347',  # Tomato
 }
-# Add more event types as needed
 
 
 def get_color_for_label(label):
@@ -58,6 +54,16 @@ def is_entity_label(label):
     entity_labels = ['LOC_NAME', 'PER_NAME', 'PER_ATTR', 'PRF', 'CMTY_QUANT',
                      'CMTY_NAME', 'DOC', 'DATE', 'SHIP_TYPE', 'LOC_ADJ', 'ORG']
     return any(entity in label for entity in entity_labels)
+
+
+def count_event_annotations(data):
+    """Count the number of event annotations in a data structure."""
+    events = data['events']
+    count = 0
+    for event in events:
+        if event.startswith('B-') and not is_entity_label(event[2:]):
+            count += 1
+    return count
 
 
 def merge_annotations(event_data, entity_data):
@@ -243,7 +249,7 @@ def display_region_with_buttons(data, file_id, region_idx, data_source):
                             'text': text,
                             'label': label,
                             'choice': 'useful',
-                            'data_source': data_source  # Track whether this was gold or prediction
+                            'data_source': data_source
                         }
 
                 with cols[2]:
@@ -255,7 +261,7 @@ def display_region_with_buttons(data, file_id, region_idx, data_source):
                             'text': text,
                             'label': label,
                             'choice': 'misleading',
-                            'data_source': data_source  # Track whether this was gold or prediction
+                            'data_source': data_source
                         }
 
                 with cols[3]:
@@ -283,19 +289,50 @@ with open('gold/3604.json') as f:
 with open('gold/curated_entities_3604/p_80-ner-event-preanno_NL-HaNA_1.04.02_3604_0270-0276 - 1782 -.json') as f:
     entity_data = f.readlines()
 
-# Determine which regions to show as gold (40%)
-total_regions = len(pred_event_data)
-num_gold_regions = int(total_regions * 0.4)
-
-# Use a fixed seed for consistency across reruns in the same session
+# Calculate annotation counts per region and select regions to get ~40% gold annotations
 if 'gold_region_indices' not in st.session_state:
-    random.seed(29)  # You can change this seed or make it random
-    st.session_state.gold_region_indices = set(random.sample(range(total_regions), num_gold_regions))
+    total_regions = len(pred_event_data)
+
+    # Count event annotations in each region
+    region_annotation_counts = []
+    for region_idx in range(total_regions):
+        pred_event_parsed = ast.literal_eval(pred_event_data[region_idx])
+        entity_parsed = ast.literal_eval(entity_data[region_idx])
+        merged = merge_annotations(pred_event_parsed, entity_parsed)
+        count = count_event_annotations(merged)
+        region_annotation_counts.append((region_idx, count))
+
+    # Calculate total annotations
+    total_annotations = sum(count for _, count in region_annotation_counts)
+    target_gold_annotations = int(total_annotations * 0.4)
+
+    # Greedy algorithm: shuffle regions and select until we hit ~40%
+    random.seed(29)  # For reproducibility
+    shuffled_regions = region_annotation_counts.copy()
+    random.shuffle(shuffled_regions)
+
+    gold_indices = set()
+    current_gold_count = 0
+
+    for region_idx, count in shuffled_regions:
+        if current_gold_count + count <= target_gold_annotations:
+            gold_indices.add(region_idx)
+            current_gold_count += count
+        elif current_gold_count < target_gold_annotations:
+            # Add this region if it gets us closer to target
+            if abs((current_gold_count + count) - target_gold_annotations) < abs(
+                    current_gold_count - target_gold_annotations):
+                gold_indices.add(region_idx)
+                current_gold_count += count
+
+    st.session_state.gold_region_indices = gold_indices
+    st.session_state.total_annotations = total_annotations
+    st.session_state.gold_annotations_count = current_gold_count
 
 gold_region_indices = st.session_state.gold_region_indices
 
 # Display regions (mix of predictions and gold)
-for region_idx in range(total_regions):
+for region_idx in range(len(pred_event_data)):
     if region_idx in gold_region_indices:
         # Show gold data
         event_parsed = ast.literal_eval(gold_event_data[region_idx])
@@ -325,7 +362,10 @@ if st.session_state.annotation_choices:
     if 'data_source' in df.columns:
         gold_count = (df['data_source'] == 'gold').sum()
         pred_count = (df['data_source'] == 'prediction').sum()
-        st.write(f"Gold annotations: {gold_count} | Prediction annotations: {pred_count}")
+        total = gold_count + pred_count
+        gold_percentage = (gold_count / total * 100) if total > 0 else 0
+        st.write(
+            f"Gold annotations: {gold_count} ({gold_percentage:.1f}%) | Prediction annotations: {pred_count} ({100 - gold_percentage:.1f}%)")
 
     st.dataframe(df)
 
