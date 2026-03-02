@@ -2,12 +2,16 @@ import streamlit as st
 from annotated_text import annotated_text
 import ast
 import pandas as pd
+import random
 
 # Initialize session state
 if 'annotation_choices' not in st.session_state:
     st.session_state.annotation_choices = {}
 
-# Define color schemes
+if 'region_sources' not in st.session_state:
+    st.session_state.region_sources = {}
+
+# Define color schemes with lighter blues
 ENTITY_COLORS = {
     'LOC_NAME': '#4A90E2',  # Medium blue
     'LOC_ADJ': '#7FB3D5',  # Light blue
@@ -20,28 +24,19 @@ ENTITY_COLORS = {
     'DATE': '#87CEEB',  # Sky blue light
     'SHIP_TYPE': '#C2DFFF',  # Alice blue
     'ORG': '#B0D7FF',  # Baby blue
-}
+     }
 
-#'LOC_NAME': '#B3D9FF',  # Light blue
-#'LOC_ADJ': '#CCE5FF',  # Very light blue
-#'PER_NAME': '#99CCFF',  # Sky blue
-#'PER_ATTR': '#B8D4FF',  # Pale blue
-#'PRF': '#D0E8FF',  # Ice blue
-#'CMTY_QUANT': '#A8D5FF',  # Soft blue
-#'CMTY_NAME': '#9FCDFF',  # Powder blue
-#'DOC': '#C2DFFF',  # Alice blue
-#'DATE': '#BFE3FF',  # Light sky blue
-#'SHIP_TYPE': '#B0D7FF',  # Baby blue
+# #'LOC_NAME': '#B3D9FF',  # Light blue #'LOC_ADJ': '#CCE5FF',  # Very light blue #'PER_NAME': '#99CCFF',  # Sky blue #'PER_ATTR': '#B8D4FF',  # Pale blue #'PRF': '#D0E8FF',  # Ice blue #'CMTY_QUANT': '#A8D5FF',  # Soft blue #'CMTY_NAME': '#9FCDFF',  # Powder blue #'DOC': '#C2DFFF',  # Alice blue #'DATE': '#BFE3FF',  # Light sky blue #'SHIP_TYPE': '#B0D7FF',  # Baby blue  EVENT_COLORS = {
 
-EVENT_COLORS = {
-    # Add your event types here with orange shades
+# Add your event types here with orange shades
+EVENT_COLOURS = {
     'event1': '#FF8C00',  # Dark orange
     'event2': '#FFA500',  # Orange
-    'event3': '#FFB347',  # Light orange
+    'event3': '#FFB347',  # Light orange   
     'event4': '#FF7F50',  # Coral
     'event5': '#FF6347',  # Tomato
-    # Add more event types as needed
 }
+# Add more event types as needed
 
 
 def get_color_for_label(label):
@@ -53,9 +48,9 @@ def get_color_for_label(label):
     else:
         # Default colors if not found
         if is_entity_label(label):
-            return '#6BB6FF'  # Default blue
+            return '#B3D9FF'  # Default light blue
         else:
-            return '#FFA500'  # Default orange
+            return '#FFD699'  # Default light orange
 
 
 def is_entity_label(label):
@@ -216,9 +211,12 @@ def split_data_into_chunks(data, max_words=150):
     return chunks
 
 
-def display_region_with_buttons(data, file_id, region_idx):
+def display_region_with_buttons(data, file_id, region_idx, data_source):
     """Display annotated text and buttons for each annotation."""
     chunks = split_data_into_chunks(data, max_words=150)
+
+    # Store the data source for this region
+    st.session_state.region_sources[f"{file_id}_{region_idx}"] = data_source
 
     for chunk_idx, chunk in enumerate(chunks):
         annotated_version = convert_to_annotated_text(chunk)
@@ -244,7 +242,8 @@ def display_region_with_buttons(data, file_id, region_idx):
                             'chunk': chunk_idx,
                             'text': text,
                             'label': label,
-                            'choice': 'useful'
+                            'choice': 'useful',
+                            'data_source': data_source  # Track whether this was gold or prediction
                         }
 
                 with cols[2]:
@@ -255,7 +254,8 @@ def display_region_with_buttons(data, file_id, region_idx):
                             'chunk': chunk_idx,
                             'text': text,
                             'label': label,
-                            'choice': 'misleading'
+                            'choice': 'misleading',
+                            'data_source': data_source  # Track whether this was gold or prediction
                         }
 
                 with cols[3]:
@@ -273,43 +273,60 @@ st.header("Missive sent from Batavia in 1782 (inv. nr. 3604)")
 
 st.subheader("Predictions of Mixed Experts model")
 
+# Load both prediction and gold data
 with open('predictions/3604_mixed_experts.json') as f:
-    event_data = f.readlines()
-
-with open('gold/curated_entities_3604/p_80-ner-event-preanno_NL-HaNA_1.04.02_3604_0270-0276 - 1782 -.json') as f:
-    entity_data = f.readlines()
-
-for region_idx in range(len(event_data)):
-    event_parsed = ast.literal_eval(event_data[region_idx])
-    entity_parsed = ast.literal_eval(entity_data[region_idx])
-
-    merged_data = merge_annotations(event_parsed, entity_parsed)
-
-    display_region_with_buttons(merged_data, '3604_mixed_experts', region_idx)
-    st.write("")
-    st.write("")
-
-st.subheader("Gold annotations")
+    pred_event_data = f.readlines()
 
 with open('gold/3604.json') as f:
     gold_event_data = f.readlines()
 
-for region_idx in range(len(gold_event_data)):
-    event_parsed = ast.literal_eval(gold_event_data[region_idx])
-    entity_parsed = ast.literal_eval(entity_data[region_idx])
+with open('gold/curated_entities_3604/p_80-ner-event-preanno_NL-HaNA_1.04.02_3604_0270-0276 - 1782 -.json') as f:
+    entity_data = f.readlines()
+
+# Determine which regions to show as gold (40%)
+total_regions = len(pred_event_data)
+num_gold_regions = int(total_regions * 0.4)
+
+# Use a fixed seed for consistency across reruns in the same session
+if 'gold_region_indices' not in st.session_state:
+    random.seed(42)  # You can change this seed or make it random
+    st.session_state.gold_region_indices = set(random.sample(range(total_regions), num_gold_regions))
+
+gold_region_indices = st.session_state.gold_region_indices
+
+# Display regions (mix of predictions and gold)
+for region_idx in range(total_regions):
+    if region_idx in gold_region_indices:
+        # Show gold data
+        event_parsed = ast.literal_eval(gold_event_data[region_idx])
+        entity_parsed = ast.literal_eval(entity_data[region_idx])
+        data_source = 'gold'
+    else:
+        # Show prediction data
+        event_parsed = ast.literal_eval(pred_event_data[region_idx])
+        entity_parsed = ast.literal_eval(entity_data[region_idx])
+        data_source = 'prediction'
 
     merged_data = merge_annotations(event_parsed, entity_parsed)
 
-    display_region_with_buttons(merged_data, '3604', region_idx)
+    display_region_with_buttons(merged_data, '3604_mixed_experts', region_idx, data_source)
     st.write("")
     st.write("")
 
+# Download section
 st.divider()
 st.subheader("Download Your Choices")
 
 if st.session_state.annotation_choices:
     df = pd.DataFrame.from_dict(st.session_state.annotation_choices, orient='index')
     st.write(f"Total annotations reviewed: {len(df)}")
+
+    # Show breakdown of gold vs prediction annotations
+    if 'data_source' in df.columns:
+        gold_count = (df['data_source'] == 'gold').sum()
+        pred_count = (df['data_source'] == 'prediction').sum()
+        st.write(f"Gold annotations: {gold_count} | Prediction annotations: {pred_count}")
+
     st.dataframe(df)
 
     csv = df.to_csv(index=False)
@@ -322,6 +339,8 @@ if st.session_state.annotation_choices:
 
     if st.button("Reset All Choices"):
         st.session_state.annotation_choices = {}
+        st.session_state.region_sources = {}
+        st.session_state.gold_region_indices = None
         st.rerun()
 else:
     st.info("No annotations have been marked yet.")
