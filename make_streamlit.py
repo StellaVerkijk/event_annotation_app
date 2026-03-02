@@ -305,9 +305,9 @@ if 'gold_region_indices' not in st.session_state:
 
     # Calculate total annotations
     total_annotations = sum(count for _, count in region_annotation_counts)
-    target_gold_annotations = int(total_annotations * 0.3)
+    target_gold_annotations = int(total_annotations * 0.25)
 
-    # Greedy algorithm: shuffle regions and select until we hit ~40%
+    # Greedy algorithm: shuffle regions and select until we hit ~30%
     random.seed(29)  # For reproducibility
     shuffled_regions = region_annotation_counts.copy()
     random.shuffle(shuffled_regions)
