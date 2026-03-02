@@ -29,10 +29,10 @@ ENTITY_COLORS = {
 # #'LOC_NAME': '#B3D9FF',  # Light blue #'LOC_ADJ': '#CCE5FF',  # Very light blue #'PER_NAME': '#99CCFF',  # Sky blue #'PER_ATTR': '#B8D4FF',  # Pale blue #'PRF': '#D0E8FF',  # Ice blue #'CMTY_QUANT': '#A8D5FF',  # Soft blue #'CMTY_NAME': '#9FCDFF',  # Powder blue #'DOC': '#C2DFFF',  # Alice blue #'DATE': '#BFE3FF',  # Light sky blue #'SHIP_TYPE': '#B0D7FF',  # Baby blue  EVENT_COLORS = {
 
 # Add your event types here with orange shades
-EVENT_COLOURS = {
+EVENT_COLORS = {
     'event1': '#FF8C00',  # Dark orange
     'event2': '#FFA500',  # Orange
-    'event3': '#FFB347',  # Light orange   
+    'event3': '#FFB347',  # Light orange
     'event4': '#FF7F50',  # Coral
     'event5': '#FF6347',  # Tomato
 }
