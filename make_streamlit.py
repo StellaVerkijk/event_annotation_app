@@ -10,6 +10,15 @@ if 'annotation_choices' not in st.session_state:
 if 'chunk_sources' not in st.session_state:
     st.session_state.chunk_sources = {}
 
+if 'user_info_collected' not in st.session_state:
+    st.session_state.user_info_collected = False
+
+if 'user_experience' not in st.session_state:
+    st.session_state.user_experience = None
+
+if 'user_translation' not in st.session_state:
+    st.session_state.user_translation = None
+
 # Define color schemes with lighter blues
 ENTITY_COLORS = {
     'LOC_NAME': '#4A90E2',  # Medium blue
@@ -378,6 +387,36 @@ def display_region_with_buttons(pred_data, gold_data, file_id, region_idx, gold_
 
 st.header("Missive sent from Batavia in 1782 (inv. nr. 3604)")
 
+# User information collection
+if not st.session_state.user_info_collected:
+    st.subheader("Before we begin...")
+    
+    # Experience question
+    experience = st.radio(
+        "How many years of experience do you have reading the Dutch East India Company archives?",
+        options=[
+            "Less than half a year",
+            "One year",
+            "Between one to five years",
+            "More than five years"
+        ]
+    )
+    
+    # Translation question
+    st.write("**Please translate the following text into English:**")
+    st.info("Aan zijn Hoogedelheid der Hoogedelen Groot achtbaaren Heer")
+    translation = st.text_area("Your translation:", height=100)
+    
+    if st.button("Submit and Continue"):
+        if translation.strip():  # Check that translation is not empty
+            st.session_state.user_experience = experience
+            st.session_state.user_translation = translation
+            st.session_state.user_info_collected = True
+            st.rerun()
+        else:
+            st.warning("Please provide a translation before continuing.")
+    
+    st.stop()  # Stop here until user submits
 
 st.subheader("Predictions of Mixed Experts model")
 
@@ -413,6 +452,11 @@ st.subheader("Download Your Choices")
 
 if st.session_state.annotation_choices:
     df = pd.DataFrame.from_dict(st.session_state.annotation_choices, orient='index')
+    
+    # Add user information to all rows
+    df['user_experience'] = st.session_state.user_experience
+    df['user_translation'] = st.session_state.user_translation
+    
     st.write(f"Total annotations reviewed: {len(df)}")
 
     # Show breakdown of gold vs prediction annotations
@@ -437,6 +481,9 @@ if st.session_state.annotation_choices:
     if st.button("Reset All Choices"):
         st.session_state.annotation_choices = {}
         st.session_state.chunk_sources = {}
+        st.session_state.user_info_collected = False
+        st.session_state.user_experience = None
+        st.session_state.user_translation = None
         st.rerun()
 else:
     st.info("No annotations have been marked yet.")
