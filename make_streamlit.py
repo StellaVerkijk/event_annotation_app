@@ -50,7 +50,8 @@ EVENT_COLORS = {
 # Add chunk IDs here that you want to display as gold data
 # Format: "region_idx_chunk_idx" (e.g., "0_0" for region 0, chunk 0)
 GOLD_CHUNK_IDS = {
-    "7_1"
+    "7_1",
+    "7_2"
     "8_1"
 }
 
