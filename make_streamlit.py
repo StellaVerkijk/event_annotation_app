@@ -86,7 +86,7 @@ def merge_annotations(event_data, entity_data):
     """Merge event and entity annotations into a single data structure."""
     words = event_data['words']
     events = event_data['events']
-    entities = entity_data['events']
+    entities = entity_data['entities']
 
     combined = []
     for event, entity in zip(events, entities):
