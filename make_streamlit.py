@@ -104,7 +104,7 @@ def merge_annotations(event_data, entity_data):
     }
 
 
-def convert_to_annotated_text(data, transparent_entities=False):
+def convert_to_annotated_text(data):
     """Convert data to annotated_text format with color coding."""
     words = data['words']
     events = data['events']
@@ -264,7 +264,7 @@ def display_region_with_buttons(pred_data, gold_data, file_id, region_idx, gold_
         # Store the data source for this chunk
         st.session_state.chunk_sources[chunk_id] = data_source
         
-        annotated_version = convert_to_annotated_text(chunk, transparent_entities)
+        annotated_version = convert_to_annotated_text(chunk)
         annotated_text(*annotated_version)
 
         annotations = extract_annotations(chunk, annotation_type='event')
