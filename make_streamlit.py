@@ -53,7 +53,7 @@ def hex_to_rgba(hex_color, opacity=1.0):
     return f'rgba({r}, {g}, {b}, {opacity})'
 
 
-def get_color_for_label(label, transparent_entities=False):
+def get_color_for_label(label, transparent_entities=True):
     """Get the appropriate color for a label."""
     if label in ENTITY_COLORS:
         color = ENTITY_COLORS[label]
