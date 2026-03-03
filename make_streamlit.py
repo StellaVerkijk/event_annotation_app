@@ -49,12 +49,12 @@ EVENT_COLORS = {
 # MANUAL GOLD CHUNK SELECTION
 # Add chunk IDs here that you want to display as gold data
 # Format: "region_idx_chunk_idx" (e.g., "0_0" for region 0, chunk 0)
-GOLD_CHUNK_IDS = {
-    "5_1",
+GOLD_CHUNK_IDS = {,
     "7_1",
     "8_1"
 }
 
+#"5_1"
 
 def hex_to_rgba(hex_color, opacity=1.0):
     """Convert hex color to rgba with specified opacity."""
