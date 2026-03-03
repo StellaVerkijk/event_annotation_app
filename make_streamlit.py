@@ -409,7 +409,7 @@ if not st.session_state.user_info_collected:
     
     # Translation question
     st.write("**Please translate the following text into English:**")
-    st.info("Aan zijn Hoogedelheid der Hoogedelen Groot achtbaaren Heer")
+    st.info("Is niet te twijffelen ofte souder niet allene becommen dat onse Schepen voor althoos inde — reviere van Chincheo soude mogen onder pretecxt van Veij„„ „linghe blijven leggen Maer oock dat alle ende een ijegelijck die het wilde ende Ghelieffde met ons en Taijvan te — Comen met alderhande Coopmanschappen handelen gelicen„ „cieert werden, twelck Soo langhe alst niet en geschiet In geenen delen (naer de presente bevindinghe) te verhoopen is dat de Compe tot haer voornemen sal Geraecken")
     translation = st.text_area("Your translation:", height=100)
     
     if st.button("Submit and Continue"):
