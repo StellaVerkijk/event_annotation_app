@@ -84,6 +84,63 @@ def count_event_annotations(data):
             count += 1
     return count
 
+def merge_motion_events(data):
+    """Merge consecutive motion event annotations into a single span.
+    
+    If two consecutive tokens are annotated with different events from the motion list,
+    they are merged into one span using the label of the first token.
+    """
+    motion_events = ["Translocation", "Transportation", "Voyage", "Leaving", "Arriving"]
+    
+    words = data['words']
+    events = data['events'].copy()  # Make a copy to avoid modifying original
+    
+    i = 0
+    while i < len(events):
+        current_event = events[i]
+        
+        # Check if current token has a motion event (B- or I-)
+        if current_event.startswith('B-'):
+            current_label = current_event[2:]
+            if current_label in motion_events:
+                # Look ahead for consecutive motion events
+                j = i + 1
+                while j < len(events):
+                    next_event = events[j]
+                    
+                    # If next token is also a motion event (B- prefix)
+                    if next_event.startswith('B-'):
+                        next_label = next_event[2:]
+                        if next_label in motion_events:
+                            # Change it to I- with the current label
+                            events[j] = f'I-{current_label}'
+                            j += 1
+                        else:
+                            break  # Not a motion event, stop merging
+                    elif next_event.startswith('I-'):
+                        # Already part of an annotation, continue
+                        next_label = next_event[2:]
+                        if next_label in motion_events:
+                            # Update to current label
+                            events[j] = f'I-{current_label}'
+                            j += 1
+                        else:
+                            break
+                    else:
+                        # 'O' tag, stop merging
+                        break
+                
+                i = j  # Skip to the end of merged span
+            else:
+                i += 1
+        else:
+            i += 1
+    
+    return {
+        'words': words,
+        'events': events
+    }
+
 
 def merge_annotations(event_data, entity_data):
     """Merge event and entity annotations into a single data structure."""
@@ -98,10 +155,15 @@ def merge_annotations(event_data, entity_data):
         else:
             combined.append(entity)
 
-    return {
+    merged_data = {
         'words': words,
         'events': combined
     }
+    
+    # Apply motion event merging
+    merged_data = merge_motion_events(merged_data)
+    
+    return merged_data
 
 
 def convert_to_annotated_text(data):
