@@ -2,7 +2,6 @@ import streamlit as st
 from annotated_text import annotated_text
 import ast
 import pandas as pd
-import random
 
 # Initialize session state
 if 'annotation_choices' not in st.session_state:
@@ -33,6 +32,16 @@ EVENT_COLORS = {
     'event3': '#FFB347',  # Light orange
     'event4': '#FF7F50',  # Coral
     'event5': '#FF6347',  # Tomato
+}
+
+# MANUAL GOLD CHUNK SELECTION
+# Add chunk IDs here that you want to display as gold data
+# Format: "region_idx_chunk_idx" (e.g., "0_0" for region 0, chunk 0)
+GOLD_CHUNK_IDS = {,
+    "1_2",
+    "3_0",
+    "5_1",
+    # Add more chunk IDs as needed
 }
 
 
@@ -328,51 +337,8 @@ with open('gold/3604.json') as f:
 with open('gold/curated_entities_3604/p_80-ner-event-preanno_NL-HaNA_1.04.02_3604_0270-0276 - 1782 -.json') as f:
     entity_data = f.readlines()
 
-# Calculate annotation counts per chunk and select chunks to get ~25% gold annotations
-if 'gold_chunk_ids' not in st.session_state:
-    total_regions = len(pred_event_data)
-
-    # Build a list of all chunks with their annotation counts
-    chunk_annotation_counts = []
-
-    for region_idx in range(total_regions):
-        pred_event_parsed = ast.literal_eval(pred_event_data[region_idx])
-        entity_parsed = ast.literal_eval(entity_data[region_idx])
-        merged_pred = merge_annotations(pred_event_parsed, entity_parsed)
-
-        # Split into chunks
-        chunks = split_data_into_chunks(merged_pred, max_words=150)
-
-        for chunk_idx, chunk in enumerate(chunks):
-            chunk_id = f"{region_idx}_{chunk_idx}"
-            annotation_count = count_event_annotations(chunk)
-            chunk_annotation_counts.append((chunk_id, annotation_count))
-
-    # Calculate total annotations
-    total_annotations = sum(count for _, count in chunk_annotation_counts)
-    target_gold_annotations = int(total_annotations * 0.25)
-
-    # Sort chunks by annotation count (smallest first for better control)
-    sorted_chunks = sorted(chunk_annotation_counts, key=lambda x: x[1])
-    
-    # Shuffle to avoid bias but keep small chunks at beginning for better precision
-    random.seed(29)
-    random.shuffle(sorted_chunks)
-
-    gold_chunk_ids = set()
-    current_gold_count = 0
-
-    # Only add chunks that don't exceed the target
-    for chunk_id, count in sorted_chunks:
-        if current_gold_count + count <= target_gold_annotations:
-            gold_chunk_ids.add(chunk_id)
-            current_gold_count += count
-
-    st.session_state.gold_chunk_ids = gold_chunk_ids
-    st.session_state.total_annotations = total_annotations
-    st.session_state.gold_annotations_count = current_gold_count
-
-gold_chunk_ids = st.session_state.gold_chunk_ids
+# Use the manually configured gold chunk IDs
+gold_chunk_ids = GOLD_CHUNK_IDS
 
 # Display regions with mixed gold/prediction chunks
 for region_idx in range(len(pred_event_data)):
@@ -417,7 +383,6 @@ if st.session_state.annotation_choices:
     if st.button("Reset All Choices"):
         st.session_state.annotation_choices = {}
         st.session_state.chunk_sources = {}
-        st.session_state.gold_chunk_ids = None
         st.rerun()
 else:
     st.info("No annotations have been marked yet.")
