@@ -90,7 +90,7 @@ def merge_motion_events(data):
     If two consecutive tokens are annotated with different events from the motion list,
     they are merged into one span using the label of the first token.
     """
-    motion_events = ["B-Translocation", "B-Transportation", "B-Voyage", "B-Leaving", "B-Arriving"]
+    motion_events = ["B-Translocation", "B-Transportation", "B-Voyage", "B-Leaving", "B-Arriving", "B-BeingAtAPlace"]
     
     words = data['words']
     events = data['events'].copy()  # Make a copy to avoid modifying original
