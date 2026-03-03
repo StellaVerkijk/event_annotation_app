@@ -36,16 +36,31 @@ EVENT_COLORS = {
 }
 
 
-def get_color_for_label(label):
+def hex_to_rgba(hex_color, opacity=1.0):
+    """Convert hex color to rgba with specified opacity."""
+    hex_color = hex_color.lstrip('#')
+    r = int(hex_color[0:2], 16)
+    g = int(hex_color[2:4], 16)
+    b = int(hex_color[4:6], 16)
+    return f'rgba({r}, {g}, {b}, {opacity})'
+
+
+def get_color_for_label(label, transparent_entities=False):
     """Get the appropriate color for a label."""
     if label in ENTITY_COLORS:
-        return ENTITY_COLORS[label]
+        color = ENTITY_COLORS[label]
+        if transparent_entities:
+            return hex_to_rgba(color, 0.25)  # 75% transparent = 25% opacity
+        return color
     elif label in EVENT_COLORS:
         return EVENT_COLORS[label]
     else:
         # Default colors if not found
         if is_entity_label(label):
-            return '#B3D9FF'  # Default light blue
+            color = '#B3D9FF'  # Default light blue
+            if transparent_entities:
+                return hex_to_rgba(color, 0.25)
+            return color
         else:
             return '#FFD699'  # Default light orange
 
@@ -71,7 +86,7 @@ def merge_annotations(event_data, entity_data):
     """Merge event and entity annotations into a single data structure."""
     words = event_data['words']
     events = event_data['events']
-    entities = entity_data['entities']
+    entities = entity_data['events']
 
     combined = []
     for event, entity in zip(events, entities):
@@ -86,7 +101,7 @@ def merge_annotations(event_data, entity_data):
     }
 
 
-def convert_to_annotated_text(data):
+def convert_to_annotated_text(data, transparent_entities=False):
     """Convert data to annotated_text format with color coding."""
     words = data['words']
     events = data['events']
@@ -104,7 +119,7 @@ def convert_to_annotated_text(data):
 
             if current_event_words and current_event:
                 label = current_event
-                color = get_color_for_label(label)
+                color = get_color_for_label(label, transparent_entities)
                 result.append((' '.join(current_event_words) + ' ', label, color))
                 current_event_words = []
 
@@ -117,7 +132,7 @@ def convert_to_annotated_text(data):
         else:
             if current_event_words and current_event:
                 label = current_event
-                color = get_color_for_label(label)
+                color = get_color_for_label(label, transparent_entities)
                 result.append((' '.join(current_event_words) + ' ', label, color))
                 current_event_words = []
                 current_event = None
@@ -128,7 +143,7 @@ def convert_to_annotated_text(data):
         result.append(' '.join(current_text))
     if current_event_words and current_event:
         label = current_event
-        color = get_color_for_label(label)
+        color = get_color_for_label(label, transparent_entities)
         result.append((' '.join(current_event_words) + ' ', label, color))
 
     return result
@@ -218,22 +233,23 @@ def split_data_into_chunks(data, max_words=150):
     return chunks
 
 
-def display_region_with_buttons(pred_data, gold_data, file_id, region_idx, gold_chunk_ids):
+def display_region_with_buttons(pred_data, gold_data, file_id, region_idx, gold_chunk_ids, transparent_entities=False):
     """Display annotated text and buttons for each annotation.
-
+    
     Args:
         pred_data: Prediction annotation data
         gold_data: Gold annotation data
         file_id: Identifier for the file
         region_idx: Index of the current region
         gold_chunk_ids: Set of chunk IDs that should display gold data
+        transparent_entities: Whether to make entity labels transparent
     """
     pred_chunks = split_data_into_chunks(pred_data, max_words=150)
     gold_chunks = split_data_into_chunks(gold_data, max_words=150)
 
     for chunk_idx in range(len(pred_chunks)):
         chunk_id = f"{region_idx}_{chunk_idx}"
-
+        
         # Determine if this chunk should use gold or prediction data
         if chunk_id in gold_chunk_ids:
             chunk = gold_chunks[chunk_idx]
@@ -241,11 +257,11 @@ def display_region_with_buttons(pred_data, gold_data, file_id, region_idx, gold_
         else:
             chunk = pred_chunks[chunk_idx]
             data_source = 'prediction'
-
+        
         # Store the data source for this chunk
         st.session_state.chunk_sources[chunk_id] = data_source
-
-        annotated_version = convert_to_annotated_text(chunk)
+        
+        annotated_version = convert_to_annotated_text(chunk, transparent_entities)
         annotated_text(*annotated_version)
 
         annotations = extract_annotations(chunk, annotation_type='event')
@@ -297,6 +313,9 @@ def display_region_with_buttons(pred_data, gold_data, file_id, region_idx, gold_
 
 st.header("Missive sent from Batavia in 1782 (inv. nr. 3604)")
 
+# Add toggle for transparent entities
+transparent_entities = st.toggle("Make entity labels transparent", value=False)
+
 st.subheader("Predictions of Mixed Experts model")
 
 # Load both prediction and gold data
@@ -335,7 +354,7 @@ if 'gold_chunk_ids' not in st.session_state:
 
     # Sort chunks by annotation count (smallest first for better control)
     sorted_chunks = sorted(chunk_annotation_counts, key=lambda x: x[1])
-
+    
     # Shuffle to avoid bias but keep small chunks at beginning for better precision
     random.seed(29)
     random.shuffle(sorted_chunks)
@@ -364,7 +383,7 @@ for region_idx in range(len(pred_event_data)):
     merged_pred = merge_annotations(pred_event_parsed, entity_parsed)
     merged_gold = merge_annotations(gold_event_parsed, entity_parsed)
 
-    display_region_with_buttons(merged_pred, merged_gold, '3604_mixed_experts', region_idx, gold_chunk_ids)
+    display_region_with_buttons(merged_pred, merged_gold, '3604_mixed_experts', region_idx, gold_chunk_ids, transparent_entities)
     st.write("")
     st.write("")
 
