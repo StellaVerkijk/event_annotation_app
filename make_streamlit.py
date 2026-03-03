@@ -19,6 +19,9 @@ if 'user_experience' not in st.session_state:
 if 'user_translation' not in st.session_state:
     st.session_state.user_translation = None
 
+if 'user_feedback' not in st.session_state:
+    st.session_state.user_feedback = ""
+
 # Define color schemes with lighter blues
 ENTITY_COLORS = {
     'LOC_NAME': '#4A90E2',  # Medium blue
@@ -49,7 +52,6 @@ EVENT_COLORS = {
 GOLD_CHUNK_IDS = {
     "5_1",
     "7_1",
-    "7_2",
     "8_1"
 }
 
@@ -67,7 +69,7 @@ def get_color_for_label(label):
     """Get the appropriate color for a label."""
     if label in ENTITY_COLORS:
         color = ENTITY_COLORS[label]
-        return hex_to_rgba(color, 0.35)  # Entities always 75% transparent (25% opacity)
+        return hex_to_rgba(color, 0.30)  # Entities always 70% transparent (25% opacity)
     elif label in EVENT_COLORS:
         return EVENT_COLORS[label]
     else:
@@ -447,6 +449,21 @@ for region_idx in range(len(pred_event_data)):
     st.write("")
     st.write("")
 
+# Feedback section
+st.divider()
+st.subheader("Additional Feedback")
+st.write("Do you have any remarks or feedback about the annotations you just reviewed?")
+feedback = st.text_area(
+    "Your feedback (optional):",
+    value=st.session_state.user_feedback,
+    height=150,
+    key="feedback_input"
+)
+
+if st.button("Save Feedback"):
+    st.session_state.user_feedback = feedback
+    st.success("Feedback saved!")
+
 # Download section
 st.divider()
 st.subheader("Download Your Choices")
@@ -457,6 +474,7 @@ if st.session_state.annotation_choices:
     # Add user information to all rows
     df['user_experience'] = st.session_state.user_experience
     df['user_translation'] = st.session_state.user_translation
+    df['user_feedback'] = st.session_state.user_feedback
     
     st.write(f"Total annotations reviewed: {len(df)}")
 
@@ -482,9 +500,6 @@ if st.session_state.annotation_choices:
     if st.button("Reset All Choices"):
         st.session_state.annotation_choices = {}
         st.session_state.chunk_sources = {}
-        st.session_state.user_info_collected = False
-        st.session_state.user_experience = None
-        st.session_state.user_translation = None
         st.rerun()
 else:
     st.info("No annotations have been marked yet.")
