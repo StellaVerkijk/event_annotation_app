@@ -53,25 +53,20 @@ def hex_to_rgba(hex_color, opacity=1.0):
     return f'rgba({r}, {g}, {b}, {opacity})'
 
 
-def get_color_for_label(label, transparent_entities=True):
+def get_color_for_label(label):
     """Get the appropriate color for a label."""
     if label in ENTITY_COLORS:
         color = ENTITY_COLORS[label]
-        if transparent_entities:
-            return hex_to_rgba(color, 0.25)  # 75% transparent = 25% opacity
-        return color
+        return hex_to_rgba(color, 0.25)  # Entities always 75% transparent (25% opacity)
     elif label in EVENT_COLORS:
         return EVENT_COLORS[label]
     else:
         # Default colors if not found
         if is_entity_label(label):
             color = '#B3D9FF'  # Default light blue
-            if transparent_entities:
-                return hex_to_rgba(color, 0.25)
-            return color
+            return hex_to_rgba(color, 0.25)  # Entities always transparent
         else:
             return '#FFD699'  # Default light orange
-
 
 def is_entity_label(label):
     """Check if a label is an entity type."""
@@ -127,7 +122,7 @@ def convert_to_annotated_text(data, transparent_entities=False):
 
             if current_event_words and current_event:
                 label = current_event
-                color = get_color_for_label(label, transparent_entities)
+                color = get_color_for_label(label)
                 result.append((' '.join(current_event_words) + ' ', label, color))
                 current_event_words = []
 
@@ -140,7 +135,7 @@ def convert_to_annotated_text(data, transparent_entities=False):
         else:
             if current_event_words and current_event:
                 label = current_event
-                color = get_color_for_label(label, transparent_entities)
+                color = get_color_for_label(label)
                 result.append((' '.join(current_event_words) + ' ', label, color))
                 current_event_words = []
                 current_event = None
@@ -321,8 +316,6 @@ def display_region_with_buttons(pred_data, gold_data, file_id, region_idx, gold_
 
 st.header("Missive sent from Batavia in 1782 (inv. nr. 3604)")
 
-# Add toggle for transparent entities
-transparent_entities = st.toggle("Make entity labels transparent", value=False)
 
 st.subheader("Predictions of Mixed Experts model")
 
