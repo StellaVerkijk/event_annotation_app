@@ -236,7 +236,7 @@ def split_data_into_chunks(data, max_words=150):
     return chunks
 
 
-def display_region_with_buttons(pred_data, gold_data, file_id, region_idx, gold_chunk_ids, transparent_entities=False):
+def display_region_with_buttons(pred_data, gold_data, file_id, region_idx, gold_chunk_ids):
     """Display annotated text and buttons for each annotation.
     
     Args:
@@ -341,7 +341,7 @@ for region_idx in range(len(pred_event_data)):
     merged_pred = merge_annotations(pred_event_parsed, entity_parsed)
     merged_gold = merge_annotations(gold_event_parsed, entity_parsed)
 
-    display_region_with_buttons(merged_pred, merged_gold, '3604_mixed_experts', region_idx, gold_chunk_ids, transparent_entities)
+    display_region_with_buttons(merged_pred, merged_gold, '3604_mixed_experts', region_idx, gold_chunk_ids)
     st.write("")
     st.write("")
 
