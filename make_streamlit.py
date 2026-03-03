@@ -57,7 +57,7 @@ def get_color_for_label(label):
     """Get the appropriate color for a label."""
     if label in ENTITY_COLORS:
         color = ENTITY_COLORS[label]
-        return hex_to_rgba(color, 0.25)  # Entities always 75% transparent (25% opacity)
+        return hex_to_rgba(color, 0.35)  # Entities always 75% transparent (25% opacity)
     elif label in EVENT_COLORS:
         return EVENT_COLORS[label]
     else:
