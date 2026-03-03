@@ -146,7 +146,7 @@ def convert_to_annotated_text(data):
         result.append(' '.join(current_text))
     if current_event_words and current_event:
         label = current_event
-        color = get_color_for_label(label, transparent_entities)
+        color = get_color_for_label(label)
         result.append((' '.join(current_event_words) + ' ', label, color))
 
     return result
