@@ -49,6 +49,7 @@ EVENT_COLORS = {
 GOLD_CHUNK_IDS = {
     "5_1",
     "7_1",
+    "7-2",
     "8_1"
 }
 
