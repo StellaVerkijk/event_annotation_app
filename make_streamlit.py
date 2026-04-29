@@ -397,7 +397,7 @@ if not st.session_state.user_info_collected:
     
     # Experience question
     experience = st.radio(
-        "How many years of experience do you have reading the Dutch East India Company archives?",
+        "How many years of experience do you have reading the archives of the Dutch East India Company or archives similar to these?",
         options=[
             "None",
             "Less than half a year",
