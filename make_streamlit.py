@@ -409,7 +409,7 @@ if not st.session_state.user_info_collected:
     
     # Translation question
     st.write("**Please translate the following text into English:**")
-    st.info("Is niet te twijffelen ofte souder niet allene becommen dat onse Schepen voor althoos inde — reviere van Chincheo soude mogen onder pretecxt van Veijlinghe blijven leggen Maer oock dat alle ende een ijegelijck die het wilde ende Ghelieffde met ons en Taijvan te — Comen met alderhande Coopmanschappen handelen gelicencieert werden, twelck Soo langhe alst niet en geschiet In geenen delen (naer de presente bevindinghe) te verhoopen is dat de Compe tot haer voornemen sal Geraecken")
+    st.info("Wat er tegen de opere Vaart, die niet Voor half Oktober gerekend mag Worden, op Mallabaar Voorvallen kan, mogen wij niet gissen, en zoo Wij deeze zeshonderd lasten Mallabaers rijst kreegen, bij de geeischte Javasche, zoude onze Voorraad maar maatig zijn, Wijl de Fransche Vloot zeken om rijst zal vraagen, en de gemeente geen aanvoer uit Boengaale hoopen kan.")
     translation = st.text_area("Your translation:", height=100)
     
     if st.button("Submit and Continue"):
