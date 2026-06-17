@@ -429,14 +429,21 @@ if not st.session_state.user_info_collected:
 st.subheader("Predictions of Mixed Experts model")
 
 # Load both prediction and gold data
-with open('predictions/3604_mixed_experts.json') as f:
+#with open('predictions/3604_mixed_experts.json') as f:
+#    pred_event_data = f.readlines()
+
+#with open('gold/3604.json') as f:
+#    gold_event_data = f.readlines()
+
+#with open('gold/curated_entities_3604/p_80-ner-event-preanno_NL-HaNA_1.04.02_3604_0270-0276 - 1782 -.json') as f:
+#    entity_data = f.readlines()
+
+# load predicted events and entities
+with open('predictions_snellius/NL-HaNA_1.04.02_1120_0135.json') as f:
     pred_event_data = f.readlines()
-
-with open('gold/3604.json') as f:
-    gold_event_data = f.readlines()
-
-with open('gold/curated_entities_3604/p_80-ner-event-preanno_NL-HaNA_1.04.02_3604_0270-0276 - 1782 -.json') as f:
     entity_data = f.readlines()
+
+    
 
 # Use the manually configured gold chunk IDs
 gold_chunk_ids = GOLD_CHUNK_IDS
