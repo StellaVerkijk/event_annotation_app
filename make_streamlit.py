@@ -283,7 +283,7 @@ def extract_annotations(data, annotation_type='event'):
     return annotations
 
 
-def split_data_into_chunks(data, max_words=150):
+def split_data_into_chunks(data, max_words=500):
     """Split data into roughly equal chunks, each up to max_words."""
     words = data['words']
     events = data['events']
