@@ -417,41 +417,43 @@ def display_region_with_buttons(pred_data, gold_data, file_id, region_idx, gold_
 
 # Main app
 
-st.header("Missive sent from Batavia in 1782 (inv. nr. 3604)")
+#st.header("Missive sent from Batavia in 1782 (inv. nr. 3604)")
+
+st.header("Random document from inv. nr 1120 with End-to-End event classification")
 
 # User information collection
-if not st.session_state.user_info_collected:
-    st.subheader("Before we begin...")
+#if not st.session_state.user_info_collected:
+#    st.subheader("Before we begin...")
     
     # Experience question
-    experience = st.radio(
-        "How many years of experience do you have reading the archives of the Dutch East India Company or archives similar to these?",
-        options=[
-            "None",
-            "Less than half a year",
-            "One year",
-            "Between one to five years",
-            "More than five years"
-        ]
-    )
+#    experience = st.radio(
+#        "How many years of experience do you have reading the archives of the Dutch East India Company or archives similar to these?",
+#        options=[
+#            "None",
+#            "Less than half a year",
+#            "One year",
+#            "Between one to five years",
+#            "More than five years"
+#        ]
+#    )
     
-    # Translation question
-    st.write("**Please translate the following text into English:**")
-    st.info("Wat er tegen de opere Vaart, die niet Voor half Oktober gerekend mag Worden, op Mallabaar Voorvallen kan, mogen wij niet gissen, en zoo Wij deeze zeshonderd lasten Mallabaers rijst kreegen, bij de geeischte Javasche, zoude onze Voorraad maar maatig zijn, Wijl de Fransche Vloot zeken om rijst zal vraagen, en de gemeente geen aanvoer uit Boengaale hoopen kan.")
-    translation = st.text_area("Your translation:", height=100)
+#    # Translation question
+#    st.write("**Please translate the following text into English:**")
+#    st.info("Wat er tegen de opere Vaart, die niet Voor half Oktober gerekend mag Worden, op Mallabaar Voorvallen kan, mogen wij niet gissen, en zoo Wij deeze zeshonderd lasten Mallabaers rijst kreegen, bij de geeischte Javasche, zoude onze Voorraad maar maatig zijn, Wijl de Fransche Vloot zeken om rijst zal vraagen, en de gemeente geen aanvoer uit Boengaale hoopen kan.")
+#    translation = st.text_area("Your translation:", height=100)
     
-    if st.button("Submit and Continue"):
-        if translation.strip():  # Check that translation is not empty
-            st.session_state.user_experience = experience
-            st.session_state.user_translation = translation
-            st.session_state.user_info_collected = True
-            st.rerun()
-        else:
-            st.warning("Please provide a translation before continuing.")
-    
-    st.stop()  # Stop here until user submits
+#    if st.button("Submit and Continue"):
+#        if translation.strip():  # Check that translation is not empty
+#            st.session_state.user_experience = experience
+#            st.session_state.user_translation = translation
+#            st.session_state.user_info_collected = True
+#            st.rerun()
+#        else:
+#            st.warning("Please provide a translation before continuing.")
+#    
+#    st.stop()  # Stop here until user submits
 
-st.subheader("Predictions of Mixed Experts model")
+#st.subheader("Predictions of Mixed Experts model")
 
 # Load both prediction and gold data
 #with open('predictions/3604_mixed_experts.json') as f:
