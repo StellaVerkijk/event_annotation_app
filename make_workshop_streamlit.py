@@ -1,0 +1,540 @@
+import streamlit as st
+from annotated_text import annotated_text
+import ast
+import pandas as pd
+
+# Initialize session state
+if 'annotation_choices' not in st.session_state:
+    st.session_state.annotation_choices = {}
+
+if 'chunk_sources' not in st.session_state:
+    st.session_state.chunk_sources = {}
+
+if 'user_info_collected' not in st.session_state:
+    st.session_state.user_info_collected = False
+
+if 'user_experience' not in st.session_state:
+    st.session_state.user_experience = None
+
+if 'user_translation' not in st.session_state:
+    st.session_state.user_translation = None
+
+if 'user_feedback' not in st.session_state:
+    st.session_state.user_feedback = ""
+
+# Define color schemes with lighter blues
+ENTITY_COLORS = {
+    'LOC_NAME': '#4A90E2',  # Medium blue
+    'LOC_ADJ': '#7FB3D5',  # Light blue
+    'PER_NAME': '#9FCDFF',  # Powder blue
+    'PER_ATTR': '#5B9BD5',  # Sky blue
+    'PRF': '#89CFF0',  # Baby blue
+    'CMTY_QUANT': '#6BB6FF',  # Bright blue
+    'CMTY_NAME': '#A8D5FF',  # Soft blue
+    'DOC': '#1E90FF',  # Dodger blue
+    'DATE': '#87CEEB',  # Sky blue light
+    'SHIP_TYPE': '#C2DFFF',  # Alice blue
+    'ORG': '#B0D7FF',  # Baby blue
+    'STATUS': '#AFEEEE'  # Pale Turquoise
+}
+
+EVENT_COLORS = {
+    'event1': '#FF8C00',  # Dark orange
+    'event2': '#FFA500',  # Orange
+    'event3': '#FFB347',  # Light orange
+    'event4': '#FF7F50',  # Coral
+    'event5': '#FF6347',  # Tomato
+}
+
+# MANUAL GOLD CHUNK SELECTION
+# Add chunk IDs here that you want to display as gold data
+# Format: "region_idx_chunk_idx" (e.g., "0_0" for region 0, chunk 0)
+GOLD_CHUNK_IDS = {
+    "7_1",
+    "7_2",
+    "8_1"
+}
+
+#"5_1"
+
+#Temporary setting with no gold annotations for within-team inspection of the model's output
+GOLD_CHUNK_IDS = {}
+
+def hex_to_rgba(hex_color, opacity=1.0):
+    """Convert hex color to rgba with specified opacity."""
+    hex_color = hex_color.lstrip('#')
+    r = int(hex_color[0:2], 16)
+    g = int(hex_color[2:4], 16)
+    b = int(hex_color[4:6], 16)
+    return f'rgba({r}, {g}, {b}, {opacity})'
+
+
+def get_color_for_label(label):
+    """Get the appropriate color for a label."""
+    if label in ENTITY_COLORS:
+        color = ENTITY_COLORS[label]
+        return hex_to_rgba(color, 0.30)  # Entities always 70% transparent (25% opacity)
+    elif label in EVENT_COLORS:
+        return EVENT_COLORS[label]
+    else:
+        # Default colors if not found
+        if is_entity_label(label):
+            color = '#B3D9FF'  # Default light blue
+            return hex_to_rgba(color, 0.25)  # Entities always transparent
+        else:
+            return '#FFD699'  # Default light orange
+
+def is_entity_label(label):
+    """Check if a label is an entity type."""
+    entity_labels = ['LOC_NAME', 'PER_NAME', 'PER_ATTR', 'PRF', 'CMTY_QUANT',
+                     'CMTY_NAME', 'DOC', 'DATE', 'SHIP_TYPE', 'LOC_ADJ', 'ORG', 'STATUS', 'SHIP', 'ETH_REL']
+    return any(entity in label for entity in entity_labels)
+
+
+def count_event_annotations(data):
+    """Count the number of event annotations in a data structure."""
+    events = data['events']
+    count = 0
+    for event in events:
+        if event.startswith('B-') and not is_entity_label(event[2:]):
+            count += 1
+    return count
+
+def merge_motion_events(data):
+    """Merge consecutive motion event annotations into a single span.
+    
+    If two consecutive tokens are annotated with different events from the motion list,
+    they are merged into one span using the label of the first token.
+    """
+    motion_events = ["Translocation", "Transportation", "Voyage", "Leaving", "Arriving", "BeingAtAPlace"]
+    
+    words = data['words']
+    events = data['events'].copy()  # Make a copy to avoid modifying original
+    
+    i = 0
+    while i < len(events):
+        current_event = events[i]
+        
+        # Check if current token has a motion event (B- or I-)
+        if current_event.startswith('B-'):
+            current_label = current_event[2:]
+            if current_label in motion_events:
+                # Look ahead for consecutive motion events
+                j = i + 1
+                while j < len(events):
+                    next_event = events[j]
+                    
+                    # If next token is also a motion event (B- prefix)
+                    if next_event.startswith('B-'):
+                        next_label = next_event[2:]
+                        if next_label in motion_events:
+                            # Change it to I- with the current label
+                            events[j] = f'I-{current_label}'
+                            j += 1
+                        else:
+                            break  # Not a motion event, stop merging
+                    elif next_event.startswith('I-'):
+                        # Already part of an annotation, continue
+                        next_label = next_event[2:]
+                        if next_label in motion_events:
+                            # Update to current label
+                            events[j] = f'I-{current_label}'
+                            j += 1
+                        else:
+                            break
+                    else:
+                        # 'O' tag, stop merging
+                        break
+                
+                i = j  # Skip to the end of merged span
+            else:
+                i += 1
+        else:
+            i += 1
+    
+    return {
+        'words': words,
+        'events': events
+    }
+
+
+def merge_annotations(event_data, entity_data):
+    """Merge event and entity annotations into a single data structure."""
+    words = event_data['words']
+    events = event_data['events']
+    entities = entity_data['entities']
+
+    combined = []
+    for event, entity in zip(events, entities):
+        if event != 'O':
+            combined.append(event)
+        else:
+            combined.append(entity)
+
+    merged_data = {
+        'words': words,
+        'events': combined
+    }
+    
+    # Apply motion event merging
+    merged_data = merge_motion_events(merged_data)
+    
+    return merged_data
+
+
+def convert_to_annotated_text(data):
+    """Convert data to annotated_text format with color coding."""
+    words = data['words']
+    events = data['events']
+
+    result = []
+    current_text = []
+    current_event = None
+    current_event_words = []
+
+    for word, event in zip(words, events):
+        if event.startswith('B-'):
+            if current_text:
+                result.append(' '.join(current_text) + ' ')
+                current_text = []
+
+            if current_event_words and current_event:
+                label = current_event
+                color = get_color_for_label(label)
+                result.append((' '.join(current_event_words) + ' ', label, color))
+                current_event_words = []
+
+            current_event = event[2:]
+            current_event_words = [word]
+
+        elif event.startswith('I-'):
+            current_event_words.append(word)
+
+        else:
+            if current_event_words and current_event:
+                label = current_event
+                color = get_color_for_label(label)
+                result.append((' '.join(current_event_words) + ' ', label, color))
+                current_event_words = []
+                current_event = None
+
+            current_text.append(word)
+
+    if current_text:
+        result.append(' '.join(current_text))
+    if current_event_words and current_event:
+        label = current_event
+        color = get_color_for_label(label)
+        result.append((' '.join(current_event_words) + ' ', label, color))
+
+    return result
+
+
+def extract_annotations(data, annotation_type='event'):
+    """Extract annotations. Can filter by type (event vs entity)."""
+    words = data['words']
+    events = data['events']
+
+    annotations = []
+    current_event = None
+    current_words = []
+
+    for word, event in zip(words, events):
+        if event.startswith('B-'):
+            if current_words and current_event:
+                label_type = current_event
+                is_entity = is_entity_label(label_type)
+                is_event = not is_entity
+
+                if (annotation_type == 'entity' and is_entity) or \
+                        (annotation_type == 'event' and is_event) or \
+                        (annotation_type == 'all'):
+                    annotations.append((' '.join(current_words), current_event, 'entity' if is_entity else 'event'))
+
+            current_event = event[2:]
+            current_words = [word]
+
+        elif event.startswith('I-'):
+            current_words.append(word)
+
+        else:
+            if current_words and current_event:
+                label_type = current_event
+                is_entity = is_entity_label(label_type)
+                is_event = not is_entity
+
+                if (annotation_type == 'entity' and is_entity) or \
+                        (annotation_type == 'event' and is_event) or \
+                        (annotation_type == 'all'):
+                    annotations.append((' '.join(current_words), current_event, 'entity' if is_entity else 'event'))
+                current_words = []
+                current_event = None
+
+    if current_words and current_event:
+        label_type = current_event
+        is_entity = is_entity_label(label_type)
+        is_event = not is_entity
+
+        if (annotation_type == 'entity' and is_entity) or \
+                (annotation_type == 'event' and is_event) or \
+                (annotation_type == 'all'):
+            annotations.append((' '.join(current_words), current_event, 'entity' if is_entity else 'event'))
+
+    return annotations
+
+
+def split_data_into_chunks(data, max_words=150):
+    """Split data into roughly equal chunks, each up to max_words."""
+    words = data['words']
+    events = data['events']
+
+    total_words = len(words)
+
+    if total_words <= max_words:
+        return [data]
+
+    num_chunks = (total_words + max_words - 1) // max_words
+    chunk_size = total_words // num_chunks
+    remainder = total_words % num_chunks
+
+    chunks = []
+    start_idx = 0
+
+    for i in range(num_chunks):
+        extra = 1 if i < remainder else 0
+        end_idx = start_idx + chunk_size + extra
+
+        chunk = {
+            'words': words[start_idx:end_idx],
+            'events': events[start_idx:end_idx]
+        }
+        chunks.append(chunk)
+        start_idx = end_idx
+
+    return chunks
+
+def merge_small_regions(regions, min_words=150):
+    """Merge consecutive regions with fewer than min_words tokens into one region."""
+    merged = []
+    buffer = None
+
+    for region in regions:
+        if buffer is None:
+            buffer = region
+        else:
+            combined_len = len(buffer['words']) + len(region['words'])
+            if len(buffer['words']) < min_words or combined_len <= min_words:
+                # Merge region into buffer
+                buffer = {
+                    'words': buffer['words'] + region['words'],
+                    'events': buffer['events'] + region['events']
+                }
+            else:
+                merged.append(buffer)
+                buffer = region
+
+    if buffer is not None:
+        merged.append(buffer)
+
+    return merged
+
+
+def display_region_with_buttons(pred_data, gold_data, file_id, region_idx, gold_chunk_ids):
+    """Display annotated text and buttons for each annotation.
+    
+    Args:
+        pred_data: Prediction annotation data
+        gold_data: Gold annotation data
+        file_id: Identifier for the file
+        region_idx: Index of the current region
+        gold_chunk_ids: Set of chunk IDs that should display gold data
+        transparent_entities: Whether to make entity labels transparent
+    """
+    pred_chunks = split_data_into_chunks(pred_data, max_words=150)
+    gold_chunks = split_data_into_chunks(gold_data, max_words=150)
+
+    for chunk_idx in range(len(pred_chunks)):
+        chunk_id = f"{region_idx}_{chunk_idx}"
+        
+        # Determine if this chunk should use gold or prediction data
+        if chunk_id in gold_chunk_ids:
+            chunk = gold_chunks[chunk_idx]
+            data_source = 'gold'
+        else:
+            chunk = pred_chunks[chunk_idx]
+            data_source = 'prediction'
+        
+        # Store the data source for this chunk
+        st.session_state.chunk_sources[chunk_id] = data_source
+        
+        annotated_version = convert_to_annotated_text(chunk)
+        annotated_text(*annotated_version)
+
+        annotations = extract_annotations(chunk, annotation_type='event')
+
+        if annotations:
+            st.markdown("---")
+            for ann_idx, (text, label, ann_type) in enumerate(annotations):
+                key = f"{file_id}_{region_idx}_{chunk_idx}_{ann_idx}"
+
+                cols = st.columns([0.6, 0.1, 0.1, 0.2])
+
+                with cols[0]:
+                    st.markdown(f"**{text}** `({label})`")
+
+                with cols[1]:
+                    if st.button("✓", key=f"correct_{key}"):
+                        st.session_state.annotation_choices[key] = {
+                            'file': file_id,
+                            'region': region_idx,
+                            'chunk': chunk_idx,
+                            'text': text,
+                            'label': label,
+                            'choice': 'useful',
+                            'data_source': data_source
+                        }
+
+                with cols[2]:
+                    if st.button("✗", key=f"wrong_{key}"):
+                        st.session_state.annotation_choices[key] = {
+                            'file': file_id,
+                            'region': region_idx,
+                            'chunk': chunk_idx,
+                            'text': text,
+                            'label': label,
+                            'choice': 'misleading',
+                            'data_source': data_source
+                        }
+
+                with cols[3]:
+                    if key in st.session_state.annotation_choices:
+                        choice = st.session_state.annotation_choices[key]['choice']
+                        st.markdown("✅ Useful" if choice == 'useful' else "❌ Misleading")
+
+        if chunk_idx < len(pred_chunks) - 1:
+            st.markdown("---")
+
+
+# Main app
+
+st.header("Missive sent from Batavia in 1782 (inv. nr. 3604)")
+
+
+
+# User information collection
+if not st.session_state.user_info_collected:
+    st.subheader("Before we begin...")
+    
+    # Experience question
+    experience = st.radio(
+        "How many years of experience do you have reading the archives of the Dutch East India Company or archives similar to these?",
+        options=[
+            "None",
+            "Less than half a year",
+            "One year",
+            "Between one to five years",
+            "More than five years"
+        ]
+    )
+    
+#    # Translation question
+    st.write("**Please translate the following text into English:**")
+    st.info("Wat er tegen de opere Vaart, die niet Voor half Oktober gerekend mag Worden, op Mallabaar Voorvallen kan, mogen wij niet gissen, en zoo Wij deeze zeshonderd lasten Mallabaers rijst kreegen, bij de geeischte Javasche, zoude onze Voorraad maar maatig zijn, Wijl de Fransche Vloot zeken om rijst zal vraagen, en de gemeente geen aanvoer uit Boengaale hoopen kan.")
+    translation = st.text_area("Your translation:", height=100)
+    
+    if st.button("Submit and Continue"):
+        if translation.strip():  # Check that translation is not empty
+            st.session_state.user_experience = experience
+            st.session_state.user_translation = translation
+            st.session_state.user_info_collected = True
+            st.rerun()
+        else:
+            st.warning("Please provide a translation before continuing.")
+    
+    st.stop()  # Stop here until user submits
+
+st.subheader("Predictions of Mixed Experts model")
+
+# Load both prediction and gold data
+with open('predictions/3604_mixed_experts.json') as f:
+    pred_event_data = f.readlines()
+
+with open('gold/3604.json') as f:
+    gold_event_data = f.readlines()
+
+with open('gold/curated_entities_3604/p_80-ner-event-preanno_NL-HaNA_1.04.02_3604_0270-0276 - 1782 -.json') as f:
+    entity_data = f.readlines()
+
+
+# Use the manually configured gold chunk IDs
+gold_chunk_ids = GOLD_CHUNK_IDS
+
+
+# Display regions with mixed gold/prediction chunks
+for region_idx in range(len(pred_event_data)):
+    pred_event_parsed = ast.literal_eval(pred_event_data[region_idx])
+    gold_event_parsed = ast.literal_eval(gold_event_data[region_idx])
+    entity_parsed = ast.literal_eval(entity_data[region_idx])
+
+    merged_pred = merge_annotations(pred_event_parsed, entity_parsed)
+    merged_gold = merge_annotations(gold_event_parsed, entity_parsed)
+
+    display_region_with_buttons(merged_pred, merged_gold, '3604_mixed_experts', region_idx, gold_chunk_ids)
+    st.write("")
+    st.write("")
+
+
+# Feedback section
+st.divider()
+st.subheader("Additional Feedback")
+st.write("Do you have any remarks or feedback about the annotations you just reviewed?")
+feedback = st.text_area(
+    "Your feedback (optional):",
+    value=st.session_state.user_feedback,
+    height=150,
+    key="feedback_input"
+)
+
+if st.button("Save Feedback"):
+    st.session_state.user_feedback = feedback
+    st.success("Feedback saved!")
+
+# Download section
+st.divider()
+st.subheader("Download Your Choices")
+
+if st.session_state.annotation_choices:
+    df = pd.DataFrame.from_dict(st.session_state.annotation_choices, orient='index')
+    
+    # Add user information to all rows
+    df['user_experience'] = st.session_state.user_experience
+    df['user_translation'] = st.session_state.user_translation
+    df['user_feedback'] = st.session_state.user_feedback
+    
+    st.write(f"Total annotations reviewed: {len(df)}")
+
+    # Show breakdown of gold vs prediction annotations
+    if 'data_source' in df.columns:
+        gold_count = (df['data_source'] == 'gold').sum()
+        pred_count = (df['data_source'] == 'prediction').sum()
+        total = gold_count + pred_count
+        gold_percentage = (gold_count / total * 100) if total > 0 else 0
+        st.write(
+            f"Gold annotations: {gold_count} ({gold_percentage:.1f}%) | Prediction annotations: {pred_count} ({100 - gold_percentage:.1f}%)")
+
+    st.dataframe(df)
+
+    csv = df.to_csv(index=False)
+    st.download_button(
+        label="Download CSV",
+        data=csv,
+        file_name="annotation_choices.csv",
+        mime="text/csv"
+    )
+
+    if st.button("Reset All Choices"):
+        st.session_state.annotation_choices = {}
+        st.session_state.chunk_sources = {}
+        st.rerun()
+else:
+    st.info("No annotations have been marked yet.")
