@@ -441,6 +441,8 @@ with open('gold/3604.json') as f:
 # load predicted events and entities
 with open('predictions_snellius/NL-HaNA_1.04.02_1120_0135.json') as f:
     pred_event_data = f.readlines()
+
+with open('predictions_snellius/NL-HaNA_1.04.02_1120_0135.json') as f:
     entity_data = f.readlines()
 
     
