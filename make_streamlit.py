@@ -325,8 +325,8 @@ def display_region_with_buttons(pred_data, gold_data, file_id, region_idx, gold_
         gold_chunk_ids: Set of chunk IDs that should display gold data
         transparent_entities: Whether to make entity labels transparent
     """
-    pred_chunks = split_data_into_chunks(pred_data, max_words=500)
-    gold_chunks = split_data_into_chunks(gold_data, max_words=500)
+    pred_chunks = split_data_into_chunks(pred_data, max_words=150)
+    gold_chunks = split_data_into_chunks(gold_data, max_words=150)
 
     for chunk_idx in range(len(pred_chunks)):
         chunk_id = f"{region_idx}_{chunk_idx}"
