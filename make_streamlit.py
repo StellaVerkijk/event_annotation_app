@@ -313,6 +313,31 @@ def split_data_into_chunks(data, max_words=150):
 
     return chunks
 
+def merge_small_regions(regions, min_words=150):
+    """Merge consecutive regions with fewer than min_words tokens into one region."""
+    merged = []
+    buffer = None
+
+    for region in regions:
+        if buffer is None:
+            buffer = region
+        else:
+            combined_len = len(buffer['words']) + len(region['words'])
+            if len(buffer['words']) < min_words or combined_len <= min_words:
+                # Merge region into buffer
+                buffer = {
+                    'words': buffer['words'] + region['words'],
+                    'events': buffer['events'] + region['events']
+                }
+            else:
+                merged.append(buffer)
+                buffer = region
+
+    if buffer is not None:
+        merged.append(buffer)
+
+    return merged
+
 
 def display_region_with_buttons(pred_data, gold_data, file_id, region_idx, gold_chunk_ids):
     """Display annotated text and buttons for each annotation.
@@ -454,18 +479,40 @@ with open('predictions_snellius/NL-HaNA_1.04.02_1120_0135.json') as f:
 # Use the manually configured gold chunk IDs
 gold_chunk_ids = GOLD_CHUNK_IDS
 
-# Display regions with mixed gold/prediction chunks
-for region_idx in range(len(pred_event_data)):
-    pred_event_parsed = ast.literal_eval(pred_event_data[region_idx])
-    gold_event_parsed = ast.literal_eval(gold_event_data[region_idx])
-    entity_parsed = ast.literal_eval(entity_data[region_idx])
 
-    merged_pred = merge_annotations(pred_event_parsed, entity_parsed)
-    merged_gold = merge_annotations(gold_event_parsed, entity_parsed)
 
+#### new
+
+pred_regions = [merge_annotations(ast.literal_eval(pred_event_data[i]), ast.literal_eval(entity_data[i])) for i in range(len(pred_event_data))]
+gold_regions = [merge_annotations(ast.literal_eval(gold_event_data[i]), ast.literal_eval(entity_data[i])) for i in range(len(gold_event_data))]
+
+# Merge small regions
+pred_regions = merge_small_regions(pred_regions, min_words=150)
+gold_regions = merge_small_regions(gold_regions, min_words=150)
+
+# Display
+for region_idx, (merged_pred, merged_gold) in enumerate(zip(pred_regions, gold_regions)):
     display_region_with_buttons(merged_pred, merged_gold, '3604_mixed_experts', region_idx, gold_chunk_ids)
     st.write("")
     st.write("")
+
+#### 
+
+
+
+# Display regions with mixed gold/prediction chunks
+#for region_idx in range(len(pred_event_data)):
+#    pred_event_parsed = ast.literal_eval(pred_event_data[region_idx])
+#    gold_event_parsed = ast.literal_eval(gold_event_data[region_idx])
+#    entity_parsed = ast.literal_eval(entity_data[region_idx])
+
+#    merged_pred = merge_annotations(pred_event_parsed, entity_parsed)
+#    merged_gold = merge_annotations(gold_event_parsed, entity_parsed)
+
+#    display_region_with_buttons(merged_pred, merged_gold, '3604_mixed_experts', region_idx, gold_chunk_ids)
+#    st.write("")
+#    st.write("")
+
 
 # Feedback section
 st.divider()
