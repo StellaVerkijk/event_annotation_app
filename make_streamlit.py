@@ -46,16 +46,6 @@ EVENT_COLORS = {
     'event5': '#FF6347',  # Tomato
 }
 
-# MANUAL GOLD CHUNK SELECTION
-# Add chunk IDs here that you want to display as gold data
-# Format: "region_idx_chunk_idx" (e.g., "0_0" for region 0, chunk 0)
-#GOLD_CHUNK_IDS = {
-#    "7_1",
-#    "7_2",
-#    "8_1"
-#}
-
-#"5_1"
 
 #Temporary setting with no gold annotations for within-team inspection of the model's output
 GOLD_CHUNK_IDS = {}
@@ -417,55 +407,11 @@ def display_region_with_buttons(pred_data, gold_data, file_id, region_idx, gold_
 
 # Main app
 
-#st.header("Missive sent from Batavia in 1782 (inv. nr. 3604)")
-
 st.header("Random document from inv. nr 1120 with End-to-End event classification")
 
-# User information collection
-#if not st.session_state.user_info_collected:
-#    st.subheader("Before we begin...")
-    
-    # Experience question
-#    experience = st.radio(
-#        "How many years of experience do you have reading the archives of the Dutch East India Company or archives similar to these?",
-#        options=[
-#            "None",
-#            "Less than half a year",
-#            "One year",
-#            "Between one to five years",
-#            "More than five years"
-#        ]
-#    )
-    
-#    # Translation question
-#    st.write("**Please translate the following text into English:**")
-#    st.info("Wat er tegen de opere Vaart, die niet Voor half Oktober gerekend mag Worden, op Mallabaar Voorvallen kan, mogen wij niet gissen, en zoo Wij deeze zeshonderd lasten Mallabaers rijst kreegen, bij de geeischte Javasche, zoude onze Voorraad maar maatig zijn, Wijl de Fransche Vloot zeken om rijst zal vraagen, en de gemeente geen aanvoer uit Boengaale hoopen kan.")
-#    translation = st.text_area("Your translation:", height=100)
-    
-#    if st.button("Submit and Continue"):
-#        if translation.strip():  # Check that translation is not empty
-#            st.session_state.user_experience = experience
-#            st.session_state.user_translation = translation
-#            st.session_state.user_info_collected = True
-#            st.rerun()
-#        else:
-#            st.warning("Please provide a translation before continuing.")
-#    
-#    st.stop()  # Stop here until user submits
-
-#st.subheader("Predictions of Mixed Experts model")
 st.subheader("Document from 1637 (I think)")
 st.markdown("### [See original doc here](https://www.nationaalarchief.nl/onderzoeken/archief/1.04.02/invnr/1120/file/NL-HaNA_1.04.02_1120_0135)")
 
-# Load both prediction and gold data
-#with open('predictions/3604_mixed_experts.json') as f:
-#    pred_event_data = f.readlines()
-
-#with open('gold/3604.json') as f:
-    #gold_event_data = f.readlines()
-
-#with open('gold/curated_entities_3604/p_80-ner-event-preanno_NL-HaNA_1.04.02_3604_0270-0276 - 1782 -.json') as f:
-#    entity_data = f.readlines()
 
 # load predicted events and entities
 with open('predictions_snellius/NL-HaNA_1.04.02_1120_0135.json') as f:
@@ -485,8 +431,6 @@ gold_chunk_ids = GOLD_CHUNK_IDS
 
 
 
-#### new
-
 pred_regions = [merge_annotations(ast.literal_eval(pred_event_data[i]), ast.literal_eval(entity_data[i])) for i in range(len(pred_event_data))]
 gold_regions = [merge_annotations(ast.literal_eval(gold_event_data[i]), ast.literal_eval(entity_data[i])) for i in range(len(gold_event_data))]
 
@@ -499,23 +443,6 @@ for region_idx, (merged_pred, merged_gold) in enumerate(zip(pred_regions, gold_r
     display_region_with_buttons(merged_pred, merged_gold, '3604_mixed_experts', region_idx, gold_chunk_ids)
     st.write("")
     st.write("")
-
-#### 
-
-
-
-# Display regions with mixed gold/prediction chunks
-#for region_idx in range(len(pred_event_data)):
-#    pred_event_parsed = ast.literal_eval(pred_event_data[region_idx])
-#    gold_event_parsed = ast.literal_eval(gold_event_data[region_idx])
-#    entity_parsed = ast.literal_eval(entity_data[region_idx])
-
-#    merged_pred = merge_annotations(pred_event_parsed, entity_parsed)
-#    merged_gold = merge_annotations(gold_event_parsed, entity_parsed)
-
-#    display_region_with_buttons(merged_pred, merged_gold, '3604_mixed_experts', region_idx, gold_chunk_ids)
-#    st.write("")
-#    st.write("")
 
 
 # Feedback section
