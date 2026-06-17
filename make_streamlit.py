@@ -451,7 +451,7 @@ gold_chunk_ids = GOLD_CHUNK_IDS
 # Display regions with mixed gold/prediction chunks
 for region_idx in range(len(pred_event_data)):
     pred_event_parsed = ast.literal_eval(pred_event_data[region_idx])
-    gold_event_parsed = ast.literal_eval(gold_event_data[region_idx])
+    #gold_event_parsed = ast.literal_eval(gold_event_data[region_idx])
     entity_parsed = ast.literal_eval(entity_data[region_idx])
 
     merged_pred = merge_annotations(pred_event_parsed, entity_parsed)
