@@ -454,6 +454,8 @@ st.header("Random document from inv. nr 1120 with End-to-End event classificatio
 #    st.stop()  # Stop here until user submits
 
 #st.subheader("Predictions of Mixed Experts model")
+st.subheader("Document from 1637 (I think)")
+st.markdown("### [See original doc here](https://www.nationaalarchief.nl/onderzoeken/archief/1.04.02/invnr/1120/file/NL-HaNA_1.04.02_1120_0135)")
 
 # Load both prediction and gold data
 #with open('predictions/3604_mixed_experts.json') as f:
