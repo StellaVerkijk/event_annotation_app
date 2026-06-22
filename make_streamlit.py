@@ -448,10 +448,10 @@ for region_idx, (merged_pred, merged_gold) in enumerate(zip(pred_regions, gold_r
 
 # second doc
 
-st.header("Random document from inv. nr 8436")
+st.header("Random document from inv. nr 8436. NB: this is a scan of a small page inside a larger one, which can have had messed with the transcription")
 
-st.subheader("Document from ")
-st.markdown("### [See original doc here]()")
+st.subheader("Document from 1786")
+st.markdown("### [See original doc here](https://www.nationaalarchief.nl/onderzoeken/archief/1.04.02/invnr/8436/file/NL-HaNA_1.04.02_8436_0169)")
 
 
 # load predicted events and entities
@@ -490,8 +490,8 @@ for region_idx, (merged_pred, merged_gold) in enumerate(zip(pred_regions, gold_r
 
 st.header("Random document from inv. nr 11024")
 
-st.subheader("Document from ")
-st.markdown("### [See original doc here]()")
+st.subheader("Document from ?")
+st.markdown("### [See original doc here](https://www.nationaalarchief.nl/onderzoeken/archief/1.04.02/invnr/11024/file/NL-HaNA_1.04.02_11024_0185)")
 
 
 # load predicted events and entities
@@ -531,8 +531,8 @@ for region_idx, (merged_pred, merged_gold) in enumerate(zip(pred_regions, gold_r
 
 st.header("Random document from inv. nr 1790")
 
-st.subheader("Document from ")
-st.markdown("### [See original doc here]()")
+st.subheader("Document from ? my guess is around 1710")
+st.markdown("### [See original doc here](https://www.nationaalarchief.nl/onderzoeken/archief/1.04.02/invnr/1790/file/NL-HaNA_1.04.02_1790_0033)")
 
 
 # load predicted events and entities
