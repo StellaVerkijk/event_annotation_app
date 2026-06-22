@@ -1,0 +1,30 @@
+{"words": [], "events": []}
+{"words": ["Generaele", "Lijst", "der", "Gequalificeer", "\u201e", "\u201e", "dens", "en", "verdere", "Actueele", "Bediendens", ",", "dewelke", "dato", "deezes", "ten", "deezen", "Comptoire", "bescheijden", "zijn", ",", "met", "bekendstelling", "van", "'t", "Jaar", "hunner", "bevordering", "tot", "de", "qualiteijten", ",", "en", "'t", "Jaar", "1a", "14", "te", "aanstelling", "die", "zij", "thans", "129", "September", "1786", "Maandag", "den", "25:e", "Scheepte", "517", ":", "pacals", "en", "72", "lb", "Thin", "af", ",", "aan", "996", "sin", "A", ":o", "1784", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "B-BeingAtAPlace", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "B-BeingEmployed", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["Koopman", "p", ":"], "events": ["O", "O", "O"]}
+{"words": ["r", "n"], "events": ["O", "O"]}
+{"words": ["Eersten", "Resident", "stukken", "in", "voorm", ":", "scheepje", "in", "A", ":o"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["1784", ":"], "events": ["O", "O"]}
+{"words": ["Onderkoopman", "sp", ":"], "events": ["O", "O", "O"]}
+{"words": ["Dingsdag", "\u201e", "26:e", "scheepte", "'", "\u00bd", "restant", "Thin", ",", "tot", "495", "stukken", "of", "n", "Tweede", "Resident", "235", ":", "picols", ",", "en", "90", "lb", "af", ",", "in", "voorm", ":", "scheepje", "in", "Jndia", "aangeland"], "events": ["O", "O", "O", "B-Transportation", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "B-Arriving", "I-Arriving"]}
+{"words": ["Voor", "Hunn", ":"], "events": ["O", "O", "O"]}
+{"words": ["Hoog", "Edels", ":", "verhoogd", "\u201e", "_", "o", "d", "=", "to", "\u201e", "_", "o", "d", "=", "to", "\u201e", "_", "o", "d", "=", "to", "_", "o", "d", "=", "to", "_", "o", "d", "=", "to", "d", "=", "to", "_", "o", "d", "=", "to", "_", "o", "d", "=", "to", "porWoensdag", "\u201e", "27", ":"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["'", "Aa", "Donderdag", "\u201e", "28:e"], "events": ["O", "O", "O", "O", "O"]}
+{"words": ["Niets"], "events": ["O"]}
+{"words": ["Gepasseerd", "Vrijdag"], "events": ["O", "O"]}
+{"words": ["\u201e", "29", ":", "'", "5", "Zaturdag", "\u201e", "30:e"], "events": ["O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["De", "Goerab"], "events": ["O", "O"]}
+{"words": ["d'Eclipe"], "events": ["O"]}
+{"words": ["herwaards", "gekoomen", "en", "op", "de", "helling", "gehaald", "."], "events": ["O", "B-Arriving", "O", "O", "O", "O", "B-Production", "O"]}
+{"words": ["October", "1786"], "events": ["O", "O"]}
+{"words": ["Sondag"], "events": ["O"]}
+{"words": ["\u201e", "1:e"], "events": ["O", "O"]}
+{"words": ["Godsdienst"], "events": ["O"]}
+{"words": ["Maandag", "\u201e", "2:e", "na", "Militaire", "waepenschouwing", "en", "voorleesing", "van", "den", "Articul", "brief", ",", "kostgeld", "\u201e", "_", "o", "d", "=", "to", "en", "randsoen", "afgelangd", "aan", "de", "bezetting", "in", "Jndia", "aangeland", "deezer", "Logie", ",", "wierd", "ook", "deeze", "dagde", "GoeVoor"], "events": ["O", "O", "O", "O", "O", "O", "O", "B-Communication", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "B-BeingAtAPlace", "B-Arriving", "B-BeingAtAPlace", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["Haar", "Hoog", "Edelens", "veloogd"], "events": ["O", "O", "O", "O"]}
+{"words": ["\u201e", "val", "van", "de", "helling", "gehaald", ",", "en", "\u201e", "_", "o", "d", "=", "o", "Dingsdag"], "events": ["O", "O", "O", "O", "O", "B-Translocation", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "3:e", "na", "zijn", "kruijspost", "gedepecheerd", "_", "o", "d", ":o", "88", "."], "events": ["O", "O", "O", "O", "O", "B-Translocation", "O", "O", "O", "O", "O", "O"]}
+{"words": ["Woensdag", "\u201e", "4:e", "niets", "voorgevallen", "_", "o", "d", ":o", "donderdag", "\u201e", "5:e", "Een", "Expresse", "van", "de", "Pantj", ":", "Riau", "boventge_o", "d:=o", "\u201e", "_", "o", "d", "=", "to", "op", "Malacca", "door", "Haar", "Hoog", "Edelh", ":", "in", "Jndia", "aangeland", "\u201e", "komen"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "B-Arriving", "I-Arriving", "O", "B-Arriving"]}
+{"words": ["Vrijdag", "\u201e", "6", "Niets", "gepasseerd", "zaturdag"], "events": ["O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "7:e", "'t", "kruijt", "gekeerd", ",", "en", "wel", "bevonden", "Sondag", "\u201e"], "events": ["O", "O", "O", "O", "B-BeingAtAPlace", "O", "O", "O", "O", "O", "O"]}
+{"words": ["8=e"], "events": ["O"]}
+{"words": ["Godsdienst"], "events": ["O"]}

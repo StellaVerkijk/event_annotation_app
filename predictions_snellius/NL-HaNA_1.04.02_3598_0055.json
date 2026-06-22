@@ -1,0 +1,64 @@
+{"words": ["Hier", "van", "is", "nog", "niets", "afbetaald", "hebbende", "de", "transport", "2155:7:8", "Ao", "179/80", "Z", ":", "b.", "111", "voor", "vier", "stux", "slaaven", "die", "van", "den", "koning", ",", "en", "rijks", "grooten", "tot", "inmindering", "van", "desselfs", "schuld", "ontfangen", "zijn", "en", "volgens", "politicq", "raads", "besluijt", "van", "den", "17", "9ber", "A", ":o", "p", "\u201e", "s", "teegens", "ro", "50", "de", "kop", "gereekent", "."], "events": ["O", "O", "O", "O", "O", "B-FinancialTransaction", "O", "O", "B-Transportation", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "B-Getting", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u2014", "\u201e", "480", ":", "\u2014", ":", "\u2014", "van", "boven", "gem", ":", "somma", "afgetrokken", "zo", "blijkt", "dat", "'t", "Hoff", ":", "van", "bonij", "nog", "debet", "blijft", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "\u0192", "1675"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "B-BeingAtAPlace", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["7", ":", "8", "8"], "events": ["O", "O", "O", "O"]}
+{"words": ["pC", ":", "s", "418", "13/32", "."], "events": ["O", "O", "O", "O", "O", "O"]}
+{"words": [".", "."], "events": ["O", "O"]}
+{"words": ["1382", ":", "3:8"], "events": ["O", "O", "O"]}
+{"words": ["T"], "events": ["O"]}
+{"words": ["Rijk", "van"], "events": ["O", "O"]}
+{"words": ["Tanette", "voor", "Ao", "175\u00bd", "J", ":P", ":", "45", "p", ":"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["s", "snaphaanen", "gemeene", ",", "dewelke", "in", "de", "maand", "Jber", "1751", "ter", "ordre", "48", "van", "den", "E", ":"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["E", ":", "opperkoopman", "en", "secunde", "mitsgaders", "Gesaghebber"], "events": ["O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["Ian", "Dirk", "van", "Clootwijk", "aan", "de", "koninginne", "van", "Taneete", "ter", "leen", "zijn", "Koning", "zelfs", "zeer", "ernsafgegeven", "en", "dewijl", "zeedert", "die", "tijd", "niet", "zijn", "te", "ruggeleverd", "so", "\u201e", "tig", "verzogt", "om", "kwijt", "phelheeft"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "B-Transportation", "B-Transportation", "O", "O", "O", "B-Request", "O", "B-Getting", "O"]}
+{"words": ["men", "deselve"], "events": ["O", "O"]}
+{"words": ["in", "de", "maand", "xber", ":"], "events": ["O", "O", "O", "O", "O"]}
+{"words": ["daar", "aan", "op", "haar", "Reekeding", "van", "deese", "door", "zijn", "\u201e", "ning", "belast", "met", "-", "-", "-", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "B-FinancialTransaction", "B-FinancialTransaction", "O", "O", "O", "O", "O"]}
+{"words": ["\u0192", "460", ":", "16", ":", "\u2014", "moeder", "/z", "/", "gemaakte", "schuld", "A", "\u201e", "o", "175", "3/8", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["J", ":"], "events": ["O", "O"]}
+{"words": ["6", ":"], "events": ["O", "O"]}
+{"words": ["16e", ":", "341", "waar", "van", "afgetrokken", "word", "het", "bedragen", "van", "17", "p", "\u201e", "s", "in", "de", "maand", "Julij", "en", "8ber"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["1752", ":", "te", "rug", "ontfangen", "\u2014", "\u2014", "\u2013", "\u201e", "163", "4", ":", "\u2014", "297", ":", "12", ":", "\u2014", "Blijff", ".", ".", "."], "events": ["O", "O", "B-Transportation", "B-Transportation", "I-Transportation", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["A", "\u201e", "o", "1777/6", "7", ":"], "events": ["O", "O", "O", "O", "O", "O"]}
+{"words": ["b", ":"], "events": ["O", "O"]}
+{"words": ["137", "volgens", "het", "genoteerde", "bij", "politicq"], "events": ["O", "O", "O", "O", "O", "O"]}
+{"words": ["raads"], "events": ["O"]}
+{"words": ["besluijt", "van", "den", "22", "Januarij", "1776", "aan", "die", "vorstinne"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["het", "onderstaande", "afgegevenen", "in", "febr", "."], "events": ["O", "O", "B-Giving", "O", "O", "O"]}
+{"words": ["daar", "aan", "volgende", "haar", "reekening", "gedebiteerd", "voor", "1000", "lb", "Buskruijd", "-", "-", "-", "-", "-", "-", "-", "-", "\u0192", "200", ":"], "events": ["O", "O", "O", "O", "O", "B-FinancialTransaction", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u2014", ":", "\u2014", "600", "\u201e", "Loode", "kogels", "-", "-", "\u2013", "-", "\u2013", "\u2013", "-", "\u201e", "75", ":"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u2014", ":", "700", "ps"], "events": ["O", "O", "O", "O"]}
+{"words": ["vuursteenen", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "\u201e", "4", ":", "4", ":"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u2014", ":", "Gela", "sed", ":"], "events": ["O", "O", "O", "O", "O"]}
+{"words": ["seld", "\u0192", "279", ":", "4", ":", "\u2014", "ofte", "Indias", "\u201e", "338", "8", ":", "8", "J", ":"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["Pag", ":", "137"], "events": ["O", "O", "O"]}
+{"words": ["\u201e", "138", "Jtem", "ten", "dienste", "der", "koninginne", "in", "de", "Expeditie", "na", "pantjanna", ",", "in", "de", "maand", "febr", ":"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["afgegeven", ",", "als", "82", "lb", "Buskruijd", ".", ".", ".", "."], "events": ["B-Giving", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u0192", "16", "3", ":", "\u2014", "82"], "events": ["O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "Loode", "koogels", "-", "-", "-", "-", "-", "-", "-", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["-", "\u201e", "10", ":"], "events": ["O", "O", "O", "O"]}
+{"words": ["\u2014", ":", "\u2014", "4", "kip", "Lond", "zaleijers"], "events": ["O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["-", "-", "-", "-", "-", "-", "-", "-", "-", "\u201e", "3", "6", ":", "\u2014", "\u201e", "diverse", "kleenigheeden", "-", "-", "-", "-", "-", "-", "\u201e", "6", "1", ":", "\u2014", "Geld", "Neds", "eld", "\u0192", "35", "10", ":", "\u2014", "ofte", "JndiasI", ":"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["b", ":", "219"], "events": ["O", "O", "O"]}
+{"words": ["In", "de", "maand", "Maij", "1776", "ten", "dienste", "der", "koninge", "van", "Tanette", "in", "de", "Expeditie", "na", "Pantjana", "nader", "verstrekt", "en", "de", "reekening", "van", "Expeditie", "op", "Pantjanna", "volgens", "Raads", "besluijt", "van", "den", "13", "April", "gedebiteerd", "voor", "849", "Wd", "=", "o", "Ruskruijd", "-", "-", "-", "-", "-", "-", "-", "-", "-", "\u0192", "165:13", ":", ":", "\u2014", "324", "ps", "Langscherp", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "102:16:-", "785"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "B-Giving", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "B-FinancialTransaction", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "Rondscherp", "-", "-", "-", "-", "-", "-", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["-", "\u201e", "130:13", ":", "\u2014", "151", "\u201e", "Loode", "druijven", "-", "-", "-", "-", "-", "-", "-", "\u201e", "22", ":", "18", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["17", ":", "17", ":", "\u2014", "2"], "events": ["O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "guin", ":"], "events": ["O", "O", "O"]}
+{"words": ["gem", ":", "gebt", "-", "-", "-", "-", "-", "-", "-", "-", "48", "kann", ":"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["Azak", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "13", ":", "4", ":"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u2014", "voor", "medicamenten", "-", "-", "-", "-", "-", "-", "-", "-", "-", "\u201e", "39", ":", "12", ":", "\u2014", "3:18:8", "6", "p.", "s", "Laade", "houten", "-", "-", "-", "-", "-", "-", "-", "-", "J", ":", "P", "2", "13"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["Aan", "Contant", "uijt", "'s", "Comp", ":"], "events": ["O", "O", "O", "O", "O", "O"]}
+{"words": ["s", "kleene"], "events": ["O", "O"]}
+{"words": ["geld", "Cassa", "aan", "den", "oppertolk", "d", ":"], "events": ["O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["Brugman", "en", "den", "Capitain", "der", "Malaijers"], "events": ["O", "O", "O", "O", "O", "O"]}
+{"words": ["Abdul", "Cadier", ",", "voor", "gedaane", "verschot", "en", "verstrekking", "&", "in", "die", "Expiditie"], "events": ["O", "O", "O", "O", "O", "B-Giving", "O", "B-Giving", "O", "O", "O", "O"]}
+{"words": ["volgens", "gem", "resclutie"], "events": ["O", "O", "O"]}
+{"words": ["-", "-", "\u201e", "1075", ":", "12", ":", "8"], "events": ["O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["Feld", "Ner", "held"], "events": ["O", "O", "O"]}
+{"words": ["\u0192"], "events": ["O"]}
+{"words": ["1571", ":", "7:8", "1904:14", ":", "\u2014", "ofte", "Jndias", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "43", ":", "\u2014", ":", "8", "Transporteere", "\u0192", "2583", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["15", "."], "events": ["O", "O"]}
+{"words": ["\u2014", "ps", "418", "3/32", "."], "events": ["O", "O", "O", "O", "O"]}
+{"words": ["-", "."], "events": ["O", "O"]}
+{"words": ["\u0192", "1382", ":", "3", ":", "8"], "events": ["O", "O", "O", "O", "O", "O"]}
