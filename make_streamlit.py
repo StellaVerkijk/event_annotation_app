@@ -409,7 +409,7 @@ def display_region_with_buttons(pred_data, gold_data, file_id, region_idx, gold_
 
 # first doc
 
-st.header("Random document from inv. nr 1120 with End-to-End event classification")
+st.header("Random document from inv. nr 1120 with End-to-End event classification (EtE)")
 
 st.subheader("Document from 1637 (I think)")
 st.markdown("### [See original doc here](https://www.nationaalarchief.nl/onderzoeken/archief/1.04.02/invnr/1120/file/NL-HaNA_1.04.02_1120_0135)")
@@ -448,7 +448,7 @@ for region_idx, (merged_pred, merged_gold) in enumerate(zip(pred_regions, gold_r
 
 # second doc
 
-st.header("Random document from inv. nr 8436. NB: this is a scan of a small page inside a larger one, which can have had messed with the transcription")
+st.header("Random document from inv. nr 8436 with EtE. NB: this is a scan of a small page inside a larger one, which has probably messed with the transcription")
 
 st.subheader("Document from 1786")
 st.markdown("### [See original doc here](https://www.nationaalarchief.nl/onderzoeken/archief/1.04.02/invnr/8436/file/NL-HaNA_1.04.02_8436_0169)")
@@ -488,7 +488,7 @@ for region_idx, (merged_pred, merged_gold) in enumerate(zip(pred_regions, gold_r
 
 # third doc
 
-st.header("Random document from inv. nr 11024")
+st.header("Random document from inv. nr 11024 with EtE")
 
 st.subheader("Document from ?")
 st.markdown("### [See original doc here](https://www.nationaalarchief.nl/onderzoeken/archief/1.04.02/invnr/11024/file/NL-HaNA_1.04.02_11024_0185)")
@@ -529,7 +529,7 @@ for region_idx, (merged_pred, merged_gold) in enumerate(zip(pred_regions, gold_r
 
 # fourth doc
 
-st.header("Random document from inv. nr 1790")
+st.header("Random document from inv. nr 1790 with EtE")
 
 st.subheader("Document from ? my guess is around 1710")
 st.markdown("### [See original doc here](https://www.nationaalarchief.nl/onderzoeken/archief/1.04.02/invnr/1790/file/NL-HaNA_1.04.02_1790_0033)")
