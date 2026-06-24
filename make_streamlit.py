@@ -407,7 +407,9 @@ def display_region_with_buttons(pred_data, gold_data, file_id, region_idx, gold_
 
 # Main app
 
-st.header("Random document from inv. nr 1120 with End-to-End event classification")
+# first doc
+
+st.header("Random document from inv. nr 1120 with End-to-End event classification (EtE)")
 
 st.subheader("Document from 1637 (I think)")
 st.markdown("### [See original doc here](https://www.nationaalarchief.nl/onderzoeken/archief/1.04.02/invnr/1120/file/NL-HaNA_1.04.02_1120_0135)")
@@ -440,9 +442,171 @@ gold_regions = merge_small_regions(gold_regions, min_words=150)
 
 # Display
 for region_idx, (merged_pred, merged_gold) in enumerate(zip(pred_regions, gold_regions)):
-    display_region_with_buttons(merged_pred, merged_gold, '3604_mixed_experts', region_idx, gold_chunk_ids)
+    display_region_with_buttons(merged_pred, merged_gold, '1120_ete', region_idx, gold_chunk_ids)
     st.write("")
     st.write("")
+
+# second doc
+
+st.header("Random document from inv. nr 8436 with EtE. NB: this is a scan of a small page inside a larger one, which has probably messed with the transcription")
+
+st.subheader("Document from 1786")
+st.markdown("### [See original doc here](https://www.nationaalarchief.nl/onderzoeken/archief/1.04.02/invnr/8436/file/NL-HaNA_1.04.02_8436_0169)")
+
+
+# load predicted events and entities
+with open('predictions_snellius/NL-HaNA_1.04.02_8436_0169.json') as f:
+    pred_event_data = f.readlines()
+
+with open('predictions_snellius/NL-HaNA_1.04.02_8436_0169.json') as f:
+    entity_data = f.readlines()
+
+# load fake gold file
+with open('predictions_snellius/NL-HaNA_1.04.02_8436_0169.json') as f:
+    gold_event_data = f.readlines()
+
+    
+
+# Use the manually configured gold chunk IDs
+gold_chunk_ids = GOLD_CHUNK_IDS
+
+
+
+pred_regions = [merge_annotations(ast.literal_eval(pred_event_data[i]), ast.literal_eval(entity_data[i])) for i in range(len(pred_event_data))]
+gold_regions = [merge_annotations(ast.literal_eval(gold_event_data[i]), ast.literal_eval(entity_data[i])) for i in range(len(gold_event_data))]
+
+# Merge small regions
+pred_regions = merge_small_regions(pred_regions, min_words=150)
+gold_regions = merge_small_regions(gold_regions, min_words=150)
+
+# Display
+for region_idx, (merged_pred, merged_gold) in enumerate(zip(pred_regions, gold_regions)):
+    display_region_with_buttons(merged_pred, merged_gold, '8436_ete', region_idx, gold_chunk_ids)
+    st.write("")
+    st.write("")
+
+
+# third doc
+
+st.header("Random document from inv. nr 11024 with EtE")
+
+st.subheader("Document from ?")
+st.markdown("### [See original doc here](https://www.nationaalarchief.nl/onderzoeken/archief/1.04.02/invnr/11024/file/NL-HaNA_1.04.02_11024_0185)")
+
+
+# load predicted events and entities
+with open('predictions_snellius/NL-HaNA_1.04.02_11024_0185.json') as f:
+    pred_event_data = f.readlines()
+
+with open('predictions_snellius/NL-HaNA_1.04.02_11024_0185.json') as f:
+    entity_data = f.readlines()
+
+# load fake gold file
+with open('predictions_snellius/NL-HaNA_1.04.02_11024_0185.json') as f:
+    gold_event_data = f.readlines()
+
+    
+
+# Use the manually configured gold chunk IDs
+gold_chunk_ids = GOLD_CHUNK_IDS
+
+
+
+pred_regions = [merge_annotations(ast.literal_eval(pred_event_data[i]), ast.literal_eval(entity_data[i])) for i in range(len(pred_event_data))]
+gold_regions = [merge_annotations(ast.literal_eval(gold_event_data[i]), ast.literal_eval(entity_data[i])) for i in range(len(gold_event_data))]
+
+# Merge small regions
+pred_regions = merge_small_regions(pred_regions, min_words=150)
+gold_regions = merge_small_regions(gold_regions, min_words=150)
+
+# Display
+for region_idx, (merged_pred, merged_gold) in enumerate(zip(pred_regions, gold_regions)):
+    display_region_with_buttons(merged_pred, merged_gold, '11024_ete', region_idx, gold_chunk_ids)
+    st.write("")
+    st.write("")
+
+
+
+# fourth doc
+
+st.header("Random document from inv. nr 1790 with EtE")
+
+st.subheader("Document from ? my guess is around 1710")
+st.markdown("### [See original doc here](https://www.nationaalarchief.nl/onderzoeken/archief/1.04.02/invnr/1790/file/NL-HaNA_1.04.02_1790_0033)")
+
+
+# load predicted events and entities
+with open('predictions_snellius/NL-HaNA_1.04.02_1790_0033.json') as f:
+    pred_event_data = f.readlines()
+
+with open('predictions_snellius/NL-HaNA_1.04.02_1790_0033.json') as f:
+    entity_data = f.readlines()
+
+# load fake gold file
+with open('predictions_snellius/NL-HaNA_1.04.02_1790_0033.json') as f:
+    gold_event_data = f.readlines()
+
+    
+
+# Use the manually configured gold chunk IDs
+gold_chunk_ids = GOLD_CHUNK_IDS
+
+
+
+pred_regions = [merge_annotations(ast.literal_eval(pred_event_data[i]), ast.literal_eval(entity_data[i])) for i in range(len(pred_event_data))]
+gold_regions = [merge_annotations(ast.literal_eval(gold_event_data[i]), ast.literal_eval(entity_data[i])) for i in range(len(gold_event_data))]
+
+# Merge small regions
+pred_regions = merge_small_regions(pred_regions, min_words=150)
+gold_regions = merge_small_regions(gold_regions, min_words=150)
+
+# Display
+for region_idx, (merged_pred, merged_gold) in enumerate(zip(pred_regions, gold_regions)):
+    display_region_with_buttons(merged_pred, merged_gold, '1790_ete', region_idx, gold_chunk_ids)
+    st.write("")
+    st.write("")
+
+
+
+# fourth doc
+
+st.header("Random document from inv. nr 3598")
+
+st.subheader("Document from ")
+st.markdown("### [See original doc here]()")
+
+
+# load predicted events and entities
+with open('predictions_snellius/NL-HaNA_1.04.02_3598_0055.json') as f:
+    pred_event_data = f.readlines()
+
+with open('predictions_snellius/NL-HaNA_1.04.02_3598_0055.json') as f:
+    entity_data = f.readlines()
+
+# load fake gold file
+with open('predictions_snellius/NL-HaNA_1.04.02_3598_0055.json') as f:
+    gold_event_data = f.readlines()
+
+    
+
+# Use the manually configured gold chunk IDs
+gold_chunk_ids = GOLD_CHUNK_IDS
+
+
+
+pred_regions = [merge_annotations(ast.literal_eval(pred_event_data[i]), ast.literal_eval(entity_data[i])) for i in range(len(pred_event_data))]
+gold_regions = [merge_annotations(ast.literal_eval(gold_event_data[i]), ast.literal_eval(entity_data[i])) for i in range(len(gold_event_data))]
+
+# Merge small regions
+pred_regions = merge_small_regions(pred_regions, min_words=150)
+gold_regions = merge_small_regions(gold_regions, min_words=150)
+
+# Display
+for region_idx, (merged_pred, merged_gold) in enumerate(zip(pred_regions, gold_regions)):
+    display_region_with_buttons(merged_pred, merged_gold, '3598_ete', region_idx, gold_chunk_ids)
+    st.write("")
+    st.write("")
+
 
 
 # Feedback section
