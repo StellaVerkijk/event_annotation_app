@@ -86,7 +86,7 @@ def count_event_annotations(data):
     events = data['events']
     count = 0
     for event in events:
-        if event.startswith('B-') and not is_entity_label(event[2:]):
+        if event.startswith('B-') and not is_entity_label(event[2:]) and not event=='B-None' and not event=='I-None':
             count += 1
     return count
 
@@ -230,7 +230,7 @@ def extract_annotations(data, annotation_type='event'):
     current_words = []
 
     for word, event in zip(words, events):
-        if event.startswith('B-'):
+        if event.startswith('B-') and event != 'B-None':
             if current_words and current_event:
                 label_type = current_event
                 is_entity = is_entity_label(label_type)
@@ -244,7 +244,7 @@ def extract_annotations(data, annotation_type='event'):
             current_event = event[2:]
             current_words = [word]
 
-        elif event.startswith('I-'):
+        elif event.startswith('I-') and event !='I-None':
             current_words.append(word)
 
         else:
