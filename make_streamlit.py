@@ -183,7 +183,7 @@ def convert_to_annotated_text(data):
     current_event_words = []
 
     for word, event in zip(words, events):
-        if event.startswith('B-'):
+        if event.startswith('B-') and event!='B-None':
             if current_text:
                 result.append(' '.join(current_text) + ' ')
                 current_text = []
@@ -197,7 +197,7 @@ def convert_to_annotated_text(data):
             current_event = event[2:]
             current_event_words = [word]
 
-        elif event.startswith('I-'):
+        elif event.startswith('I-') and event!='I-None':
             current_event_words.append(word)
 
         else:
