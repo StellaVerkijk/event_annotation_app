@@ -86,7 +86,7 @@ def count_event_annotations(data):
     events = data['events']
     count = 0
     for event in events:
-        if event.startswith('B-') and not is_entity_label(event[2:]) and not event=='B-None' and not event=='I-None':
+        if event.startswith('B-') and not is_entity_label(event[2:]) and event!='B-None' and event!='I-None':
             count += 1
     return count
 
