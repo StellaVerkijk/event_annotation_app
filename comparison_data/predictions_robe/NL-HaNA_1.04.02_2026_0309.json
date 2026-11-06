@@ -1,0 +1,163 @@
+{"words": ["boomen"], "events": ["O"]}
+{"words": ["Comen", "die", "die", "reets", "65", "59", "Jonge", "plantjes", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["hare", "tacken", "vrugten", "hebben", "geeven", "uijtgeset", "."], "events": ["O", "O", "O", "O", "B-HavingInPossession", "O", "O"]}
+{"words": ["10433", "."], "events": ["O", "O"]}
+{"words": ["Bomen", "P", ":", "r", "Transport", ".", ".", ".", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "3481", "."], "events": ["O", "O", "O"]}
+{"words": ["5923", "."], "events": ["O", "O"]}
+{"words": ["1029", "."], "events": ["O", "O"]}
+{"words": ["318", "'", "tdorp", "nallagamme", ",", "thuijn", "Siembala", "gaw", ":", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": [".64", "."], "events": ["O", "O"]}
+{"words": ["239", "."], "events": ["O", "O"]}
+{"words": ["15", "."], "events": ["O", "O"]}
+{"words": ["do", "do", "-", "-", "-", "-", "-", "-", "\u201e", "bogahaw", ":", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": [".", "."], "events": ["O", "O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["504", "."], "events": ["O", "O"]}
+{"words": ["209", "."], "events": ["O", "O"]}
+{"words": ["37", "."], "events": ["O", "O"]}
+{"words": ["750", ".", ".", "."], "events": ["O", "O", "O", "O"]}
+{"words": ["do", "509", "."], "events": ["O", "O", "O"]}
+{"words": ["140", "."], "events": ["O", "O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["649", ".", "."], "events": ["O", "O", "O"]}
+{"words": ["-", "\u201e", "d\u2013o", "-", "-", "-", "\u201e", "Ellebaddew-", "-", "-", "-", "155", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["-", "-", ".", "."], "events": ["O", "O", "O", "O"]}
+{"words": ["\u201e", "hiem", "balagodde", "-", "-", "-", "\u201e", "daddeluri", "legaw", ":", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["25", "."], "events": ["O", "O"]}
+{"words": ["780", "."], "events": ["O", "O"]}
+{"words": ["-", ".", ".", "."], "events": ["O", "O", "O", "O"]}
+{"words": ["\u201e", "gettemana", "-", "-", "-", "\u201e", "palliew", ".", ".", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "401", "."], "events": ["O", "O", "O"]}
+{"words": ["379", ".", "."], "events": ["O", "O", "O"]}
+{"words": [".", "."], "events": ["O", "O"]}
+{"words": ["-104", ":", "-", "-", "\u201e", "Aamboesawalle", "."], "events": ["O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["-", "."], "events": ["O", "O"]}
+{"words": ["\u201e", "diwoelgaw", ":", "-", "."], "events": ["O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "30", "."], "events": ["O", "O", "O"]}
+{"words": ["74", "."], "events": ["O", "O"]}
+{"words": ["-", ".", ".", "."], "events": ["O", "O", "O", "O"]}
+{"words": ["-", "-do", "32", ":", "-", ".do", "do", "-", ".", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "12", "."], "events": ["O", "O", "O"]}
+{"words": ["20", ".", "."], "events": ["O", "O", "O"]}
+{"words": ["-", "-", "-", ".", ".", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["do", "2557", "."], "events": ["O", "O", "O"]}
+{"words": ["-", "-", "\u201e", "hientjegoenne", ".", ".", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "hirigonegaw", ":", ".", ".", "."], "events": ["O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "1896", "."], "events": ["O", "O", "O"]}
+{"words": ["661", ".", "."], "events": ["O", "O", "O"]}
+{"words": ["-", "--", "31", ".", ".", "."], "events": ["O", "O", "O", "O", "O", "O"]}
+{"words": ["185", "."], "events": ["O", "O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["d", "=", "o", "\u2014", "-", "-", "-", "-", "\u201e", "honoegaw", ":", "-", "-", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["34", "."], "events": ["O", "O"]}
+{"words": ["110", "."], "events": ["O", "O"]}
+{"words": ["41", "."], "events": ["O", "O"]}
+{"words": ["de", "20", "."], "events": ["O", "O", "O"]}
+{"words": ["-", "-", "."], "events": ["O", "O", "O"]}
+{"words": ["\u201e", "do", "-", "-", "-", "-", "\u201e", "telemboegaw", ":", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": [".", "."], "events": ["O", "O"]}
+{"words": ["20", "."], "events": ["O", "O"]}
+{"words": ["-", ".", "."], "events": ["O", "O", "O"]}
+{"words": ["-", "3094", "."], "events": ["O", "O", "O"]}
+{"words": ["-", "-", "-", "\u201e", "oeddewackemoesle", "-", "."], "events": ["O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "diwoetgahaw", ":", ".", "."], "events": ["O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "2003", "."], "events": ["O", "O", "O"]}
+{"words": ["720", "."], "events": ["O", "O"]}
+{"words": ["371", "."], "events": ["O", "O"]}
+{"words": ["118", "."], "events": ["O", "O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["-", "."], "events": ["O", "O"]}
+{"words": ["\u201e", "diweelmoelle", ".", ".", "-", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "hoongahan", ":", "-", "-", "."], "events": ["O", "O", "O", "O", "O", "O"]}
+{"words": ["44", "."], "events": ["O", "O"]}
+{"words": ["68", "."], "events": ["O", "O"]}
+{"words": ["6", "."], "events": ["O", "O"]}
+{"words": ["195", "."], "events": ["O", "O"]}
+{"words": ["140", "."], "events": ["O", "O"]}
+{"words": ["110", "."], "events": ["O", "O"]}
+{"words": ["445", "."], "events": ["O", "O"]}
+{"words": ["-", ".", "-", "."], "events": ["O", "O", "O", "O"]}
+{"words": ["\u201e", "pallehien", "boene", "-", "-", "-", "\u201e", "beligawatte", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["62", "."], "events": ["O", "O"]}
+{"words": ["-", "190", "."], "events": ["O", "O", "O"]}
+{"words": ["-", "-", "-", "-252", "."], "events": ["O", "O", "O", "O", "O"]}
+{"words": ["-", "-", "\u201e", "mahoeladenie", "-", "-", "-", "\u201e", "doene", "mandelegaw:39", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["-", "-", "."], "events": ["O", "O", "O"]}
+{"words": ["\u201e", "oedejaale", "-", "-", "-", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "diwoelgaw", ":", ".", ".", "."], "events": ["O", "O", "O", "O", "O", "O"]}
+{"words": ["36", "."], "events": ["O", "O"]}
+{"words": ["\u2014", "."], "events": ["O", "O"]}
+{"words": ["130", "."], "events": ["O", "O"]}
+{"words": ["-", "."], "events": ["O", "O"]}
+{"words": ["\u201e", "mendijaale", "."], "events": ["O", "O", "O"]}
+{"words": ["-", "-", ".", "."], "events": ["O", "O", "O", "O"]}
+{"words": ["\u201e", "moerdegaw", ":", ".", "."], "events": ["O", "O", "O", "O", "O"]}
+{"words": ["30", "."], "events": ["O", "O"]}
+{"words": ["88", "."], "events": ["O", "O"]}
+{"words": ["12", "."], "events": ["O", "O"]}
+{"words": ["206", "."], "events": ["O", "O"]}
+{"words": ["-", ".", ".", "."], "events": ["O", "O", "O", "O"]}
+{"words": ["\u201e", "bogammoewe", "-", "-", "-", "-", "\u201e", "hettangaw", ":", ".", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["108", "."], "events": ["O", "O"]}
+{"words": ["-", "-", ".", "-98", "."], "events": ["O", "O", "O", "O", "O"]}
+{"words": ["260", "."], "events": ["O", "O"]}
+{"words": [".", "."], "events": ["O", "O"]}
+{"words": ["\u201e", "hackoereweele", "."], "events": ["O", "O", "O"]}
+{"words": ["-", "-", "\u201e", "diwoelgaw", ":", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "120", "."], "events": ["O", "O", "O"]}
+{"words": ["140", "."], "events": ["O", "O"]}
+{"words": [".", "."], "events": ["O", "O"]}
+{"words": ["-", "-150", "."], "events": ["O", "O", "O"]}
+{"words": ["-", "-", "."], "events": ["O", "O", "O"]}
+{"words": ["\u201e", "merdegodde", "-", "-", "-", "-", "do", ".", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["45", "6", "246", "."], "events": ["O", "O", "O", "O"]}
+{"words": ["-", ".", "."], "events": ["O", "O", "O"]}
+{"words": ["\u201e", "aggere", "herre", "-", "-", "-", "-", "\u201e", "hiem", "balagaw", ":", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["44", "."], "events": ["O", "O"]}
+{"words": ["-", ".", "-", "202", "."], "events": ["O", "O", "O", "O", "O"]}
+{"words": ["264", "."], "events": ["O", "O"]}
+{"words": ["-", "\u201e", "mandadoewe", "-", "-", "-", "\u201e", "Ereboedoegaw", ":", "-", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "160", "."], "events": ["O", "O", "O"]}
+{"words": ["104", "."], "events": ["O", "O"]}
+{"words": ["-", "-", "-:564", "."], "events": ["O", "O", "O", "O"]}
+{"words": ["-", "-", "\u201e", "wetem", "boewawa", "."], "events": ["O", "O", "O", "O", "O", "O"]}
+{"words": ["-", "\u201e", "soeriegaw", ":", ".", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "."], "events": ["O", "O"]}
+{"words": ["391", "."], "events": ["O", "O"]}
+{"words": ["101", "."], "events": ["O", "O"]}
+{"words": ["72", "."], "events": ["O", "O"]}
+{"words": ["do", "160", ":", "200", ".", "."], "events": ["O", "O", "O", "O", "O", "O"]}
+{"words": ["\u2014", "-", "-", "\u201e", "Taddekiri", "legaw", ".", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["-", "-", "7182", "."], "events": ["O", "O", "O", "O"]}
+{"words": ["'t", "hof", "wetemboewawa", "met", "het", "front", "na", "'t", "oosten", ",", "en", "genaamt", "seer", "wel", "gelegen", "ter", "bere", "van", "d", "'"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "B-BeingEmployed", "O", "O", "O"]}
+{"words": ["Ed", "=", "le", "heer", "Rumpf", ",", "ende", "ten", "nutte", "van", "d'E", ":"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["Compagnie", "verheeven", "."], "events": ["O", "B-BeingEmployed", "O"]}
+{"words": ["-", "-", "-", "-", "-", "-", ".", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["\u201e", "68211416", ":", "'", "tdorp", "maharehoede", ",", "th", ":", "gen", ":"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["t", "moete", "towatte", ".", ".", "."], "events": ["O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "1299", "."], "events": ["O", "O", "O"]}
+{"words": ["110", "."], "events": ["O", "O"]}
+{"words": ["-", ".", "."], "events": ["O", "O", "O"]}
+{"words": ["\u201e", "tamadoewe", ",", "\u201e", "hellegahaw", ":", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["30659", "."], "events": ["O", "O"]}
+{"words": ["bomen", "transporteere", ".", ".", "."], "events": ["O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "18502", "\u201e", "10382", "."], "events": ["O", "O", "O", "O", "O"]}
+{"words": ["1775", "."], "events": ["O", "O"]}
+{"words": ["130", "."], "events": ["O", "O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": [".", "."], "events": ["O", "O"]}
+{"words": ["\u201e", "361", "."], "events": ["O", "O", "O"]}
+{"words": ["88", "."], "events": ["O", "O"]}
+{"words": ["24", "."], "events": ["O", "O"]}
+{"words": ["30", "."], "events": ["O", "O"]}
