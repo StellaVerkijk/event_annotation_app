@@ -1,0 +1,28 @@
+{"words": ["als", "vooren", "in", "een", "ander", "pacquet", "17", "Iuny", "p", "\u201e", "r", "'t", "schip", "Midloo"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["Origineel", "briefje", "van", "den", "Commandeur", "der", "Jongst", "vertrokke"], "events": ["O", "O", "O", "O", "O", "O", "O", "B-Leaving"]}
+{"words": ["retour", "vloot", "m", "\u201e", "r", "Jan", "van", "Strien", "ende", "raad", "der", "verdere", "retourvloot", "aan", "haar", "Edelens", "den", "gouvern", "="], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["r", "generaal", "en", "raden", "van", "\u2014", "india"], "events": ["O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["gedateerd"], "events": ["O"]}
+{"words": ["den", "3", "maart", "aan", "Cabo", "de", "goede", "hoop", "-", "-", "-", "-", "-", "-", "-", "-", "-", "fol", "192", "Origineele", "briefje", "van", "en", "aan", "als", "vooren", "gedateerd", "den", "4", "maart", "1723", "-", "-", "-", "-", "-", "\u201e", "103", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["19", "."], "events": ["O", "O"]}
+{"words": ["Iuni", ":", "p", "\u201e", "r", "'t", "schip"], "events": ["O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["mneijnden"], "events": ["O"]}
+{"words": ["Origineel", "briefje", "vanden", "gouverneur", "en", "raad", "van", "Cabo", "de", "goede", "hoop", "aan", "haar", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["Edelens", "tot", "batavia", "gedateerd", "den", "29", "Maart", "1723", "-", "-", "-", "-", "-", "-", "-", "\u201e", "104", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["29", "_", "\u201e", "o", "\u201e", "\u201e", "D", "\u201e", "o", "Castricum", "register", "der", "papieren", "-", "-", "-", "-", "-", "\u201e", "107", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["brief", "van", "den", "gouverneur", "de", "Chavinnes", "en", "raad", "aan", "haar", "Edelens", "den", "gouvern", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["generaal", "en", "raden", "van", "Jndia", "tot", "batavia", "gedateerd", "den", "26", "april", "1723", "-", "-", "-", "-", "-", "\u201e", "116", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["Copia", "placcaat", "op", "den", "13", "October", "1722", "aan", "Cabo", ":", "de", "goede", "hoop", "geplubliceerd", "tegens", "brand", "en", "stranding", "van", "scheepen", "\u201e", "132", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "B-Production", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["biljet", "weegens", "den", "prijs", "en", "'t", "verkopen", "van", "Vleesen", "levendige", "schapen"], "events": ["O", "O", "O", "O", "O", "O", "B-Selling", "O", "O", "O", "O"]}
+{"words": ["\u201e", "140", "."], "events": ["O", "O", "O"]}
+{"words": ["Copia", "placcaat", "den", "10", "april", "1723", "aan", "\u201e", "Cabo", "de", "goede", "hoop", "gepubliceerd", "wegens", "'t", "slagten", "van", "'t", "Vee", "-", "-", "-", "-", "-", "\u201e", "142", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["Copia", "protest", "der", "Caabse", "burger", "slagters", "tegens", "dat", "placcaat", "in", "Caabsen", "rade", "gepresenteerd", ":"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["-", "-", "-", "-", "-", "-", "-", "-", "-", "\u201e", "147", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["consideratien", "vande", "heeren", "van", "beaumont", "del", "a", "fontaine", "en", "van", "Kervel", "wegens", "de", "Slagterien", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["-", "-", "-", "-", "-", "\u201e", "150", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["Copia", "Contract", "met", "gem", ":"], "events": ["O", "B-HavingContractualAgreement", "O", "O", "O"]}
+{"words": ["burgerClagters"], "events": ["O"]}
+{"words": ["'s", "Comps", "weegen", "aangegaan", "voor", "den", "tijd", "dan", "een", "Jaar", "--", "\u201e", "158", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["rapport", "van", "gecommitteerdens", "behelsende", "het", "andwoord", "vanden", "Engelse", "Capiteyn", "Joannes", "Chambre", "-", "-", "-", "-", "-", "-", "-", "\u201e", "164", "Lyste", "der", "geviste", "ankers", "aan", "Cabo", "de", "goede", "2hoop", "sederd"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["Ao", "1716", "tot", "a", ":o", "1723", "."], "events": ["O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["-", "-", "-", "-", "\u201e", "165"], "events": ["O", "O", "O", "O", "O", "O"]}

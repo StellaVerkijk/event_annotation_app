@@ -109,11 +109,11 @@ def extract_annotations(data):
     return annotations
 
 
-st.header("Gold data for events")
+st.header("ROBE predictions")
 
-st.subheader("Inventory number 3604: Missive sent from Batavia, 1782")
+st.subheader("Inventory number 2000, scan 0011")
 
-with open('gold/3604.json') as f:
+with open('comparison_data/predictions_robe/NL-HaNA_1.04.02_2000_0011.json') as f:
     data = f.readlines()
 
 regions = []
@@ -141,9 +141,11 @@ for region_idx, r in enumerate(regions):
             if st.button("✗", key=f"file1_rong_{region_idx}_{ann_idx}"):
                 st.session_state[f"file1_status_{region_idx}_{ann_idx}"] = "wrong"
 
-st.subheader("Inventory number 1812:  Missive from 1711")
+st.header("EtE predictions")
 
-with open('gold/1812.json') as f:
+st.subheader("Inventory number 2000, scan 0011")
+
+with open('comparison_data/predictions_ete/NL-HaNA_1.04.02_2000_0011.json') as f:
     data = f.readlines()
 
 regions = []
