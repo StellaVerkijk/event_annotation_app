@@ -126,21 +126,6 @@ for line in data:
 for region_idx, r in enumerate(regions):
     annotated_text(r)  # shows complete text with labels
 
-    # Use a unique key combining region index and annotation index
-    for ann_idx, (text, label) in enumerate(annotations_per_region[region_idx]):
-        col1, col2, col3 = st.columns([3, 1, 1])
-
-        with col1:
-            annotated_text((text, label))
-
-        with col2:
-            if st.button("✓", key=f"file1_correct_{region_idx}_{ann_idx}"):
-                st.session_state[f"file1_status_{region_idx}_{ann_idx}"] = "correct"
-
-        with col3:
-            if st.button("✗", key=f"file1_rong_{region_idx}_{ann_idx}"):
-                st.session_state[f"file1_status_{region_idx}_{ann_idx}"] = "wrong"
-
 st.header("EtE predictions")
 
 st.subheader("Inventory number 2000, scan 0011")
@@ -158,17 +143,41 @@ for line in data:
 for region_idx, r in enumerate(regions):
     annotated_text(r)  # shows complete text with labels
 
-    # Use a unique key combining region index and annotation index
-    for ann_idx, (text, label) in enumerate(annotations_per_region[region_idx]):
-        col1, col2, col3 = st.columns([3, 1, 1])
 
-        with col1:
-            annotated_text((text, label))
 
-        with col2:
-            if st.button("✓", key=f"file2_correct_{region_idx}_{ann_idx}"):
-                st.session_state[f"file2_status_{region_idx}_{ann_idx}"] = "correct"
+st.header("ROBE predictions")
 
-        with col3:
-            if st.button("✗", key=f"file2_wrong_{region_idx}_{ann_idx}"):
-                st.session_state[f"file2_status_{region_idx}_{ann_idx}"] = "wrong"
+st.subheader("Inventory number 2000, scan 1230")
+
+with open('comparison_data/predictions_robe/NL-HaNA_1.04.02_2000_1230.json') as f:
+    data = f.readlines()
+
+regions = []
+annotations_per_region = []
+
+for line in data:
+    regions.append(convert_to_annotated_text(ast.literal_eval(line)))
+    annotations_per_region.append(extract_annotations(ast.literal_eval(line)))
+
+for region_idx, r in enumerate(regions):
+    annotated_text(r)  # shows complete text with labels
+
+
+
+st.header("EtE predictions")
+
+st.subheader("Inventory number 2000, scan 1230")
+
+with open('comparison_data/predictions_ete/NL-HaNA_1.04.02_2000_1230.json') as f:
+    data = f.readlines()
+
+regions = []
+annotations_per_region = []
+
+for line in data:
+    regions.append(convert_to_annotated_text(ast.literal_eval(line)))
+    annotations_per_region.append(extract_annotations(ast.literal_eval(line)))
+
+for region_idx, r in enumerate(regions):
+    annotated_text(r)  # shows complete text with labels
+
