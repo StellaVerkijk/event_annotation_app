@@ -111,7 +111,7 @@ st.header("Gold data for events")
 
 st.subheader("Inventory number 3604: Missive sent from Batavia, 1782")
 
-with open('3604.json') as f:
+with open('gold/3604.json') as f:
     data = f.readlines()
 
 regions = []
@@ -142,7 +142,7 @@ for region_idx, r in enumerate(regions):
 
 st.subheader("Inventory number 1812:  Missive from 1711")
 
-with open('1812.json') as f:
+with open('gold/1812.json') as f:
     data = f.readlines()
 
 regions = []
