@@ -256,3 +256,41 @@ for line in data:
 
 for region_idx, r in enumerate(regions):
     annotated_text(r)  # shows complete text with labels
+
+
+
+st.header("ROBE predictions")
+
+st.subheader("Inventory number 8045, scan 0008")
+
+with open('comparison_data/predictions_robe/NL-HaNA_1.04.02_8045_0008.json') as f:
+    data = f.readlines()
+
+regions = []
+annotations_per_region = []
+
+for line in data:
+    regions.append(convert_to_annotated_text(ast.literal_eval(line)))
+    annotations_per_region.append(extract_annotations(ast.literal_eval(line)))
+
+for region_idx, r in enumerate(regions):
+    annotated_text(r)  # shows complete text with labels
+
+
+
+st.header("EtE predictions")
+
+st.subheader("Inventory number 8045, scan 0008")
+
+with open('comparison_data/predictions_ete/NL-HaNA_1.04.02_8045_0008.json') as f:
+    data = f.readlines()
+
+regions = []
+annotations_per_region = []
+
+for line in data:
+    regions.append(convert_to_annotated_text(ast.literal_eval(line)))
+    annotations_per_region.append(extract_annotations(ast.literal_eval(line)))
+
+for region_idx, r in enumerate(regions):
+    annotated_text(r)  # shows complete text with labels
