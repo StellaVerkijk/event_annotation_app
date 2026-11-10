@@ -301,7 +301,7 @@ st.header("ROBE predictions")
 
 st.subheader("Inventory number 1147")
 
-with open('comparison_data/predictions_robe/NL-HaNA_1.04.02_1147_0859.json') as f:
+with open('comparison_data/predictions_robe/NL-HaNA_1.04.02_1147_0836.json') as f:
     data = f.readlines()
 
 regions = []
@@ -314,21 +314,7 @@ for line in data:
 for region_idx, r in enumerate(regions):
     annotated_text(r)  # shows complete text with labels
 
-with open('comparison_data/predictions_robe/NL-HaNA_1.04.02_1147_0860.json') as f:
-    data = f.readlines()
-
-regions = []
-annotations_per_region = []
-
-for line in data:
-    regions.append(convert_to_annotated_text(ast.literal_eval(line)))
-    annotations_per_region.append(extract_annotations(ast.literal_eval(line)))
-
-for region_idx, r in enumerate(regions):
-    annotated_text(r)  # shows complete text with labels
-
-
-with open('comparison_data/predictions_robe/NL-HaNA_1.04.02_1147_0861.json') as f:
+with open('comparison_data/predictions_robe/NL-HaNA_1.04.02_1147_0837.json') as f:
     data = f.readlines()
 
 regions = []
@@ -342,7 +328,7 @@ for region_idx, r in enumerate(regions):
     annotated_text(r)  # shows complete text with labels
 
 
-with open('comparison_data/predictions_robe/NL-HaNA_1.04.02_1147_0862.json') as f:
+with open('comparison_data/predictions_robe/NL-HaNA_1.04.02_1147_0838.json') as f:
     data = f.readlines()
 
 regions = []
@@ -356,7 +342,7 @@ for region_idx, r in enumerate(regions):
     annotated_text(r)  # shows complete text with labels
 
 
-with open('comparison_data/predictions_robe/NL-HaNA_1.04.02_1147_0863.json') as f:
+with open('comparison_data/predictions_robe/NL-HaNA_1.04.02_1147_0843.json') as f:
     data = f.readlines()
 
 regions = []
@@ -368,15 +354,13 @@ for line in data:
 
 for region_idx, r in enumerate(regions):
     annotated_text(r)  # shows complete text with labels
-
-
 
 
 st.header("EtE predictions")
 
 st.subheader("Inventory number 1147")
 
-with open('comparison_data/predictions_ete/NL-HaNA_1.04.02_1147_0859.json') as f:
+with open('comparison_data/predictions_ete/NL-HaNA_1.04.02_1147_0836.json') as f:
     data = f.readlines()
 
 regions = []
@@ -389,7 +373,7 @@ for line in data:
 for region_idx, r in enumerate(regions):
     annotated_text(r)  # shows complete text with labels
 
-with open('comparison_data/predictions_ete/NL-HaNA_1.04.02_1147_0860.json') as f:
+with open('comparison_data/predictions_ete/NL-HaNA_1.04.02_1147_0837.json') as f:
     data = f.readlines()
 
 regions = []
@@ -402,7 +386,7 @@ for line in data:
 for region_idx, r in enumerate(regions):
     annotated_text(r)  # shows complete text with labels
 
-with open('comparison_data/predictions_ete/NL-HaNA_1.04.02_1147_0861.json') as f:
+with open('comparison_data/predictions_ete/NL-HaNA_1.04.02_1147_0838.json') as f:
     data = f.readlines()
 
 regions = []
@@ -415,20 +399,7 @@ for line in data:
 for region_idx, r in enumerate(regions):
     annotated_text(r)  # shows complete text with labels
 
-with open('comparison_data/predictions_ete/NL-HaNA_1.04.02_1147_0862.json') as f:
-    data = f.readlines()
-
-regions = []
-annotations_per_region = []
-
-for line in data:
-    regions.append(convert_to_annotated_text(ast.literal_eval(line)))
-    annotations_per_region.append(extract_annotations(ast.literal_eval(line)))
-
-for region_idx, r in enumerate(regions):
-    annotated_text(r)  # shows complete text with labels
-
-with open('comparison_data/predictions_ete/NL-HaNA_1.04.02_1147_0863.json') as f:
+with open('comparison_data/predictions_ete/NL-HaNA_1.04.02_1147_0843.json') as f:
     data = f.readlines()
 
 regions = []
