@@ -1,0 +1,42 @@
+{"words": ["366", "Extract", "uijt", "seeckeren"], "events": ["O", "O", "O", "O"]}
+{"words": ["Brief", ",", "gevonden", "onder", "de", "naergelate", "pampieren", "van", "za", ":"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["S", ":"], "events": ["O", "O"]}
+{"words": ["r"], "events": ["O"]}
+{"words": ["Gerrit", "Holscher"], "events": ["O", "O"]}
+{"words": ["in", "zijn", "leven", "geweest"], "events": ["O", "O", "O", "B-BeingAtAPlace"]}
+{"words": ["opperCoopman", "19", "gen"], "events": ["O", "O", "O"]}
+{"words": ["Naervolgende", "uijt", "de", "naergelaten"], "events": ["O", "O", "O", "B-Transportation"]}
+{"words": ["165"], "events": ["O"]}
+{"words": ["Comptanten", "van", "Za", ":"], "events": ["O", "O", "O", "O"]}
+{"words": ["S", ":"], "events": ["O", "O"]}
+{"words": ["t", "Gerrit", "holscher", "gewesen", "oppercoopman", ",", "soo", "over"], "events": ["O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["'t", "doen", "begraven", "vanden", "selver", ",", "pee", "bij", "als", "andersints", "op", "louhoe", "betaelt", "aen", "eenigh", "Volck", "die", "in", "sijn", "sieckte", "gewaect", "hebben", ",", "R.", "3", "."], "events": ["O", "O", "B-BeingDead", "O", "O", "O", "O", "O", "O", "O", "O", "O", "B-Giving", "O", "O", "O", "O", "O", "O", "O", "B-BeingAtAPlace", "O", "O", "O", "O", "O"]}
+{"words": ["behoore", "Voorde"], "events": ["O", "O"]}
+{"words": ["dootkist", "van", "maecken", "-", "-", "-", "-", "-", "-", "-", "\u201e", "2", "."], "events": ["B-BeingDead", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["kom", "voor", "'t", "maecken", "van", "zijn", "Graff", "-", "-", "-", "-", "-", "\u201e", "2", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["aenden", "tamboer", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "aende", "dragers", "-", "-", "-", "-", "-", "-", "-", "4", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["aenden"], "events": ["O"]}
+{"words": ["Serq", "."], "events": ["O", "O"]}
+{"words": ["t", "Jacob", "andriesz", "voor", "1/3", "costgelt", "\u201e", "40", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "16", "."], "events": ["O", "O", "O"]}
+{"words": ["aenden"], "events": ["O"]}
+{"words": ["Schoenmaecker", "voor", "2", "paer"], "events": ["O", "O", "O", "O"]}
+{"words": ["schoenen", "-", "-", ".", "."], "events": ["O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "1\u00bd", "aerden"], "events": ["O", "O", "O"]}
+{"words": ["swaertveger"], "events": ["O"]}
+{"words": ["\u201e", "3", "."], "events": ["O", "O", "O"]}
+{"words": ["\u0192", "Somma", "N", ":o", "71\u00bd", "8", "."], "events": ["O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["aelte"], "events": ["O"]}
+{"words": ["\u201e", "swael", "goede", "corven"], "events": ["O", "O", "O", "O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": ["11", "."], "events": ["O", "O"]}
+{"words": ["\u00bd", "last", "w", ":"], "events": ["O", "O", "O", "O"]}
+{"words": ["Javaense"], "events": ["O"]}
+{"words": ["11", ":"], "events": ["O", "O"]}
+{"words": ["Rijs", "in", "10", "godaij", "sacken", "genaemt", "get.", "G", ":", "H", ":", "cost", "met", "eenige", "ongelden", "\u201e", "27", "40", "Rr", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["comp.", "die", "1D", "uijt", "het", "particulier", "overgesonden", "gelieft", "in", "te", "houden", "\u201e", "40", "."], "events": ["O", "O", "O", "O", "O", "O", "B-Translocation", "O", "B-Getting", "O", "B-Getting", "O", "O", "O"]}
+{"words": ["adi-", "dito"], "events": ["O", "O"]}
+{"words": ["soo", "veel", "om", "desen", "te", "sluijten", "bij", "tsloth", "op", "Leden"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["schuldigh", "blijve", "dat", "a", "1", "pro", "cento", "onder", "ons", "houde", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "B-HavingInPossession", "O", "O"]}
+{"words": ["\u201e", "1900", "Somma", "Ba", "."], "events": ["O", "O", "O", "O", "O"]}
+{"words": ["2024", "1/8"], "events": ["O", "O"]}

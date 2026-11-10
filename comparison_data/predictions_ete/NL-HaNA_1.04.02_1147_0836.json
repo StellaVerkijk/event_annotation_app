@@ -1,0 +1,26 @@
+{"words": [], "events": []}
+{"words": ["Amboijna", "int", "Casteel", "Den", "Boedel", "van", "Ia", ":", "Gerrit", "Holscher", "in", "zijn", "leven", "geweest", "opper", "Coopman", "Debet", "soo", "veel", "comt", "te", "bedragen"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "B-BeingAtAPlace", "O", "O", "B-HavingInPossession", "O", "O", "O", "O", "O"]}
+{"words": ["'t", "geen", "uijt", "den", "overleden", "zijne", "naergelaten", "goederen", "bij", "openbare", "Penditie", "geprocedeert", "is", ",", "te", "weten", "bedraecht", "'t", "geen", "bij", "eenige", "Compes", "dienaren", "gemijnt", "ende", "op", "rek", "."], "events": ["O", "O", "O", "O", "O", "O", "B-Transportation", "O", "O", "O", "O", "B-Getting", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "B-Buying", "O", "O", "O", "O"]}
+{"words": ["e", "vanden", "overleden", "goetgedaen", "is", "-", "-", "-", "-", "-", "-", "-", "R", ":", "s", "187", "."], "events": ["O", "O", "O", "B-FinancialTransaction", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["6\u00bc", "soo", "veel", "van", "d.", "e", "goederen"], "events": ["O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["Comptant", "becomen"], "events": ["O", "B-Getting"]}
+{"words": ["ene", "aende", "Compe", "."], "events": ["O", "O", "O", "O"]}
+{"words": ["omme", "p", "r", "wissel", "onder", "meerder", "partie", "naer", "Bat", ":", "a", "geremitteert", "te", "werden", ",", "getelt", "is", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "B-Transportation", "O", "O", "O", "B-Giving", "O", "O"]}
+{"words": ["-", "-", "-", "-", "-", "-", "-", "-", "\u201e", "575\u00bd", "\u0192", "2451\u00bc"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["'t", "geen", "van", "eenige", "uijtstaende", "schulden", "gejnt"], "events": ["O", "O", "O", "O", "O", "B-Trade", "B-Getting"]}
+{"words": ["ende", "aende", "Comp.", "e", "ten", "fijne", "als", "vooren", "overhandicht", "is", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "B-Getting", "O", "O"]}
+{"words": ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "D'naer", "volgende", "uijtstaende", "schulden", ",", "zijn", "noch", "onbetaelt", "ende", "moeten", "in", "toecomende", "gevoirdert", "werden", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "B-BeingInDebt", "O", "O", "O", "O", "B-BeingDamaged", "O", "O"]}
+{"words": ["Quotie", "Chineesz", "in", "spetie", "R", ":", "a", "25", "zijn", "Courant", "-", "-", "-", "-", "-", "-", "-", "-", "R", "29", ":", "Santo", "d.", "o", "in", "spetie", "R", ":", "50", "comt", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["58", "8/3"], "events": ["O", "O"]}
+{"words": ["Orangcaij", "mouda", "op", "louhoe", "R", ":", "a", "100", "in", "spetie", "zijn", "courant", "\u201e", "116", "1/3", "d'Naervolgende", "Comptanten", "bij", "den", "overleden", "gevonden", ",", "welcke", "mede", "hier", "aende", "Comp.", "e", "getelt", "ende", "bij", "Wissel"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "B-HavingInPossession", "O", "O", "O", "O", "O", "O", "O", "B-Transportation", "O", "O", "O"]}
+{"words": ["naer", "Bat.a", "overgemaect", "zijn", ",", "namentlijk", "2600", "R", ":"], "events": ["O", "O", "B-Transportation", "O", "O", "O", "O", "O", "O"]}
+{"words": ["a", "in", "spetie", "spaense", "munt", "renderen", "in", "paijement", "a", "1", "1/\u00bd", "R.", "a", "Ider", "N"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["3033", "1/3", "200"], "events": ["O", "O", "O"]}
+{"words": ["\u201e", "enckelde", "rijcxdaelders", "bedragen", "als", "Vooren", "-", "-", "-", "-", "-", "/", "233", "1/3", "2800", "Ra", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["in", "spetie", "renderen", "a", "1\u00bd", "Ro", "."], "events": ["O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["Bdr", "."], "events": ["O", "O"]}
+{"words": ["Ro", "."], "events": ["O", "O"]}
+{"words": ["3266", "2/3", "Noch", "in", "paijement", "7", "1\u00bd", "bedragen"], "events": ["O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["de", "gevonden", "Comptanten", "bij", "den", "overleden", "\u201e", "3338", "5/8"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["Transportere", "voort", "R", "a", "6162", "168\u00bd"], "events": ["O", "O", "O", "O", "O", "O"]}
+{"words": ["2048"], "events": ["O"]}

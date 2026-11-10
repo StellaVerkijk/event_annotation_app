@@ -1,0 +1,20 @@
+{"words": [], "events": []}
+{"words": ["Victoria"], "events": ["O"]}
+{"words": ["anno", "1644", "Comt", "P", ":", "r", "transport", "van", "d'ander", "zijde"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["Ra", "291\u00bd.", "Comt", "suijver", "om", "desen", "te", "sluijten", ",", "als", "volght", "'t", "geen", "soo", "bij", "den", "overleden", "in", "Comptant", "bevonden", ",", "als", "vande", "venditie"], "events": ["O", "O", "O", "O", "O", "O", "O", "B-FinancialTransaction", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "B-Getting"]}
+{"words": ["ende", "eenige", "uijt", "staende", "Schulden", "ontfangen", ",", "ende", "hier", "aende", "Comp.", "e", "omme", "p.", "r", "wissel", "naer", "Bat", ":", "a", "geremitteert", "te", "werden", ",", "boven", "alle", "oncosten"], "events": ["O", "O", "O", "O", "O", "B-Getting", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "B-Translocation", "O", "O", "O", "O", "O", "O"]}
+{"words": ["suijver", "getelt", "is", "-"], "events": ["O", "B-FinancialTransaction", "O", "O"]}
+{"words": ["Ro", "."], "events": ["O", "O"]}
+{"words": ["3790", "2/3", "bedraecht"], "events": ["O", "O", "O"]}
+{"words": ["'t", "geen", "noch", "wegens", "eenige", "uijtstaende", "schulden"], "events": ["O", "O", "O", "O", "O", "O", "B-BeingInDebt"]}
+{"words": ["uijtstadt"], "events": ["O"]}
+{"words": ["ende", "in", "toecomende", "getjundt", "sal", "werden", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "\u201e", "204", "1/6", "soo", "veel", "den", "overleden", ",", "soo", "aen", "verdiende", "gagie", ",", "als", "'t", "geen", "eenige", "Compes", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["dienaren", "bij", "Penditie", "gemijnt", "ende", "op", "des", "selffs", "rek", "."], "events": ["O", "O", "O", "B-Selling", "O", "O", "O", "O", "O", "O"]}
+{"words": ["e", "overgeset", "is", ",", "bij", "'t", "sloth", "der", "silver", "te", "goede", "comt", "\u201e", "2128", "1/16", "6123", "1/8", "Somma", "R", ":", "a", "6414", "1/48", "geleuideert", "ende", "gesloten", "."], "events": ["O", "B-FinancialTransaction", "O", "O", "O", "O", "O", "O", "O", "O", "B-FinancialTransaction", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "B-Getting", "O", "B-Transportation", "O"]}
+{"words": ["ten", "overstaen", "ecomtteerden", "van", "d", "'", "E", ":", "H", ":", "r", "Gouvern", ":", "r", "Pamboyna", "in't", "Casteel"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["Vicim", "September"], "events": ["O", "O"]}
+{"words": ["anno", "1644", "was", "onderteeckent", "Cornelis", "W", ":", "van", "Outhoorn", ",", "Bun", "Jan", "Outgersz", ",", "lagerstont", "mij", "present", ",", "Dirck", "Groenhout"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["Secretaris", "Collatie", "is", "dese", "met", "Zijne", "que", "ipa", "van", "Woorde", "tot", "Woorde", "accorderende", "mboijna", "adi", "8en", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["septemb", "."], "events": ["O", "O"]}
+{"words": ["1644"], "events": ["O"]}
+{"words": ["Om", "Coenhout", "Secrts"], "events": ["O", "O", "O"]}
