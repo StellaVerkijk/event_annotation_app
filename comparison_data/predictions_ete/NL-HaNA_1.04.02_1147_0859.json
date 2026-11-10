@@ -1,0 +1,247 @@
+{"words": [], "events": []}
+{"words": ["2360", "."], "events": ["O", "O"]}
+{"words": ["8", "Coppen"], "events": ["O", "O"]}
+{"words": ["Per", "Transport", "f", "378911"], "events": ["O", "O", "O", "O"]}
+{"words": ["394", "\u2014", "114", "1065", "836", "5120", "313"], "events": ["O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["Op", "den", "Hoeck", "van", "Cheijt"], "events": ["O", "O", "O", "O", "O"]}
+{"words": ["Hendrick", "Iansz", ":"], "events": ["O", "O", "O"]}
+{"words": ["v", ":", "Haerlem", "serq", "."], "events": ["O", "O", "O", "O", "O"]}
+{"words": ["ts"], "events": ["O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": ["22", "\u2014", "\u201e"], "events": ["O", "O", "O"]}
+{"words": ["4", "-", "\u201e", "-", "."], "events": ["O", "O", "O", "O", "O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": [".", "."], "events": ["O", "O"]}
+{"words": ["frans", "Harmansz", "rost", "onderbarbier", "\u201e", "20", "\u2014", "\u201e", "4", "\u201e", "-", "\u201e", "-", "-", "\u201e", "-", "-", "\u201e", "-", "-", "\u201e", "-", "-", "hans", "alberts", "v", ":"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["Franckend", "."], "events": ["O", "O"]}
+{"words": ["Corporl", "\u201e", "16", "\u2014", "\u201e"], "events": ["O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "4"], "events": ["O", "O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": [".", "."], "events": ["O", "O"]}
+{"words": ["\u201e", "8", "\u201e", "40", "Ian", "Eijckenboer", "van", "Calis", "adels", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "14", "\u2013", "\u201e", ".", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["Pieter", "Wouters", "knol", "van", "delft", "do", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "10-", "\u201e", ".", "\u201e", ".", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["\u201e", "6\u201e40"], "events": ["O", "O"]}
+{"words": ["Baerent"], "events": ["O"]}
+{"words": ["scholt", "vas"], "events": ["O", "O"]}
+{"words": ["Loreijnns", "dittoJohannes"], "events": ["O", "O"]}
+{"words": ["le"], "events": ["O"]}
+{"words": ["Seburs", "van", "Middelb"], "events": ["O", "O", "O"]}
+{"words": ["dodaniel"], "events": ["O"]}
+{"words": ["Schick", "van", "thuijs", "te", "wel", "do", "."], "events": ["O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["Jan", "Segerman", "van", "Witrecht", "do", ".."], "events": ["O", "O", "O", "O", "O", "O"]}
+{"words": ["Joris", "pieters", "van", "arrlwul", "soldt", "."], "events": ["O", "O", "O", "O", "O", "O"]}
+{"words": ["Eldert", "Elderts", "van", "Aerhoelen"], "events": ["O", "O", "O", "O"]}
+{"words": ["d.", "Carsten", "switsJouw", ":"], "events": ["O", "O", "O", "O"]}
+{"words": ["van", "Straellond", "."], "events": ["O", "O", "O"]}
+{"words": ["\u201e", "9", "\u201e", "\u2014", "\u201e", ".", ".", ".", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": [".", "."], "events": ["O", "O"]}
+{"words": ["\u201e", "6"], "events": ["O", "O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": ["40", "bondewijs", "Lindemas", "v", ":", "Ossenbrugge", "."], "events": ["O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "99", "\u201e", "-", "\u201e", "-", "-", "\u201e", "\u201e", ".", ".", ".", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "6"], "events": ["O", "O"]}
+{"words": ["\u201e", "40", "dirck"], "events": ["O", "O", "O"]}
+{"words": ["florisz", ":", "van", "Wormer", "ditto", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "9"], "events": ["O", "O"]}
+{"words": ["\u201e", "-", "\u201e", "-", "."], "events": ["O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "-", "\u201e", ".", ".", "\u201e", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "6", "\u201e", "40", "."], "events": ["O", "O", "O", "O", "O"]}
+{"words": ["Thomas", "Huwes", "van", "glosterschier", "d.", "o.", "."], "events": ["O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "9"], "events": ["O", "O"]}
+{"words": ["\u201e", "-", "\u201e", "."], "events": ["O", "O", "O", "O"]}
+{"words": ["\u201e", "-", "\u201e", "-", "-", "\u201e", ".", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "6", "\u201e", "40", "Hans", "Hendricks", "van", "dreesin", "ditto", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "9\u201e-", "\u201e", ".", "."], "events": ["O", "O", "O", "O", "O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": [".", "."], "events": ["O", "O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["\u201e", "6", "\u201e", "401", "Huijgh", "Gerrits", "van", "Haerlem", "do", ".", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "9\u201e-", "\u201e", ".", "."], "events": ["O", "O", "O", "O", "O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": [".", "."], "events": ["O", "O"]}
+{"words": ["\u201e", "-", "Jaspar", "vander", "Beeck", "v", ":", "Gendt", "do", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "9"], "events": ["O", "O"]}
+{"words": ["\u201e", "\u2014", "\u201e", "."], "events": ["O", "O", "O", "O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["\u201e", "6"], "events": ["O", "O"]}
+{"words": ["\u201e", "40", "Iueriaen", "Gedenaghs", "v", ":", "dantswijck", "d", "\u201e", "o", "9", "\u201e", "\u2014", "\u201e", "-", "-", "\u201e", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["-", ".", "\u201e"], "events": ["O", "O", "O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["\u201e", "6", "\u201e", "40", "Hendrick", "Jansz", ":", "Cramer", "v", ":"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["Oldenb", "."], "events": ["O", "O"]}
+{"words": ["\u201e", "9", "\u201e", "\u201e", "-", "."], "events": ["O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": [".", "."], "events": ["O", "O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["\u201e", "6", "\u201e", "40", "Sijmon", "Jacobs", "van", "Jilp", "bolschieter", "-", "\u201e", "15", "\u201e", "\u201e", "-", "-", "4", "\u201e", ".", ".", ".", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "8", "\u201e", "40"], "events": ["O", "O", "O", "O"]}
+{"words": ["andries", "Jacobs", "van", "hitlandt", "do", "."], "events": ["O", "O", "O", "O", "O", "O"]}
+{"words": [".", "."], "events": ["O", "O"]}
+{"words": ["\u201e", "12\u201e-", "\u201e", ".", "."], "events": ["O", "O", "O", "O", "O"]}
+{"words": ["4", "\u201e", ".", "."], "events": ["O", "O", "O", "O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": [".", "."], "events": ["O", "O"]}
+{"words": ["\u201e", "8", "\u201e", "40"], "events": ["O", "O", "O", "O"]}
+{"words": ["Jacob", "davits", "van", "Lubeeck", "ditto", ".", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "12\u201e-", "\u201e", "."], "events": ["O", "O", "O", "O"]}
+{"words": ["4", ".", ".", ".", ".", "."], "events": ["O", "O", "O", "O", "O", "O"]}
+{"words": ["8/40"], "events": ["O"]}
+{"words": ["Inde", "Negrij"], "events": ["O", "O"]}
+{"words": ["Mamalo"], "events": ["O"]}
+{"words": ["Jeuriaen"], "events": ["O"]}
+{"words": ["Colle", "e", ":", "volveldt", "C", ":"], "events": ["O", "O", "O", "O", "O", "O"]}
+{"words": ["v", ":", "adelbdaniel", "Cuva", "van", "Baern"], "events": ["O", "O", "O", "O", "O", "O"]}
+{"words": ["adelborst", "\u201e", "10\u201e-", "\u201e", "."], "events": ["O", "O", "O", "O", "O"]}
+{"words": ["\u201e", ".", ".", "."], "events": ["O", "O", "O", "O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": [".", "."], "events": ["O", "O"]}
+{"words": ["\u201e", "6", "\u201e", "40", "do", "Jaecques", "michiels", "v", ":", "valentchijn", "do", "\u201e", "10\u201e\u2014\u201e-", "\u201e", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["\u201e", "6", "\u201e", "40", "Pieter", "van", "Telovas", "loxeijne", "do", ".", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "10\u201e-", "."], "events": ["O", "O", "O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["asmus"], "events": ["O"]}
+{"words": ["Hartwigh", "v", ":"], "events": ["O", "O", "O"]}
+{"words": ["Slensburgh", "-", "-", "\u201e", "10", "\u201e", "-", "-", "-", "\u201e", ".", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "-", "-", "pouwel", "dume", "van", "rijssel", "soldaet", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "9"], "events": ["O", "O"]}
+{"words": ["\u201e", "-", "-", "-", "\u201e", "\u201e", "-", "-", "\u201e", "-", "-", "Claes", "Hendricks", "van", "Evelgum", "-", "-", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "9\u201e-", ".", ".", "..", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": [".", "."], "events": ["O", "O"]}
+{"words": ["Otthoe", "roelandts", "van", "Nuro", "ditto", ".", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "9\u201e-", "."], "events": ["O", "O", "O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": [".", "."], "events": ["O", "O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["\u201e", "6\u201e40"], "events": ["O", "O"]}
+{"words": ["Eldert", "Arents", "van", "Gorkum"], "events": ["O", "O", "O", "O"]}
+{"words": ["ditto", "-", "\u201e", "9", "\u201e", "\u2014", "\u201e", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["\u201e", "6", "\u201e", "40", "pieter", "maertensz", ":", "van", "Wttrecht", "d", "o", "\u201e", "9", "\u201e", "-", "\u201e", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": [".", "."], "events": ["O", "O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["\u201e", "6", "\u201e", "40"], "events": ["O", "O", "O", "O"]}
+{"words": ["Cornelis", "Frans", "van", "Amersfordt", "."], "events": ["O", "O", "O", "O", "O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["\u201e", "9"], "events": ["O", "O"]}
+{"words": ["\u201e", "-", "\u201e", "-", "\u201e", ".", "-", "\u201e", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["Inde", "sterckte", "onder", "Capaha"], "events": ["O", "O", "O", "O"]}
+{"words": ["Gijsbertsz", "Hendricks", "moerlagh", "vaend", "\u201e", "o", "\u201e", "40", "\u201e", "\u2014", "\u201e", "6", "\u201e", "-", "4"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "-", "-", "\u201e", "-", "-", "\u201e", "-"], "events": ["O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": [".", "."], "events": ["O", "O"]}
+{"words": ["Dans", "leer", "van", "misveldt", "sergiant", "."], "events": ["O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "20", "\u201e", "\u2014", "\u201e", "."], "events": ["O", "O", "O", "O", "O", "O"]}
+{"words": ["4", ":", "\u2014", "\u201e", "-", "."], "events": ["O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", ".", ".", "."], "events": ["O", "O", "O", "O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": [".", "."], "events": ["O", "O"]}
+{"words": ["-", "Carel", "daniels", "van", "haerlem", "d.o", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "22", "\u201e", "-", "\u201e", "4", "-", "\u201e", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["servaes", "v", ":"], "events": ["O", "O", "O"]}
+{"words": ["Beesten", "Corp", ":", "l", "vas", "adels", "\u201e", "t", "\u201e", "16", "\u201e", "\u2014", "\u201e", "4", "-", "\u201e", "-", "-", "\u201e", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["-", "\u201e", ".", ".", "."], "events": ["O", "O", "O", "O", "O"]}
+{"words": ["pieter", "rijcks", "van", "delft", "provisione", "."], "events": ["O", "O", "O", "O", "O", "O"]}
+{"words": ["all", "\u201e", "r"], "events": ["O", "O", "O"]}
+{"words": ["Huijbert", "Adamsz"], "events": ["O", "O"]}
+{"words": [":", "van", "lonnen", "barbier", "\u201e", "22\u201e-", "\u201e", "4", "-", "\u201e", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "\u201e", "."], "events": ["O", "O", "O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["-", "\u201e", ".", "."], "events": ["O", "O", "O", "O"]}
+{"words": ["Pieter", "Iansz", ":", "Moutkas", "v", ":", "delff", "Corp", "\u201e", "l", "16\u201e-", "\u201e", ".", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "4", ".", ".", "."], "events": ["O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "."], "events": ["O", "O"]}
+{"words": ["\u201e", "8", "\u201e", "40", "6", "\u201e", "40", "10", "\u2014", "\u201e", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["\u201e", "6", "\u201e", "40", "6", "\u201e", "40", "10", "\u2014", "\u201e", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "\u201e", ".", "."], "events": ["O", "O", "O", "O"]}
+{"words": ["\u201e"], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["."], "events": ["O"]}
+{"words": ["\u201e", "6", "\u201e", "40", "6", "\u201e", "40", "6\u201e40", "9\u201e-"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["\u201e", "\u201e", "-", "-", "-", "\u201e", "-", "-", "\u201e", "6", "\u201e", "40", "6", "\u201e", "40", "6", "\u201e", "40", "6\u201e40", "6\u201e40"], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["10"], "events": ["O"]}
+{"words": ["\u201e", "\u2014", "\u201e", "4", "-", "\u201e", "-", "-", "\u201e", "-", ".", "\u201e", "."], "events": ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]}
+{"words": ["-", "\u201e", "."], "events": ["O", "O", "O"]}
+{"words": ["-", "1219", "koppen"], "events": ["O", "O", "O"]}
+{"words": ["Transporteere", "\u0192", "4307:11:434:4", ":", "118", ":", "1065:1038:6400"], "events": ["O", "O", "O", "O", "O", "O", "O"]}
